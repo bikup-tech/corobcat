@@ -1,0 +1,10 @@
+[
+    {
+        "name":"MachineA",
+        "status":0
+    },
+    {
+        "name":"MachineB",
+        "status":0
+    }
+]
