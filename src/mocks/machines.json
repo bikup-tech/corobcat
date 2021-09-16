@@ -1,10 +1,12 @@
 [
     {
         "name":"MachineA",
-        "status":0
+        "status":0,
+        "machineId":"machine1"
     },
     {
         "name":"MachineB",
-        "status":0
+        "status":0,
+        "machineId":"machine2"
     }
 ]
