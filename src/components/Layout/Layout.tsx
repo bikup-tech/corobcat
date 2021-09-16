@@ -16,7 +16,7 @@ function Layout(props: ILayoutProps) {
       <div className="layout__menu-container">
         <LeftMenu />
       </div>
-      <div className="layout__content"></div>
+      <div className="layout__content">{children}</div>
     </div>
   );
 }

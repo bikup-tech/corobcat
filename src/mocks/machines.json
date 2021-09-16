@@ -1,12 +1,12 @@
 [
     {
-        "name":"MachineA",
-        "status":0,
-        "machineId":"machine1"
+        "_id":"asd5as5d7a8ad8a",
+        "name":"Maquina1",
+        "status":0
     },
     {
-        "name":"MachineB",
-        "status":0,
-        "machineId":"machine2"
+        "_id":"f87gh6fgh87fg89",
+        "name":"Maquina2",
+        "status":0
     }
 ]
