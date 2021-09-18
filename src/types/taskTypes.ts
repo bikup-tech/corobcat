@@ -1,10 +1,12 @@
-export type TTaskListResponse = {
+export type TTaskResponse = {
   _id: string;
+  taskNumber: number;
   status: number;
-  start: Date;
-  end: Date | null;
-  duration: null;
+  start: Date | string;
+  end: Date | string | null;
+  duration: number;
   userId: string;
+  employerCode: string;
   machineId: string;
   material: string;
   thickness: number;
