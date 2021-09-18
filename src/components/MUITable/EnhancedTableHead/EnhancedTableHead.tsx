@@ -12,11 +12,7 @@ export default function EnhancedTasksTableHead(props: IEnhancedTableHeadProps) {
     <TableHead>
       <TableRow>
         {headCells.map((headCell) => (
-          <TableCell
-            key={headCell.id}
-            align="center"
-            padding={headCell.disablePadding ? "none" : "normal"}
-          >
+          <TableCell key={headCell.id} align="center" padding="normal">
             {headCell.label}
           </TableCell>
         ))}

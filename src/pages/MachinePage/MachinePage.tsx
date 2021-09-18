@@ -15,39 +15,31 @@ function MachinePage(props: IMachinePageProps) {
   const headCells: THeadCell[] = [
     {
       id: "taskNumber",
-      numeric: false,
-      disablePadding: true,
       label: "Nº Tarea",
     },
     {
       id: "material",
-      numeric: false,
-      disablePadding: false,
       label: "Material",
     },
     {
       id: "thickness",
-      numeric: true,
-      disablePadding: false,
       label: "Espesor",
     },
     {
       id: "programNumber",
-      numeric: false,
-      disablePadding: false,
       label: "Nº Programa",
     },
     {
       id: "employerCode",
-      numeric: false,
-      disablePadding: false,
       label: "Técnico",
     },
     {
       id: "duration",
-      numeric: true,
-      disablePadding: false,
       label: "Tiempo",
+    },
+    {
+      id: "actions",
+      label: "Acciones",
     },
   ];
 
