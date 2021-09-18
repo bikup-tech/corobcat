@@ -29,8 +29,16 @@ function LeftMenu() {
               <ListItemIcon>
                 <PrecisionManufacturingIcon />
               </ListItemIcon>
-              <NavLink to="/Maquina1" className="left-menu__nav-item">
+              <NavLink to="/maquina1" className="left-menu__nav-item">
                 <ListItemText primary="Maquina 1" />
+              </NavLink>
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4 }}>
+              <ListItemIcon>
+                <PrecisionManufacturingIcon />
+              </ListItemIcon>
+              <NavLink to="/maquina2" className="left-menu__nav-item">
+                <ListItemText primary="Maquina 2" />
               </NavLink>
             </ListItemButton>
           </List>
