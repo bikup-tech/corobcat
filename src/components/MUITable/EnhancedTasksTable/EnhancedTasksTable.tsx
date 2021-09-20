@@ -121,50 +121,44 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                   <></>
                 ) : (
                   tasks &&
-                  tasks
-                    .sort((a, b) => a.priority - b.priority)
-                    .map((task, index) => {
-                      return (
-                        <TableRow
-                          key={task._id}
-                          sx={{
-                            "&:last-child td, &:last-child th": { border: 0 },
-                          }}
-                          style={setTableBackgroundColorByPriority(
-                            task.priority
-                          )}
+                  tasks.map((task, index) => {
+                    return (
+                      <TableRow
+                        key={task._id}
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                        style={setTableBackgroundColorByPriority(task.priority)}
+                      >
+                        <TableCell
+                          component="th"
+                          scope="row"
+                          align="center"
+                          width={100}
                         >
-                          <TableCell
-                            component="th"
-                            scope="row"
-                            align="center"
-                            width={100}
-                          >
-                            {task.taskNumber}
-                          </TableCell>
-                          <TableCell align="center">{task.material}</TableCell>
-                          <TableCell align="center">{task.thickness}</TableCell>
-                          <TableCell align="center">
-                            {task.programNumber}
-                          </TableCell>
-                          <TableCell align="center">
-                            {task.employerCode}
-                          </TableCell>
-                          <TableCell align="center">
-                            {task.duration} min
-                          </TableCell>
-                          <TableCell align="center">
-                            <FinishTaskButton
-                              taskId={task._id}
-                              programNumber={task.programNumber}
-                              openFinishedTaskDialog={
-                                handleFinishTaskDialogOpen
-                              }
-                            />
-                          </TableCell>
-                        </TableRow>
-                      );
-                    })
+                          {task.taskNumber}
+                        </TableCell>
+                        <TableCell align="center">{task.material}</TableCell>
+                        <TableCell align="center">{task.thickness}</TableCell>
+                        <TableCell align="center">
+                          {task.programNumber}
+                        </TableCell>
+                        <TableCell align="center">
+                          {task.employerCode}
+                        </TableCell>
+                        <TableCell align="center">
+                          {task.duration} min
+                        </TableCell>
+                        <TableCell align="center">
+                          <FinishTaskButton
+                            taskId={task._id}
+                            programNumber={task.programNumber}
+                            openFinishedTaskDialog={handleFinishTaskDialogOpen}
+                          />
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })
                 )}
               </TableBody>
             </Table>

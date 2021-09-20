@@ -2,6 +2,8 @@ import EnhancedTaksTable from "../../components/MUITable/EnhancedTasksTable/Enha
 import { THeadCell } from "../../components/MUITable/MUITableTypes";
 import { TTaskResponse } from "../../types/taskTypes";
 
+import { sortTasksByPriority } from "../../utils/sortTasksByPriority";
+
 interface IMachinePageProps {
   tasks: TTaskResponse[] | undefined;
   isLoading: boolean;
@@ -47,7 +49,7 @@ function MachinePage(props: IMachinePageProps) {
     <>
       <EnhancedTaksTable
         headCells={headCells}
-        tasks={tasks}
+        tasks={sortTasksByPriority(tasks)}
         isLoading={isLoading}
         isError={isError}
       />
