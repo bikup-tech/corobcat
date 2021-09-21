@@ -15,10 +15,6 @@ import { THeadCell } from "../MUITableTypes";
 
 import styled from "styled-components";
 
-import "./EnhancedTasksTable.scss";
-import FinishTaskButton from "../../../pages/MachinePage/components/FinishTaskButton/FinishTaskButton";
-import useFinishTaskDialog from "../../../pages/MachinePage/hooks/useFinishTaskDialog";
-
 const StyledTablePageContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -80,14 +76,8 @@ interface IEnhancedTableProps {
   headCells: THeadCell[];
 }
 
-export default function EnhancedTaksTable(props: IEnhancedTableProps) {
+export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
   const { tasks, headCells, isLoading, isError } = props;
-
-  const {
-    FinishTaskDialog,
-    handleFinishTaskDialogOpen,
-    handleFinishTaskDialogClose,
-  } = useFinishTaskDialog();
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
@@ -119,7 +109,8 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                   <CircularProgress />
                 ) : isError ? (
                   <></>
-                ) : tasks ? (
+                ) : (
+                  tasks &&
                   tasks.map((task, index) => {
                     return (
                       <TableRow
@@ -148,18 +139,9 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                         <TableCell align="center">
                           {task.duration} min
                         </TableCell>
-                        <TableCell align="center">
-                          <FinishTaskButton
-                            taskId={task._id}
-                            programNumber={task.programNumber}
-                            openFinishedTaskDialog={handleFinishTaskDialogOpen}
-                          />
-                        </TableCell>
                       </TableRow>
                     );
                   })
-                ) : (
-                  []
                 )}
               </TableBody>
             </Table>
@@ -177,7 +159,6 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
           )}
         </Box>
       </StyledTableWrapper>
-      {FinishTaskDialog}
     </StyledTablePageContainer>
   );
 }

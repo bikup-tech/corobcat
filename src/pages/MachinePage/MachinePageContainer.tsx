@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import MachinePage from "./MachinePage";
 import useLoadMachineTasksQuery from "./queries/useLoadMachineTasksQuery";
