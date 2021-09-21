@@ -16,3 +16,11 @@ export function getTaskByUserId(userId: string) {
 export function getFinishedTasks() {
   return tasks.filter((task: TTaskResponse) => task.status === 1);
 }
+
+export function saveFinishedTask(taskId: string) {
+  const taskIndex = tasks.findIndex((task) => task._id === taskId);
+
+  if (taskIndex) {
+    tasks[taskIndex].status = 1;
+  }
+}

@@ -9,7 +9,7 @@ import {
   TablePagination,
   TableRow,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { TTaskResponse } from "../../../types/taskTypes";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import { THeadCell } from "../MUITableTypes";
@@ -97,8 +97,8 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
     handleFinishTaskDialogClose,
   } = useFinishTaskDialog();
 
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(25);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(25);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);

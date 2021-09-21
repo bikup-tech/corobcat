@@ -4,9 +4,12 @@ import { useQuery } from "react-query";
 import { getTaskByMachineId } from "../../../mocks/tasksRepository";
 import { getMachineByName } from "../../../mocks/machineRepository";
 
-export default function useLoadMachineTasksQuery(machineName: string) {
+export default function useLoadMachineTasksQuery(
+  machineName: string,
+  forceRender: number
+) {
   // el useQuery reb un array amb el nom de la "action" i les variables que si canvien torna a executar
-  return useQuery(["loadMachineTasks", machineName], async () => {
+  return useQuery(["loadMachineTasks", machineName, forceRender], async () => {
     // TODO: const machine = await axios.get('/api/machine/name/${machineName}')
     const machine = getMachineByName(machineName);
 

@@ -1,15 +1,22 @@
 import { useParams } from "react-router-dom";
 import MachinePage from "./MachinePage";
 import useLoadMachineTasksQuery from "./queries/useLoadMachineTasksQuery";
+import { useSelector } from "react-redux";
+import mainReducer from "../../redux/reducers/mainReducer";
 
 interface IMachinePageContainerParams {
   machineName: string;
 }
 
 function MachinePageContainer() {
+  const { forceRender } = useSelector((state: any) => state.mainReducer);
+
   const { machineName } = useParams<IMachinePageContainerParams>();
 
-  const { isLoading, isError, data } = useLoadMachineTasksQuery(machineName);
+  const { isLoading, isError, data } = useLoadMachineTasksQuery(
+    machineName,
+    forceRender
+  );
 
   function handleTaskClick(taskId: string) {
     console.log("hola");
