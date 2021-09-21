@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import MachinePage from "./MachinePage";
 import useLoadMachineTasksQuery from "./queries/useLoadMachineTasksQuery";
 
 interface IMachinePageContainerParams {
@@ -11,8 +12,19 @@ function MachinePageContainer() {
 
   const { isLoading, isError, data } = useLoadMachineTasksQuery(machineName);
 
+  function handleTaskClick(taskId: string) {
+    console.log("hola");
+  }
+
   return (
-    <>{/* Pintar taula de maquina amb data. mostrar loading error etc... */}</>
+    <>
+      <MachinePage
+        tasks={data}
+        handleTaskClick={handleTaskClick}
+        isLoading={isLoading}
+        isError={isError}
+      />
+    </>
   );
 }
 

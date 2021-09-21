@@ -1,12 +1,12 @@
 [
     {
         "_id":"asd5as5d7a8ad8a",
-        "name":"Maquina1",
+        "name":"maquina1",
         "status":0
     },
     {
         "_id":"f87gh6fgh87fg89",
-        "name":"Maquina2",
+        "name":"maquina2",
         "status":0
     }
 ]

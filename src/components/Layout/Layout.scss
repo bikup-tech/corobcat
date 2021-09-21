@@ -16,7 +16,7 @@
 }
 
 .layout__content {
-  width: 100%;
+  width: calc(100% - 12rem);
   height: 100vh;
   margin-left: 12rem;
   padding: 1rem;
