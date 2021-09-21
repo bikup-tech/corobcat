@@ -10,7 +10,7 @@ interface IMachinePageContainerParams {
 function MachinePageContainer() {
   const { machineName } = useParams<IMachinePageContainerParams>();
 
-  const { isLoading, isError, data } = useLoadMachineTasksQuery(machineName);
+  const { isLoading, isError, data } = useLoadMachineTasksQuery(machineName);  
 
   function handleTaskClick(taskId: string) {
     console.log("hola");
