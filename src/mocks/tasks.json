@@ -1,6 +1,6 @@
 [
     {
-        "_id": "sd7f98sd7f9",
+        "_id": "d7fs98",
         "taskNumber": 0,
         "status":0,
         "start":"2021-04-23T18:25:43.511Z",
@@ -9,7 +9,7 @@
         "userId":"vasdrqw12",
         "employerCode": "asd8a7sd68",
         "machineId":"asd5as5d7a8ad8a",
-        "material":"Plastic",
+        "material":"verda1",
         "thickness":3,
         "programNumber":"21",
         "priority":5
@@ -54,7 +54,7 @@
         "userId":"vasdrqw12",
         "employerCode": "asd8a7sd68",
         "machineId":"asd5as5d7a8ad8a",
-        "material":"Plastic",
+        "material":"verda2",
         "thickness":3,
         "programNumber":"21",
         "priority":7
@@ -129,7 +129,7 @@
         "userId":"vasdrqw12",
         "employerCode": "asd8a7sd68",
         "machineId":"asd5as5d7a8ad8a",
-        "material":"Plastic",
+        "material":"Verda3",
         "thickness":3,
         "programNumber":"21",
         "priority":6

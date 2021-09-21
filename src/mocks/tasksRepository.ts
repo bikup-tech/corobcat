@@ -19,8 +19,12 @@ export function getFinishedTasks() {
 
 export function saveFinishedTask(taskId: string) {
   const taskIndex = tasks.findIndex((task) => task._id === taskId);
+  console.log(taskId);
+  console.log(taskIndex);
 
-  if (taskIndex) {
+  if (taskIndex || taskIndex === 0) {
     tasks[taskIndex].status = 1;
   }
+
+  console.log(tasks);
 }
