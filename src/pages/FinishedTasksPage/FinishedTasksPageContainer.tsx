@@ -5,8 +5,6 @@ import useFinisedTasksQuery from "./queries/useLoadFinishedTasksQuery";
 function FinishedTasksPageContainer() {
   const { isLoading, isError, data } = useFinisedTasksQuery();
 
-  console.log(data);
-
   function handleTaskClick(taskId: string) {
     console.log("hola");
   }

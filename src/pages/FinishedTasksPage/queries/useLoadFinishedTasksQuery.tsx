@@ -8,7 +8,6 @@ export default function useFinisedTasksQuery() {
   return useQuery(["loadFinishedTasks"], async () => {
     // TODO: const machine = await axios.get('/api/machine/name/${machineName}')
     const data = getFinishedTasks();
-    console.log(data);
 
     return data;
   });
