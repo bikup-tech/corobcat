@@ -1,7 +1,11 @@
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
-import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
 import { ListItemButton } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
+
+// icons
+import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
+import PeopleIcon from '@mui/icons-material/People';
+
 import { NavLink } from "react-router-dom";
 
 import "./LeftMenu.scss";
@@ -33,7 +37,7 @@ function LeftMenu() {
                 <ListItemText primary="Maquina 1" />
               </NavLink>
             </ListItemButton>
-            <ListItemButton sx={{ pl: 4 }}>
+            <ListItemButton sx={{ pl: 10 }}>
               <ListItemIcon>
                 <PrecisionManufacturingIcon />
               </ListItemIcon>
@@ -42,6 +46,16 @@ function LeftMenu() {
               </NavLink>
             </ListItemButton>
           </List>
+          <ListItem disableGutters>
+            <ListItemButton>
+              <ListItemIcon>
+                <PeopleIcon />
+              </ListItemIcon>
+              <NavLink to="/employees" className="left-menu__nav-item">
+                <ListItemText primary="Técnicos" />
+              </NavLink>
+            </ListItemButton>
+          </ListItem>
         </List>
       </nav>
     </div>

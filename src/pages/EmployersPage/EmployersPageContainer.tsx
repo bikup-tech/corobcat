@@ -1,8 +1,27 @@
-import React from 'react';
-// import './EmployersPageContainer.scss';
+import useLoadEmployersQuery from "./queries/useLoadEmployersQuery";
+
+// components
+import EmployersPage from "./components/EmployersPage";
 
 function EmployersPageContainer() {
-    return <></>;
+  // getEmployers
+  const { isLoading, isError, data } = useLoadEmployersQuery();
+
+  // onClick push to employee table component
+  function handleEmployeeClick(employeeId: string) {
+    console.log("click al employee");
+  }
+
+  return (
+    <>
+      <EmployersPage
+        employers={data}
+        handleEmployeeClick={handleEmployeeClick}
+        isLoading={isLoading}
+        isError={isError}
+      />
+    </>
+  );
 }
 
 export default EmployersPageContainer;

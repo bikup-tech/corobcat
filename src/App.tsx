@@ -1,7 +1,12 @@
-import Layout from "./components/Layout/Layout";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+// pages
+import EmployersPageContainer from "./pages/EmployersPage/EmployersPageContainer";
 import MachinePageContainer from "./pages/MachinePage/MachinePageContainer";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+
+// components
+import Layout from "./components/Layout/Layout";
 
 const queryClient = new QueryClient();
 
@@ -12,6 +17,9 @@ function App() {
         <BrowserRouter>
           <Layout>
             <Switch>
+              <Route path="/employees" exact>
+                <EmployersPageContainer />
+              </Route>
               <Route path="/:machineName">
                 <MachinePageContainer />
               </Route>
