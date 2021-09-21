@@ -52,7 +52,7 @@ function EmployersPage(props: IEmployersPageProps) {
             <Card className={`employee__card ${classes.root}`}>
             <CardContent>
               <Typography className={classes.title} color="textSecondary" gutterBottom>
-                {employee.employerCode}
+                Código del empleado: {employee.employerCode}
               </Typography>
               <Typography variant="h5" component="h2">
                 {employee.name}
