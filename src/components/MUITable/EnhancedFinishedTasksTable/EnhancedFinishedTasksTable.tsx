@@ -26,6 +26,10 @@ const StyledTableWrapper = styled.div`
   width: 100%;
   max-width: 1440px;
 
+  .MuiPaper-root {
+    max-height: 85vh;
+  }
+
   .MuiTableCell-head {
     color: #002740;
     font-weight: 700;
@@ -39,6 +43,7 @@ const StyledTableWrapper = styled.div`
     border-bottom: 1px solid rgba(255, 255, 255, 1);
     font-weight: 500;
     font-size: 1.1rem;
+    padding: 0.5rem;
   }
 `;
 
@@ -109,6 +114,7 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
               sx={{ minWidth: 750 }}
               aria-labelledby="tableTitle"
               size="medium"
+              stickyHeader
             >
               <EnhancedTableHead headCells={headCells} />
               <TableBody>

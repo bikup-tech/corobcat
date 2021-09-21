@@ -43,6 +43,21 @@ const StyledTableWrapper = styled.div`
     border-bottom: 1px solid rgba(255, 255, 255, 1);
     font-weight: 500;
     font-size: 1.1rem;
+    padding: 0.5rem;
+  }
+`;
+
+const StyledLoadingWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  font-size: 1.75rem;
+
+  .MuiCircularProgress-root {
+    margin-right: 1rem;
   }
 `;
 
@@ -105,11 +120,19 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
               sx={{ minWidth: 750 }}
               aria-labelledby="tableTitle"
               size="medium"
+              stickyHeader
             >
               <EnhancedTableHead headCells={headCells} />
               <TableBody>
                 {isLoading ? (
-                  <CircularProgress />
+                  <TableRow>
+                    <TableCell colSpan={999}>
+                      <StyledLoadingWrapper>
+                        <CircularProgress />
+                        Cargando Datos...
+                      </StyledLoadingWrapper>
+                    </TableCell>
+                  </TableRow>
                 ) : isError ? (
                   <></>
                 ) : tasks ? (
