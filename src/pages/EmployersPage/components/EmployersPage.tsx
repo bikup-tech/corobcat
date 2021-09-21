@@ -28,29 +28,21 @@ const useStyles = makeStyles({
       minWidth: 100,
       transform: 'scale(0.8)',
     },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
     title: {
       fontSize: 14,
-    },
-    pos: {
-      marginBottom: 12,
     },
   });
 
 
 interface IEmployersPageProps {
   employers: TEmployeeResponse[] | undefined;
-  handleEmployeeClick?: (employeerId: string) => void;
+  handleEmployeeClick: (employeerId: string) => void;
   isLoading: boolean;
   isError: boolean;
 }
 
 function EmployersPage(props: IEmployersPageProps) {
-  const { employers, isLoading, isError } = props;
+  const { employers, isLoading, isError,handleEmployeeClick } = props;
   const classes = useStyles();
 
   return (
@@ -65,17 +57,9 @@ function EmployersPage(props: IEmployersPageProps) {
               <Typography variant="h5" component="h2">
                 {employee.name}
               </Typography>
-              {/* <Typography className={classes.pos} color="textSecondary">
-                adjective
-              </Typography>
-              <Typography variant="body2" component="p">
-                well meaning and kindly.
-                <br />
-                {'"a benevolent smile"'}
-              </Typography> */}
             </CardContent>
             <CardActions>
-              <Button size="small">Ver empleado</Button>
+              <Button size="small" onClick={()=>{handleEmployeeClick(employee._id)}}>Ver empleado</Button>
             </CardActions>
           </Card>
           )

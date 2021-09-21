@@ -9,7 +9,7 @@ function EmployersPageContainer() {
 
   // onClick push to employee table component
   function handleEmployeeClick(employeeId: string) {
-    console.log("click al employee");
+    console.log(employeeId);
   }
 
   return (
