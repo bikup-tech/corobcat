@@ -1,14 +1,14 @@
 import { useHistory } from "react-router-dom";
 
 // query
-import useLoadEmployersQuery from "./queries/useLoadEmployersQuery";
+import useLoadEmployeesQuery from "./queries/useLoadEmployeesQuery";
 // components
-import EmployersPage from "./components/EmployersPage";
+import EmployeesPage from "./components/EmployeesPage";
 
-function EmployersPageContainer() {
+function EmployeesPageContainer() {
     const history = useHistory();
   // getEmployers
-  const { isLoading, isError, data } = useLoadEmployersQuery();
+  const { isLoading, isError, data } = useLoadEmployeesQuery();
 
   // onClick push to employee table component
   function handleEmployeeClick(employeeId: string) {
@@ -17,8 +17,8 @@ function EmployersPageContainer() {
 
   return (
     <>
-      <EmployersPage
-        employers={data}
+      <EmployeesPage
+        employees={data}
         handleEmployeeClick={handleEmployeeClick}
         isLoading={isLoading}
         isError={isError}
@@ -27,4 +27,4 @@ function EmployersPageContainer() {
   );
 }
 
-export default EmployersPageContainer;
+export default EmployeesPageContainer;

@@ -6,7 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import './EmployersPage.scss'
+import './EmployeesPage.scss'
 // types
 import { TEmployeeResponse } from "../../../types/employeeTypes";
 
@@ -34,20 +34,20 @@ const useStyles = makeStyles({
   });
 
 
-interface IEmployersPageProps {
-  employers: TEmployeeResponse[] | undefined;
+interface IEmployeesPageProps {
+  employees: TEmployeeResponse[] | undefined;
   handleEmployeeClick: (employeerId: string) => void;
   isLoading: boolean;
   isError: boolean;
 }
 
-function EmployersPage(props: IEmployersPageProps) {
-  const { employers, isLoading, isError,handleEmployeeClick } = props;
+function EmployeesPage(props: IEmployeesPageProps) {
+  const { employees, isLoading, isError,handleEmployeeClick } = props;
   const classes = useStyles();
 
   return (
     <StyledEmployeePageContainer className="employees-container">
-        {employers?.map((employee) => {
+        {employees?.map((employee) => {
           return (
             <Card className={`employee__card ${classes.root}`}>
             <CardContent>
@@ -67,4 +67,4 @@ function EmployersPage(props: IEmployersPageProps) {
     </StyledEmployeePageContainer>
   );
 }
-export default EmployersPage;
+export default EmployeesPage;
