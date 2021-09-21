@@ -36,17 +36,21 @@ export default function useFinishTaskDialog() {
       aria-describedby="alert-dialog-description"
     >
       <DialogTitle id="alert-dialog-title">
-        {"Use Google's location service?"}
+        {"Confirmación finalizar programa"}
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          EL MOURIN NO TE NI IDEA {finishTaskDialogState.programNumber}
+           Estás seguro de que deseas finalizar el programa?
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleFinishTaskDialogClose}>Disagree</Button>
-        <Button onClick={handleFinishTaskDialogClose} autoFocus>
-          Agree
+        <Button onClick={handleFinishTaskDialogClose}>Cancelar</Button>
+        <Button
+          onClick={handleFinishTaskDialogClose}
+          autoFocus
+          variant="contained"
+        >
+          Finalizar programa
         </Button>
       </DialogActions>
     </Dialog>

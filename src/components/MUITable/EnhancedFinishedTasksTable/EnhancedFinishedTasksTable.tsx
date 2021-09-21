@@ -1,6 +1,7 @@
 import {
   Box,
   CircularProgress,
+  Paper,
   Table,
   TableBody,
   TableCell,
@@ -25,14 +26,6 @@ const StyledTableWrapper = styled.div`
   width: 100%;
   max-width: 1440px;
 
-  .MuiTableHead-root {
-    background-color: red;
-  }
-
-  .MuiTableRow-head {
-    background: red;
-  }
-
   .MuiTableCell-head {
     color: #002740;
     font-weight: 700;
@@ -46,6 +39,20 @@ const StyledTableWrapper = styled.div`
     border-bottom: 1px solid rgba(255, 255, 255, 1);
     font-weight: 500;
     font-size: 1.1rem;
+  }
+`;
+
+const StyledLoadingWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  font-size: 1.75rem;
+
+  .MuiCircularProgress-root {
+    margin-right: 1rem;
   }
 `;
 
@@ -97,7 +104,7 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
     <StyledTablePageContainer className="EnhancedTaskTable">
       <StyledTableWrapper className="EnhancedTaskTable__container">
         <Box sx={{ width: "100%" }}>
-          <TableContainer>
+          <TableContainer component={Paper}>
             <Table
               sx={{ minWidth: 750 }}
               aria-labelledby="tableTitle"
@@ -106,7 +113,14 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
               <EnhancedTableHead headCells={headCells} />
               <TableBody>
                 {isLoading ? (
-                  <CircularProgress />
+                  <TableRow>
+                    <TableCell colSpan={999}>
+                      <StyledLoadingWrapper>
+                        <CircularProgress />
+                        Cargando Datos...
+                      </StyledLoadingWrapper>
+                    </TableCell>
+                  </TableRow>
                 ) : isError ? (
                   <></>
                 ) : (

@@ -1,6 +1,7 @@
 import {
   Box,
   CircularProgress,
+  Paper,
   Table,
   TableBody,
   TableCell,
@@ -28,14 +29,6 @@ const StyledTablePageContainer = styled.div`
 const StyledTableWrapper = styled.div`
   width: 100%;
   max-width: 1440px;
-
-  .MuiTableHead-root {
-    background-color: red;
-  }
-
-  .MuiTableRow-head {
-    background: red;
-  }
 
   .MuiTableCell-head {
     color: #002740;
@@ -107,7 +100,7 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
     <StyledTablePageContainer className="EnhancedTaskTable">
       <StyledTableWrapper className="EnhancedTaskTable__container">
         <Box sx={{ width: "100%" }}>
-          <TableContainer>
+          <TableContainer component={Paper}>
             <Table
               sx={{ minWidth: 750 }}
               aria-labelledby="tableTitle"

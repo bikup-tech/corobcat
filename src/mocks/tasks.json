@@ -140,9 +140,9 @@
         "status":1,
         "start":"2021-04-23T18:25:43.511Z",
         "end":null,
-        "duration":4,
+        "duration":50,
         "userId":"vasdrqw12",
-        "employerCode": "asd8a7sd68",
+        "employerCode": "juanjo",
         "machineId":"asd5as5d7a8ad8a",
         "material":"Iron",
         "thickness":3,
@@ -162,7 +162,7 @@
         "material":"Plastic",
         "thickness":3,
         "programNumber":"21",
-        "priority":6
+        "priority":10
     },
     {
         "_id": "435kl34lk",
@@ -192,7 +192,7 @@
         "material":"Plastic",
         "thickness":3,
         "programNumber":"21",
-        "priority":6
+        "priority":2
     },
     {
         "_id": "435kl34lk",
@@ -207,7 +207,7 @@
         "material":"Plastic",
         "thickness":3,
         "programNumber":"21",
-        "priority":6
+        "priority":1
     },
     {
         "_id": "435kl34lk",
@@ -222,7 +222,7 @@
         "material":"Plastic",
         "thickness":3,
         "programNumber":"21",
-        "priority":6
+        "priority":8
     },
     {
         "_id": "435kl34lk",
@@ -237,7 +237,7 @@
         "material":"Plastic",
         "thickness":3,
         "programNumber":"21",
-        "priority":6
+        "priority":9
     },
     {
         "_id": "435kl34lk",
@@ -252,7 +252,7 @@
         "material":"Plastic",
         "thickness":3,
         "programNumber":"21",
-        "priority":6
+        "priority":3
     },
     {
         "_id": "435kl34lk",
@@ -267,7 +267,7 @@
         "material":"Plastic",
         "thickness":3,
         "programNumber":"21",
-        "priority":6
+        "priority":2
     },
     {
         "_id": "435kl34lk",
@@ -282,6 +282,6 @@
         "material":"Plastic",
         "thickness":3,
         "programNumber":"21",
-        "priority":6
+        "priority":5
     }
 ]
