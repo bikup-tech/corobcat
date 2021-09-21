@@ -20,6 +20,10 @@ function MachinePage(props: IMachinePageProps) {
       label: "Nº Tarea",
     },
     {
+      id: "id",
+      label: "id",
+    },
+    {
       id: "material",
       label: "Material",
     },

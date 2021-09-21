@@ -10,13 +10,9 @@ export default function useLoadMachineTasksQuery(machineName: string) {
     // TODO: const machine = await axios.get('/api/machine/name/${machineName}')
     const machine = getMachineByName(machineName);
 
-    console.log("machiune", machine);
-
     // TODO: const {data} = await axios.get('/api/tasks/${machineName}')
     if (machine) {
       const data = getTaskByMachineId(machine._id);
-
-      console.log("tasks", data);
 
       return data;
     }

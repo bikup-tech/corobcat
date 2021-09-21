@@ -24,8 +24,6 @@ export default function useFinishTaskDialog() {
   }
 
   function handleFinishTaskDialogOpen(programNumber: string) {
-    console.log("opening...");
-
     setIsFinishTaskDialogOpen(true);
     setFinishTaskDialogState({ ...finishTaskDialogState, programNumber });
   }
