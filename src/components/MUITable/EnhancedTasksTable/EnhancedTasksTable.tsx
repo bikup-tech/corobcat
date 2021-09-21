@@ -125,8 +125,6 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                   <></>
                 ) : tasks ? (
                   tasks.map((task, index) => {
-                    console.log(index, task);
-                    
                     return (
                       <TableRow
                         key={task._id}

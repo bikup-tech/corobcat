@@ -2,8 +2,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 // pages
-import EmployeesPageContainer from "./pages/EmployeesPage/EmployeesPageContainer";
+import EmployeesListPageContainer from "./pages/EmployeesListPage/EmployeesListPageContainer";
 import MachinePageContainer from "./pages/MachinePage/MachinePageContainer";
+import EmployeePageContainer from "./pages/EmployeePage/EmployeePageContainer";
 
 // components
 import Layout from "./components/Layout/Layout";
@@ -17,10 +18,13 @@ function App() {
         <BrowserRouter>
           <Layout>
             <Switch>
-              <Route path="/:machineName">
-              <Route path="/employees" exact>
-                <EmployeesPageContainer />
+              <Route path="/employees">
+                <EmployeesListPageContainer />
               </Route>
+              <Route path="/employees/:employeeId">
+                <EmployeePageContainer />
+              </Route>
+              <Route path="/:machineName">
                 <MachinePageContainer />
               </Route>
               <Route path="/" exact>

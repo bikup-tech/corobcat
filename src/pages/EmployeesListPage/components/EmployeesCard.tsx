@@ -6,12 +6,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import './EmployeesPage.scss'
+import './EmployeesCard.scss'
 // types
 import { TEmployeeResponse } from "../../../types/employeeTypes";
 
 import styled from "styled-components";
-import { cursorTo } from "readline";
 
 const StyledEmployeePageContainer = styled.div`
   display: flex;
@@ -34,14 +33,14 @@ const useStyles = makeStyles({
   });
 
 
-interface IEmployeesPageProps {
+interface IEmployeesCardProps {
   employees: TEmployeeResponse[] | undefined;
   handleEmployeeClick: (employeerId: string) => void;
   isLoading: boolean;
   isError: boolean;
 }
 
-function EmployeesPage(props: IEmployeesPageProps) {
+function EmployeesCard(props: IEmployeesCardProps) {
   const { employees, isLoading, isError,handleEmployeeClick } = props;
   const classes = useStyles();
 
@@ -67,4 +66,4 @@ function EmployeesPage(props: IEmployeesPageProps) {
     </StyledEmployeePageContainer>
   );
 }
-export default EmployeesPage;
+export default EmployeesCard;
