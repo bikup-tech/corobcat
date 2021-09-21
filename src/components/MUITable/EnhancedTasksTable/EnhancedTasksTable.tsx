@@ -8,7 +8,7 @@ import {
   TablePagination,
   TableRow,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { TTaskResponse } from "../../../types/taskTypes";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import { THeadCell } from "../MUITableTypes";
@@ -83,6 +83,10 @@ interface IEnhancedTableProps {
 export default function EnhancedTaksTable(props: IEnhancedTableProps) {
   const { tasks, headCells, isLoading, isError } = props;
 
+  useEffect(() => {
+    return () => {};
+  });
+
   const {
     FinishTaskDialog,
     handleFinishTaskDialogOpen,
@@ -119,8 +123,7 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                   <CircularProgress />
                 ) : isError ? (
                   <></>
-                ) : (
-                  tasks &&
+                ) : tasks ? (
                   tasks.map((task, index) => {
                     console.log(index, task);
                     
@@ -140,6 +143,7 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                         >
                           {task.taskNumber}
                         </TableCell>
+                        <TableCell align="center">{task._id}</TableCell>
                         <TableCell align="center">{task.material}</TableCell>
                         <TableCell align="center">{task.thickness}</TableCell>
                         <TableCell align="center">
@@ -161,6 +165,8 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                       </TableRow>
                     );
                   })
+                ) : (
+                  []
                 )}
               </TableBody>
             </Table>
