@@ -43,7 +43,7 @@ interface IEmployeesCardProps {
 function EmployeesCard(props: IEmployeesCardProps) {
   const { employees, isLoading, isError,handleEmployeeClick } = props;
   const classes = useStyles();
-
+// TODO: que la carta sea totalmente estirada 
   return (
     <StyledEmployeePageContainer className="employees-container">
         {employees?.map((employee) => {

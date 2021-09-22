@@ -18,7 +18,7 @@ function App() {
         <BrowserRouter>
           <Layout>
             <Switch>
-              <Route path="/employees">
+              <Route path="/employees" exact>
                 <EmployeesListPageContainer />
               </Route>
               <Route path="/employees/:employeeId">

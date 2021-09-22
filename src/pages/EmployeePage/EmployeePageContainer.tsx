@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom";
 // queries
 import useLoadEmployeeTasksQuery from './queries/useLoadEmployeeTasksQuery';
 
+// components
+import EmployeePage from './EmployeePage';
+
 interface IEmployeePageContainerParams {
   employeeId: string;
 }
@@ -11,15 +14,22 @@ interface IEmployeePageContainerParams {
 function EmployeePageContainer() {
     const {employeeId} = useParams<IEmployeePageContainerParams>();
 
-//   const { isLoading, isError, data } = useLoadEmployeeTasksQuery(employeeId);  
+  const { isLoading, isError, data } = useLoadEmployeeTasksQuery(employeeId); 
 
 
-    console.log(employeeId);
-
-    // TODO: volver a la lista de técnicos
-    // la tabla de tareas de éste tecnico
+    // TODO: volver a la lista de técnicos (desde EmployeePage)
+    // - Traer de donde sea el tiempo calculado entre (inicio y final de la tarea) y ponerlo en los headers
+    // - Traer el employer (cuando se haga la PR traerlos de redux)
     
-  return <></>;
+  return (
+    <>
+      <EmployeePage 
+        tasks={data}
+        isLoading={isLoading}
+        isError={isError}
+      />
+    </>
+  );
 }
 
 export default EmployeePageContainer;

@@ -12,7 +12,7 @@ function EmployeesListPageContainer() {
 
   // onClick push to employee table component
   function handleEmployeeClick(employeeId: string) {
-    history.push(`/employee/${employeeId}`);
+    history.push(`/employees/${employeeId}`);
   }
 
   return (
