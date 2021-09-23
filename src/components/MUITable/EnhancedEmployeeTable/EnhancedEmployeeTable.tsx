@@ -1,24 +1,21 @@
 import {
   Box,
   CircularProgress,
-  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TablePagination,
   TableRow,
+  Paper,
 } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import { TTaskResponse } from "../../../types/taskTypes";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import { THeadCell } from "../MUITableTypes";
 
 import styled from "styled-components";
 
-import "./EnhancedTasksTable.scss";
-import FinishTaskButton from "../../../pages/MachinePage/components/FinishTaskButton/FinishTaskButton";
-import useFinishTaskDialog from "../../../pages/MachinePage/hooks/useFinishTaskDialog";
 import { maxWidth } from "../../../styles/styleConstants";
 
 const StyledTablePageContainer = styled.div`
@@ -30,6 +27,14 @@ const StyledTablePageContainer = styled.div`
 const StyledTableWrapper = styled.div`
   width: 100%;
   max-width: ${maxWidth}px;
+
+  .MuiTableHead-root {
+    background-color: red;
+  }
+
+  .MuiTableRow-head {
+    background: red;
+  }
 
   .MuiTableCell-head {
     color: #002740;
@@ -44,7 +49,6 @@ const StyledTableWrapper = styled.div`
     border-bottom: 1px solid rgba(255, 255, 255, 1);
     font-weight: 500;
     font-size: 1.1rem;
-    padding: 0.5rem;
   }
 `;
 
@@ -82,24 +86,18 @@ function setTableBackgroundColorByPriority(priority: number) {
   };
 }
 
-interface IEnhancedTableProps {
+interface IEnhnacedEmployeeTasksTableProps {
   tasks: TTaskResponse[] | undefined;
   isLoading: boolean;
   isError: boolean;
   headCells: THeadCell[];
 }
 
-export default function EnhancedTaksTable(props: IEnhancedTableProps) {
+export default function EnhnacedEmployeeTasksTable(props: IEnhnacedEmployeeTasksTableProps) {
   const { tasks, headCells, isLoading, isError } = props;
 
-  const {
-    FinishTaskDialog,
-    handleFinishTaskDialogOpen,
-    handleFinishTaskDialogClose,
-  } = useFinishTaskDialog();
-
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(25);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(25);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -127,16 +125,17 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
               <TableBody>
                 {isLoading ? (
                   <TableRow>
-                    <TableCell colSpan={999}>
-                      <StyledLoadingWrapper>
-                        <CircularProgress />
-                        Cargando Datos...
-                      </StyledLoadingWrapper>
-                    </TableCell>
-                  </TableRow>
+                  <TableCell colSpan={999}>
+                    <StyledLoadingWrapper>
+                      <CircularProgress />
+                      Cargando Datos...
+                    </StyledLoadingWrapper>
+                  </TableCell>
+                </TableRow>
                 ) : isError ? (
                   <></>
-                ) : tasks && (
+                ) : (
+                  tasks &&
                   tasks.map((task, index) => {
                     return (
                       <TableRow
@@ -160,17 +159,7 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                           {task.programNumber}
                         </TableCell>
                         <TableCell align="center">
-                          {task.employerCode}
-                        </TableCell>
-                        <TableCell align="center">
                           {task.duration} min
-                        </TableCell>
-                        <TableCell align="center">
-                          <FinishTaskButton
-                            taskId={task._id}
-                            programNumber={task.programNumber}
-                            openFinishedTaskDialog={handleFinishTaskDialogOpen}
-                          />
                         </TableCell>
                       </TableRow>
                     );
@@ -192,7 +181,6 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
           )}
         </Box>
       </StyledTableWrapper>
-      {FinishTaskDialog}
     </StyledTablePageContainer>
   );
 }

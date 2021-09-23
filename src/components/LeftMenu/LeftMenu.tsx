@@ -1,6 +1,7 @@
 import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
+import PeopleIcon from "@mui/icons-material/People";
 import StoreIcon from "@mui/icons-material/Store";
 import { ListItemButton } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
@@ -44,6 +45,18 @@ function LeftMenu() {
               </NavLink>
             </ListItemButton>
           </List>
+          
+          <ListItem disableGutters>
+            <ListItemButton>
+              <ListItemIcon>
+                <PeopleIcon />
+              </ListItemIcon>
+              <NavLink to="/employees" className="left-menu__nav-item">
+                <ListItemText primary="Lista de técnicos" />
+              </NavLink>
+            </ListItemButton>
+          </ListItem>
+
           <ListItem disableGutters>
             <ListItemButton>
               <ListItemIcon>

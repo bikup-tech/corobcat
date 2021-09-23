@@ -1,12 +1,17 @@
-import Layout from "./components/Layout/Layout";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import MachinePageContainer from "./pages/MachinePage/MachinePageContainer";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
-import FinishedTasksPage from "./pages/FinishedTasksPage/FinishedTasksPage";
-import FinishedTasksPageContainer from "./pages/FinishedTasksPage/FinishedTasksPageContainer";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { Provider } from "react-redux";
 import configureStore from "./redux/store/configureStore";
 import { initialState } from "./redux/store/initialState";
+
+// pages
+import EmployeesListPageContainer from "./pages/EmployeesListPage/EmployeesListPageContainer";
+import MachinePageContainer from "./pages/MachinePage/MachinePageContainer";
+import EmployeePageContainer from "./pages/EmployeePage/EmployeePageContainer";
+import FinishedTasksPageContainer from "./pages/FinishedTasksPage/FinishedTasksPageContainer";
+
+// components
+import Layout from "./components/Layout/Layout";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +23,12 @@ function App() {
           <BrowserRouter>
             <Layout>
               <Switch>
+              <Route path="/employees" exact>
+                <EmployeesListPageContainer />
+              </Route>
+              <Route path="/employees/:employeeId">
+                <EmployeePageContainer />
+              </Route>
                 <Route path="/finishedTasks" exact>
                   <FinishedTasksPageContainer />
                 </Route>

@@ -11,14 +11,14 @@
   bottom: 0;
   left: 0;
   background-color: $lightGray;
-  width: 12rem;
+  width: $menuWidth;
   border-right: 2px solid $gray;
 }
 
 .layout__content {
-  width: calc(100% - 12rem);
+  width: calc(100% - $menuWidth);
   height: 100vh;
-  margin-left: 12rem;
+  margin-left: $menuWidth;
   padding: 1rem;
   overflow-x: hidden;
 }
