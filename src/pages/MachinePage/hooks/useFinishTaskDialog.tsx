@@ -8,24 +8,35 @@ import {
 } from "@mui/material";
 
 import React, { useState } from "react";
+import { saveFinishedTask } from "../../../mocks/tasksRepository";
+import { useDispatch } from "react-redux";
+import { forceRender } from "../../../redux/actions/mainActions";
 
 const initialState = {
-  programNumber: "",
+  taskId: "",
 };
 
 export default function useFinishTaskDialog() {
+  const dispatch = useDispatch();
+
   const [isFinishTaskDialogOpen, setIsFinishTaskDialogOpen] = useState(false);
 
   const [finishTaskDialogState, setFinishTaskDialogState] =
     useState(initialState);
 
+  function handleFinishTaskDialogOpen(taskId: string) {
+    setIsFinishTaskDialogOpen(true);
+    setFinishTaskDialogState({ ...finishTaskDialogState, taskId });
+  }
+
   function handleFinishTaskDialogClose() {
     setIsFinishTaskDialogOpen(false);
   }
 
-  function handleFinishTaskDialogOpen(programNumber: string) {
-    setIsFinishTaskDialogOpen(true);
-    setFinishTaskDialogState({ ...finishTaskDialogState, programNumber });
+  function handleAccept() {
+    saveFinishedTask(finishTaskDialogState.taskId);
+    setIsFinishTaskDialogOpen(false);
+    dispatch(forceRender());
   }
 
   const FinishTaskDialog = (
@@ -36,17 +47,17 @@ export default function useFinishTaskDialog() {
       aria-describedby="alert-dialog-description"
     >
       <DialogTitle id="alert-dialog-title">
-        {"Use Google's location service?"}
+        {"Confirmación finalizar programa"}
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          EL MOURIN NO TE NI IDEA {finishTaskDialogState.programNumber}
+           Estás seguro de que deseas finalizar el programa?
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleFinishTaskDialogClose}>Disagree</Button>
-        <Button onClick={handleFinishTaskDialogClose} autoFocus>
-          Agree
+        <Button onClick={handleFinishTaskDialogClose}>Cancelar</Button>
+        <Button onClick={handleAccept} autoFocus variant="contained">
+          Finalizar programa
         </Button>
       </DialogActions>
     </Dialog>

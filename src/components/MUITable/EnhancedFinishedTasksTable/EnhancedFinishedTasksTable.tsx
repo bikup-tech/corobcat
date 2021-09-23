@@ -9,16 +9,12 @@ import {
   TablePagination,
   TableRow,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { TTaskResponse } from "../../../types/taskTypes";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import { THeadCell } from "../MUITableTypes";
 
 import styled from "styled-components";
-
-import "./EnhancedTasksTable.scss";
-import FinishTaskButton from "../../../pages/MachinePage/components/FinishTaskButton/FinishTaskButton";
-import useFinishTaskDialog from "../../../pages/MachinePage/hooks/useFinishTaskDialog";
 
 const StyledTablePageContainer = styled.div`
   display: flex;
@@ -29,6 +25,10 @@ const StyledTablePageContainer = styled.div`
 const StyledTableWrapper = styled.div`
   width: 100%;
   max-width: 1440px;
+
+  .MuiPaper-root {
+    max-height: 85vh;
+  }
 
   .MuiTableCell-head {
     color: #002740;
@@ -88,17 +88,11 @@ interface IEnhancedTableProps {
   headCells: THeadCell[];
 }
 
-export default function EnhancedTaksTable(props: IEnhancedTableProps) {
+export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
   const { tasks, headCells, isLoading, isError } = props;
 
-  const {
-    FinishTaskDialog,
-    handleFinishTaskDialogOpen,
-    handleFinishTaskDialogClose,
-  } = useFinishTaskDialog();
-
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(25);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(25);
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPage(newPage);
@@ -135,7 +129,8 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                   </TableRow>
                 ) : isError ? (
                   <></>
-                ) : tasks ? (
+                ) : (
+                  tasks &&
                   tasks.map((task, index) => {
                     return (
                       <TableRow
@@ -164,18 +159,9 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                         <TableCell align="center">
                           {task.duration} min
                         </TableCell>
-                        <TableCell align="center">
-                          <FinishTaskButton
-                            taskId={task._id}
-                            programNumber={task.programNumber}
-                            openFinishedTaskDialog={handleFinishTaskDialogOpen}
-                          />
-                        </TableCell>
                       </TableRow>
                     );
                   })
-                ) : (
-                  []
                 )}
               </TableBody>
             </Table>
@@ -193,7 +179,6 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
           )}
         </Box>
       </StyledTableWrapper>
-      {FinishTaskDialog}
     </StyledTablePageContainer>
   );
 }
