@@ -16,10 +16,6 @@ function EmployeePageContainer() {
 
   const { isLoading, isError, data } = useLoadEmployeeTasksQuery(employeeId); 
 
-
-    // TODO: volver a la lista de técnicos (desde EmployeePage)
-    // - Traer de donde sea el tiempo calculado entre (inicio y final de la tarea) y ponerlo en los headers
-    // - Traer el employer (cuando se haga la PR traerlos de redux)
     
   return (
     <>

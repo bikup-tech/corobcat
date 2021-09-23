@@ -18,9 +18,6 @@ interface IEmployeePage {
 
 function EmployeePage(props: IEmployeePage) {
   const { tasks, isLoading, isError,employee } = props;
-  // TODO:
-  // - Pintar algun boton para volver a la vista de Empleados
-  // - Pintar la tabla con las tasks, el time y el employee(name y code)
 
   const headCells: THeadCell[] = [
     {
@@ -44,7 +41,6 @@ function EmployeePage(props: IEmployeePage) {
       label: "Tiempo",
     },
   ];
-  // TODO: crear compo con history goback() y detalles employee
 
   return (
     <>
