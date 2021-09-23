@@ -3,9 +3,9 @@ import users from '../../../mocks/users.json';
 
 export default function useLoadEmployeesQuery(){
     return useQuery(["loadEmployers"], async ()=>{
-        // TODO const users = await axios.get('/api/users')
-        const getUsers = users;
+        // TODO const {data} = await axios.get('/api/users')
+        const data = users;
 
-        return getUsers;
+        return data;
     })
 }

@@ -1,5 +1,5 @@
-export type TEmployeeResponse = {
+export type TUserResponse = {
   _id: string;
-  employerCode: string;
+  employerCode?: string;
   name: string;
 }

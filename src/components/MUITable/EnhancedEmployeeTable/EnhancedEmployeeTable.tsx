@@ -8,16 +8,13 @@ import {
   TablePagination,
   TableRow,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import { TTaskResponse } from "../../../types/taskTypes";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import { THeadCell } from "../MUITableTypes";
 
 import styled from "styled-components";
 
-import "./EnhancedTasksTable.scss";
-import FinishTaskButton from "../../../pages/MachinePage/components/FinishTaskButton/FinishTaskButton";
-import useFinishTaskDialog from "../../../pages/MachinePage/hooks/useFinishTaskDialog";
 import { maxWidth } from "../../../styles/styleConstants";
 
 const StyledTablePageContainer = styled.div`
@@ -74,25 +71,15 @@ function setTableBackgroundColorByPriority(priority: number) {
   };
 }
 
-interface IEnhancedTableProps {
+interface IEnhnacedEmployeeTasksTableProps {
   tasks: TTaskResponse[] | undefined;
   isLoading: boolean;
   isError: boolean;
   headCells: THeadCell[];
 }
 
-export default function EnhancedTaksTable(props: IEnhancedTableProps) {
+export default function EnhnacedEmployeeTasksTable(props: IEnhnacedEmployeeTasksTableProps) {
   const { tasks, headCells, isLoading, isError } = props;
-
-  useEffect(() => {
-    return () => {};
-  });
-
-  const {
-    FinishTaskDialog,
-    handleFinishTaskDialogOpen,
-    handleFinishTaskDialogClose,
-  } = useFinishTaskDialog();
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
@@ -124,7 +111,8 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                   <CircularProgress />
                 ) : isError ? (
                   <></>
-                ) : tasks && (
+                ) : (
+                  tasks &&
                   tasks.map((task, index) => {
                     return (
                       <TableRow
@@ -142,24 +130,13 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                         >
                           {task.taskNumber}
                         </TableCell>
-                        <TableCell align="center">{task._id}</TableCell>
                         <TableCell align="center">{task.material}</TableCell>
                         <TableCell align="center">{task.thickness}</TableCell>
                         <TableCell align="center">
                           {task.programNumber}
                         </TableCell>
                         <TableCell align="center">
-                          {task.employerCode}
-                        </TableCell>
-                        <TableCell align="center">
                           {task.duration} min
-                        </TableCell>
-                        <TableCell align="center">
-                          <FinishTaskButton
-                            taskId={task._id}
-                            programNumber={task.programNumber}
-                            openFinishedTaskDialog={handleFinishTaskDialogOpen}
-                          />
                         </TableCell>
                       </TableRow>
                     );
@@ -181,7 +158,6 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
           )}
         </Box>
       </StyledTableWrapper>
-      {FinishTaskDialog}
     </StyledTablePageContainer>
   );
 }

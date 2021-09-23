@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 import './EmployeesCard.scss'
 // types
-import { TEmployeeResponse } from "../../../types/employeeTypes";
+import { TUserResponse } from "../../../types/employeeTypes";
 
 import styled from "styled-components";
 
@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 
 
 interface IEmployeesCardProps {
-  employees: TEmployeeResponse[] | undefined;
+  employees: TUserResponse[] | undefined;
   handleEmployeeClick: (employeerId: string) => void;
   isLoading: boolean;
   isError: boolean;
