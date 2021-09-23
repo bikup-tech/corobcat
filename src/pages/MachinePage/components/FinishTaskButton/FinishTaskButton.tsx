@@ -10,7 +10,7 @@ function FinishTaskButton(props: IFinishTaskButtonProps) {
   const { taskId, programNumber, openFinishedTaskDialog } = props;
 
   function handleClick() {
-    openFinishedTaskDialog(programNumber);
+    openFinishedTaskDialog(taskId);
   }
 
   return (

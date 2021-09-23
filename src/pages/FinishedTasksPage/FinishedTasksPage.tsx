@@ -1,17 +1,15 @@
-import EnhancedTaksTable from "../../components/MUITable/EnhancedTasksTable/EnhancedTasksTable";
+import EnhancedFinishedTasksTable from "../../components/MUITable/EnhancedFinishedTasksTable/EnhancedFinishedTasksTable";
 import { THeadCell } from "../../components/MUITable/MUITableTypes";
 import { TTaskResponse } from "../../types/taskTypes";
 
-import { sortTasksByPriority } from "../../utils/sortTasksByPriority";
-
-interface IMachinePageProps {
+interface IFinishedTasksPageProps {
   tasks: TTaskResponse[] | undefined;
   isLoading: boolean;
   isError: boolean;
   handleTaskClick?: (taskId: string) => void;
 }
 
-function MachinePage(props: IMachinePageProps) {
+function FinishedTasksPage(props: IFinishedTasksPageProps) {
   const { tasks, isLoading, isError } = props;
 
   const headCells: THeadCell[] = [
@@ -19,6 +17,7 @@ function MachinePage(props: IMachinePageProps) {
       id: "taskNumber",
       label: "Nº Tarea",
     },
+
     {
       id: "material",
       label: "Material",
@@ -39,17 +38,13 @@ function MachinePage(props: IMachinePageProps) {
       id: "duration",
       label: "Tiempo",
     },
-    {
-      id: "actions",
-      label: "Acciones",
-    },
   ];
 
   return (
     <>
-      <EnhancedTaksTable
+      <EnhancedFinishedTasksTable
         headCells={headCells}
-        tasks={sortTasksByPriority(tasks)}
+        tasks={tasks}
         isLoading={isLoading}
         isError={isError}
       />
@@ -57,4 +52,4 @@ function MachinePage(props: IMachinePageProps) {
   );
 }
 
-export default MachinePage;
+export default FinishedTasksPage;
