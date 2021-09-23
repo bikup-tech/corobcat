@@ -7,6 +7,7 @@ import {
   TableContainer,
   TablePagination,
   TableRow,
+  Paper,
 } from "@mui/material";
 import React from "react";
 import { TTaskResponse } from "../../../types/taskTypes";
@@ -48,6 +49,20 @@ const StyledTableWrapper = styled.div`
     border-bottom: 1px solid rgba(255, 255, 255, 1);
     font-weight: 500;
     font-size: 1.1rem;
+  }
+`;
+
+const StyledLoadingWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  font-size: 1.75rem;
+
+  .MuiCircularProgress-root {
+    margin-right: 1rem;
   }
 `;
 
@@ -99,16 +114,24 @@ export default function EnhnacedEmployeeTasksTable(props: IEnhnacedEmployeeTasks
     <StyledTablePageContainer className="EnhancedTaskTable">
       <StyledTableWrapper className="EnhancedTaskTable__container">
         <Box sx={{ width: "100%" }}>
-          <TableContainer>
+          <TableContainer component={Paper}>
             <Table
               sx={{ minWidth: 750 }}
               aria-labelledby="tableTitle"
               size="medium"
+              stickyHeader
             >
               <EnhancedTableHead headCells={headCells} />
               <TableBody>
                 {isLoading ? (
-                  <CircularProgress />
+                  <TableRow>
+                  <TableCell colSpan={999}>
+                    <StyledLoadingWrapper>
+                      <CircularProgress />
+                      Cargando Datos...
+                    </StyledLoadingWrapper>
+                  </TableCell>
+                </TableRow>
                 ) : isError ? (
                   <></>
                 ) : (

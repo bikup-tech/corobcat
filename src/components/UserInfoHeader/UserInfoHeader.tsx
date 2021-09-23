@@ -1,16 +1,16 @@
 import React from "react";
 import { TUserResponse } from "../../types/employeeTypes";
-import "./UserDataTableInfo.scss";
+import "./UserInfoHeader.scss";
 import { useHistory } from "react-router-dom";
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import IconButton from "@mui/material/IconButton";
 
-interface IUserDataTableInfoProps {
+interface IUserInfoHeaderProps {
   employee: TUserResponse | undefined;
 }
 
-function UserDataTableInfo(props: IUserDataTableInfoProps) {
+function UserInfoHeader(props: IUserInfoHeaderProps) {
   const { employee } = props;
   const history = useHistory();
 
@@ -27,4 +27,4 @@ function UserDataTableInfo(props: IUserDataTableInfoProps) {
   );
 }
 
-export default UserDataTableInfo;
+export default UserInfoHeader;

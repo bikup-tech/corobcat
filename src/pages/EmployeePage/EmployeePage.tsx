@@ -7,7 +7,7 @@ import { TUserResponse } from "../../types/employeeTypes";
 
 // components
 import EnhancedEmployeeTable from '../../components/MUITable/EnhancedEmployeeTable/EnhancedEmployeeTable';
-import UserDataTableInfo from "../../components/UserDataTableInfo/UserDataTableInfo";
+import UserInfoHeader from "../../components/UserInfoHeader/UserInfoHeader";
 
 interface IEmployeePage {
   tasks: TTaskResponse[] | undefined;
@@ -44,7 +44,7 @@ function EmployeePage(props: IEmployeePage) {
 
   return (
     <>
-      <UserDataTableInfo employee={employee} />
+      <UserInfoHeader employee={employee} />
       <EnhancedEmployeeTable
         headCells={headCells}
         tasks={tasks}
