@@ -18,54 +18,54 @@ function LeftMenu() {
       <nav>
         <List>
           <ListItem disableGutters>
-            <ListItemButton>
-              <ListItemIcon>
-                <StoreIcon />
-              </ListItemIcon>
-              <NavLink to="/machines" className="left-menu__nav-item">
+            <NavLink to="/machines" className="left-menu__nav-item">
+              <ListItemButton>
+                <ListItemIcon>
+                  <StoreIcon />
+                </ListItemIcon>
                 <ListItemText primary="Maquinas" />
-              </NavLink>
-            </ListItemButton>
+              </ListItemButton>
+            </NavLink>
           </ListItem>
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 5 }}>
-              <ListItemIcon>
-                <PrecisionManufacturingIcon />
-              </ListItemIcon>
-              <NavLink to="/maquina1" className="left-menu__nav-item">
+            <NavLink to="/maquina1" className="left-menu__nav-item">
+              <ListItemButton sx={{ pl: 5 }}>
+                <ListItemIcon>
+                  <PrecisionManufacturingIcon />
+                </ListItemIcon>
                 <ListItemText primary="Maquina 1" />
-              </NavLink>
-            </ListItemButton>
-            <ListItemButton sx={{ pl: 5 }}>
-              <ListItemIcon>
-                <PrecisionManufacturingIcon />
-              </ListItemIcon>
-              <NavLink to="/maquina2" className="left-menu__nav-item">
+              </ListItemButton>
+            </NavLink>
+            <NavLink to="/maquina2" className="left-menu__nav-item">
+              <ListItemButton sx={{ pl: 5 }}>
+                <ListItemIcon>
+                  <PrecisionManufacturingIcon />
+                </ListItemIcon>
                 <ListItemText primary="Maquina 2" />
-              </NavLink>
-            </ListItemButton>
+              </ListItemButton>
+            </NavLink>
           </List>
-          
+
           <ListItem disableGutters>
-            <ListItemButton>
-              <ListItemIcon>
-                <PeopleIcon />
-              </ListItemIcon>
-              <NavLink to="/employees" className="left-menu__nav-item">
+            <NavLink to="/employees" className="left-menu__nav-item">
+              <ListItemButton>
+                <ListItemIcon>
+                  <PeopleIcon />
+                </ListItemIcon>
                 <ListItemText primary="Lista de técnicos" />
-              </NavLink>
-            </ListItemButton>
+              </ListItemButton>
+            </NavLink>
           </ListItem>
 
           <ListItem disableGutters>
-            <ListItemButton>
-              <ListItemIcon>
-                <AssignmentTurnedInIcon />
-              </ListItemIcon>
-              <NavLink to="/finishedTasks" className="left-menu__nav-item">
+            <NavLink to="/finishedTasks" className="left-menu__nav-item">
+              <ListItemButton>
+                <ListItemIcon>
+                  <AssignmentTurnedInIcon />
+                </ListItemIcon>
                 <ListItemText primary="Programas Terminados" />
-              </NavLink>
-            </ListItemButton>
+              </ListItemButton>
+            </NavLink>
           </ListItem>
         </List>
       </nav>
