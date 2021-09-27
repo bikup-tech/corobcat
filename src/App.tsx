@@ -9,6 +9,7 @@ import EmployeesListPageContainer from "./pages/EmployeesListPage/EmployeesListP
 import MachinePageContainer from "./pages/MachinePage/MachinePageContainer";
 import EmployeePageContainer from "./pages/EmployeePage/EmployeePageContainer";
 import FinishedTasksPageContainer from "./pages/FinishedTasksPage/FinishedTasksPageContainer";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 // components
 import Layout from "./components/Layout/Layout";
@@ -21,14 +22,17 @@ function App() {
       <Provider store={configureStore(initialState)}>
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
-            <Layout>
-              <Switch>
-              <Route path="/employees" exact>
-                <EmployeesListPageContainer />
+            <Switch>
+              <Route path="/login" exact>
+                <LoginPage />
               </Route>
-              <Route path="/employees/:employeeId">
-                <EmployeePageContainer />
-              </Route>
+              <Layout>
+                <Route path="/employees" exact>
+                  <EmployeesListPageContainer />
+                </Route>
+                <Route path="/employees/:employeeId">
+                  <EmployeePageContainer />
+                </Route>
                 <Route path="/finishedTasks" exact>
                   <FinishedTasksPageContainer />
                 </Route>
@@ -38,8 +42,8 @@ function App() {
                 <Route path="/" exact>
                   <p>Not found</p>
                 </Route>
-              </Switch>
-            </Layout>
+              </Layout>
+            </Switch>
           </BrowserRouter>
         </QueryClientProvider>
       </Provider>
