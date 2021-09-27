@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import MachinePage from "./MachinePage";
 import useLoadMachineTasksQuery from "./queries/useLoadMachineTasksQuery";
 import { useSelector } from "react-redux";
-import mainReducer from "../../redux/reducers/mainReducer";
 
 interface IMachinePageContainerParams {
   machineName: string;
