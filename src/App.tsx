@@ -12,6 +12,7 @@ import FinishedTasksPageContainer from "./pages/FinishedTasksPage/FinishedTasksP
 
 // components
 import Layout from "./components/Layout/Layout";
+import MachinesHomePageContainer from "./pages/MachinesHomePage/MachinesHomePageContainer";
 
 const queryClient = new QueryClient();
 
@@ -23,16 +24,19 @@ function App() {
           <BrowserRouter>
             <Layout>
               <Switch>
-              <Route path="/employees" exact>
-                <EmployeesListPageContainer />
-              </Route>
-              <Route path="/employees/:employeeId">
-                <EmployeePageContainer />
-              </Route>
+                <Route path="/employees" exact>
+                  <EmployeesListPageContainer />
+                </Route>
+                <Route path="/employees/:employeeId">
+                  <EmployeePageContainer />
+                </Route>
                 <Route path="/finishedTasks" exact>
                   <FinishedTasksPageContainer />
                 </Route>
-                <Route path="/:machineName">
+                <Route path="/machines" exact>
+                  <MachinesHomePageContainer />
+                </Route>
+                <Route path="/machines/:machineName">
                   <MachinePageContainer />
                 </Route>
                 <Route path="/" exact>

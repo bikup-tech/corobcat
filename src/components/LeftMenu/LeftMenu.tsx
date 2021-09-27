@@ -28,7 +28,7 @@ function LeftMenu() {
             </NavLink>
           </ListItem>
           <List component="div" disablePadding>
-            <NavLink to="/maquina1" className="left-menu__nav-item">
+            <NavLink to="/machines/maquina1" className="left-menu__nav-item">
               <ListItemButton sx={{ pl: 5 }}>
                 <ListItemIcon>
                   <PrecisionManufacturingIcon />
@@ -36,7 +36,7 @@ function LeftMenu() {
                 <ListItemText primary="Maquina 1" />
               </ListItemButton>
             </NavLink>
-            <NavLink to="/maquina2" className="left-menu__nav-item">
+            <NavLink to="/machines/maquina2" className="left-menu__nav-item">
               <ListItemButton sx={{ pl: 5 }}>
                 <ListItemIcon>
                   <PrecisionManufacturingIcon />

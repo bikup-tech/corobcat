@@ -13,6 +13,10 @@ export function getTaskByUserId(userId: string) {
   return tasks.filter((task) => task.userId === userId);
 }
 
+export function getActiveTasks() {
+  return tasks.filter((task: TTaskResponse) => task.status === 0);
+}
+
 export function getFinishedTasks() {
   return tasks.filter((task: TTaskResponse) => task.status === 1);
 }
