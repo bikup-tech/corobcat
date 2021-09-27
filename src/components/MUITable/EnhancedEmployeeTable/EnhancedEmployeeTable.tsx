@@ -28,14 +28,6 @@ const StyledTableWrapper = styled.div`
   width: 100%;
   max-width: ${maxWidth}px;
 
-  .MuiTableHead-root {
-    background-color: red;
-  }
-
-  .MuiTableRow-head {
-    background: red;
-  }
-
   .MuiTableCell-head {
     color: #002740;
     font-weight: 700;
@@ -93,7 +85,9 @@ interface IEnhnacedEmployeeTasksTableProps {
   headCells: THeadCell[];
 }
 
-export default function EnhnacedEmployeeTasksTable(props: IEnhnacedEmployeeTasksTableProps) {
+export default function EnhnacedEmployeeTasksTable(
+  props: IEnhnacedEmployeeTasksTableProps
+) {
   const { tasks, headCells, isLoading, isError } = props;
 
   const [page, setPage] = React.useState(0);
@@ -125,13 +119,13 @@ export default function EnhnacedEmployeeTasksTable(props: IEnhnacedEmployeeTasks
               <TableBody>
                 {isLoading ? (
                   <TableRow>
-                  <TableCell colSpan={999}>
-                    <StyledLoadingWrapper>
-                      <CircularProgress />
-                      Cargando Datos...
-                    </StyledLoadingWrapper>
-                  </TableCell>
-                </TableRow>
+                    <TableCell colSpan={999}>
+                      <StyledLoadingWrapper>
+                        <CircularProgress />
+                        Cargando Datos...
+                      </StyledLoadingWrapper>
+                    </TableCell>
+                  </TableRow>
                 ) : isError ? (
                   <></>
                 ) : (

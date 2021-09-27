@@ -6,23 +6,13 @@ import useLoadEmployeesQuery from "./queries/useLoadEmployeesQuery";
 import EmployeesCard from "./components/EmployeesCard";
 
 function EmployeesListPageContainer() {
-    const history = useHistory();
+  const history = useHistory();
   // getEmployers
   const { isLoading, isError, data } = useLoadEmployeesQuery();
 
-  // onClick push to employee table component
-  function handleEmployeeClick(employeeId: string) {
-    history.push(`/employees/${employeeId}`);
-  }
-
   return (
     <>
-      <EmployeesCard
-        employees={data}
-        handleEmployeeClick={handleEmployeeClick}
-        isLoading={isLoading}
-        isError={isError}
-      />
+      <EmployeesCard employees={data} isLoading={isLoading} isError={isError} />
     </>
   );
 }

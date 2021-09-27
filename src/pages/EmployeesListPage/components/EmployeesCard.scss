@@ -1,4 +1,25 @@
+.employees-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  border-bottom: 1px solid black;
+  width: fit-content;
+}
+
 .employee__card {
-    cursor: pointer;
-    padding: 10px 15px;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.employee__link {
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #1a76d2;
+
+  &:hover {
+    background-color: #f5f5f5;
+    border-radius: 0.25rem;
+  }
 }
