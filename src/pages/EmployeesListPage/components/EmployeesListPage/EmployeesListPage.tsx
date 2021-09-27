@@ -36,7 +36,6 @@ interface IEmployeesCardProps {
 
 function EmployeesListPage(props: IEmployeesCardProps) {
   const { employees, isLoading, isError } = props;
-  // TODO: que la carta sea totalmente estirada
   return (
     <>
       <div className="employees-title">Lista de empleados</div>
