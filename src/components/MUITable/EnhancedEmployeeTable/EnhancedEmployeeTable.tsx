@@ -14,9 +14,6 @@ import { TTaskResponse } from "../../../types/taskTypes";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import { THeadCell } from "../MUITableTypes";
 
-import styled from "styled-components";
-
-import { maxWidth } from "../../../styles/styleConstants";
 import {
   StyledLoadingWrapper,
   StyledTablePageContainer,

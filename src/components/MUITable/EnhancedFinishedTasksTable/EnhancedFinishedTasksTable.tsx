@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@mui/material";
 import React from "react";
-import { TTaskResponse } from "../../../types/taskTypes";
+import { TEnhancedTaskResponse } from "../../../types/taskTypes";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import { THeadCell } from "../MUITableTypes";
 
@@ -23,7 +23,7 @@ import {
 import { setTableRowBackgroundColorByPriority } from "../setTableRowBackgroundColorByPriority";
 
 interface IEnhancedTableProps {
-  tasks: TTaskResponse[] | undefined;
+  tasks: TEnhancedTaskResponse[] | undefined;
   isLoading: boolean;
   isError: boolean;
   headCells: THeadCell[];
@@ -91,6 +91,7 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
                         >
                           {task.taskNumber}
                         </TableCell>
+                        <TableCell align="center">{task.machineName}</TableCell>
                         <TableCell align="center">{task.material}</TableCell>
                         <TableCell align="center">{task.thickness}</TableCell>
                         <TableCell align="center">
