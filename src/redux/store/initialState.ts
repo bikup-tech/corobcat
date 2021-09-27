@@ -16,6 +16,6 @@ export const initialState: TInitialState = {
     createTaskModal: {
       isOpen: false,
       selectedMachine: 1,
-    };
+    },
   },
 };

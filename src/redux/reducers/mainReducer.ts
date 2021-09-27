@@ -1,5 +1,6 @@
 /* eslint-disable no-param-reassign */
 import actionTypes from "../actions/actionTypes";
+import { TInitialState } from "../store/initialState";
 
 type TAction = {
   type: string;
@@ -12,6 +13,25 @@ export default function mainReducer(state: any = {}, action: TAction) {
     case actionTypes.FORCE_RENDER:
       newState = { ...state, forceRender: ++state.forceRender };
       break;
+
+    // Create task modal
+    case actionTypes.SET_CREATE_TASK_MODAL_ISOPEN: {
+      newState = {
+        ...state,
+        createTaskModal: { ...state.createTaskModal, isOpen: action.payload },
+      };
+      break;
+    }
+    case actionTypes.SET_CREATE_TASK_MODAL_SELECTED_MACHINE: {
+      newState = {
+        ...state,
+        createTaskModal: {
+          ...state.createTaskModal,
+          selectedMachine: action.payload,
+        },
+      };
+      break;
+    }
 
     default:
       newState = state;
