@@ -1,18 +1,15 @@
-import { useHistory } from "react-router-dom";
-
 // query
 import useLoadEmployeesQuery from "./queries/useLoadEmployeesQuery";
 // components
-import EmployeesCard from "./components/EmployeesCard";
+import EmployeesListPage from "./components/EmployeesListPage/EmployeesListPage";
 
 function EmployeesListPageContainer() {
-  const history = useHistory();
   // getEmployers
   const { isLoading, isError, data } = useLoadEmployeesQuery();
 
   return (
     <>
-      <EmployeesCard employees={data} isLoading={isLoading} isError={isError} />
+      <EmployeesListPage employees={data} isLoading={isLoading} isError={isError} />
     </>
   );
 }
