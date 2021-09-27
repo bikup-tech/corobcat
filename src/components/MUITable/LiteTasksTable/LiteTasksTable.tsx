@@ -27,13 +27,12 @@ import { setTableRowBackgroundColorByPriority } from "../setTableRowBackgroundCo
 
 interface IEnhancedTableProps {
   tasks: TTaskResponse[] | undefined;
-  isLoading: boolean;
-  isError: boolean;
+
   headCells: THeadCell[];
 }
 
 export default function EnhancedTaksTable(props: IEnhancedTableProps) {
-  const { tasks, headCells, isLoading, isError } = props;
+  const { tasks, headCells } = props;
 
   const {
     FinishTaskDialog,
@@ -63,19 +62,7 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
             <Table aria-labelledby="tableTitle" size="medium" stickyHeader>
               <EnhancedTableHead headCells={headCells} />
               <TableBody>
-                {isLoading ? (
-                  <TableRow>
-                    <TableCell colSpan={999}>
-                      <StyledLoadingWrapper>
-                        <CircularProgress />
-                        Cargando Datos...
-                      </StyledLoadingWrapper>
-                    </TableCell>
-                  </TableRow>
-                ) : isError ? (
-                  <></>
-                ) : (
-                  tasks &&
+                {tasks &&
                   tasks.map((task, index) => {
                     return (
                       <TableRow
@@ -110,12 +97,11 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                         </TableCell>
                       </TableRow>
                     );
-                  })
-                )}
+                  })}
               </TableBody>
             </Table>
           </TableContainer>
-          {!isLoading && tasks && (
+          {tasks && (
             <TablePagination
               rowsPerPageOptions={[25, 50, 75, 100]}
               component="div"

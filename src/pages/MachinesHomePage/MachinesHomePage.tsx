@@ -1,3 +1,4 @@
+import { CircularProgress } from "@material-ui/core";
 import EnhancedTaksTable from "../../components/MUITable/EnhancedTasksTable/EnhancedTasksTable";
 import LiteTasksTable from "../../components/MUITable/LiteTasksTable/LiteTasksTable";
 import { THeadCell } from "../../components/MUITable/MUITableTypes";
@@ -6,6 +7,7 @@ import { TTaskResponse } from "../../types/taskTypes";
 import { sortTasksByPriority } from "../../utils/sortTasksByPriority";
 import { TMachinesHomeTasks } from "./MachinesHomePageTypes";
 import {
+  StyledMachinesHomePageLoadingWrapper,
   StyledMachinesHomePageWrapper,
   StyledTableHeaderWrapper,
   StyledTableWrapper,
@@ -42,6 +44,12 @@ function MachinesHomePage(props: IMachinePageProps) {
 
   return (
     <>
+      {isLoading && (
+        <StyledMachinesHomePageLoadingWrapper>
+          <CircularProgress />
+          Cargando Datos...
+        </StyledMachinesHomePageLoadingWrapper>
+      )}
       {tasks && (
         <StyledMachinesHomePageWrapper>
           <StyledTableWrapper>
@@ -50,8 +58,6 @@ function MachinesHomePage(props: IMachinePageProps) {
             </StyledTableHeaderWrapper>
             <LiteTasksTable
               tasks={sortTasksByPriority(tasks.machine1)}
-              isLoading={isLoading}
-              isError={isError}
               headCells={headCells}
             />
           </StyledTableWrapper>
@@ -61,8 +67,6 @@ function MachinesHomePage(props: IMachinePageProps) {
             </StyledTableHeaderWrapper>
             <LiteTasksTable
               tasks={sortTasksByPriority(tasks.machine2)}
-              isLoading={isLoading}
-              isError={isError}
               headCells={headCells}
             />
           </StyledTableWrapper>
