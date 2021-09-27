@@ -9,77 +9,18 @@ import {
   TablePagination,
   TableRow,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import { TTaskResponse } from "../../../types/taskTypes";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import { THeadCell } from "../MUITableTypes";
 
-import styled from "styled-components";
+import {
+  StyledLoadingWrapper,
+  StyledTablePageContainer,
+  StyledTableWrapper,
+} from "../SCMuiTable";
 
-const StyledTablePageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
-
-const StyledTableWrapper = styled.div`
-  width: 100%;
-  max-width: 1440px;
-
-  .MuiPaper-root {
-    max-height: 85vh;
-  }
-
-  .MuiTableCell-head {
-    color: #002740;
-    font-weight: 700;
-    background-color: #f5f5f5;
-    border-bottom: 2px solid rgba(150, 150, 150, 1);
-    line-height: 1.25;
-    font-size: 1.1rem;
-  }
-
-  .MuiTableCell-body {
-    border-bottom: 1px solid rgba(255, 255, 255, 1);
-    font-weight: 500;
-    font-size: 1.1rem;
-    padding: 0.5rem;
-  }
-`;
-
-const StyledLoadingWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-
-  font-size: 1.75rem;
-
-  .MuiCircularProgress-root {
-    margin-right: 1rem;
-  }
-`;
-
-function setTableBackgroundColorByPriority(priority: number) {
-  let bgColor = "";
-  if (priority > 0 && priority <= 2) {
-    bgColor = "rgba(246, 91, 92, 0.5)";
-  }
-  if (priority > 2 && priority <= 4) {
-    bgColor = "rgba(255, 163, 15, 0.5)";
-  }
-  if (priority > 4 && priority <= 8) {
-    bgColor = "rgba(1, 187, 63, 0.5)";
-  }
-  if (priority > 8 && priority <= 10) {
-    bgColor = "rgba(93, 172, 245, 0.5)";
-  }
-
-  return {
-    backgroundColor: bgColor,
-  };
-}
+import { setTableRowBackgroundColorByPriority } from "../setTableRowBackgroundColorByPriority";
 
 interface IEnhancedTableProps {
   tasks: TTaskResponse[] | undefined;
@@ -138,7 +79,9 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
                         sx={{
                           "&:last-child td, &:last-child th": { border: 0 },
                         }}
-                        style={setTableBackgroundColorByPriority(task.priority)}
+                        style={setTableRowBackgroundColorByPriority(
+                          task.priority
+                        )}
                       >
                         <TableCell
                           component="th"
