@@ -20,6 +20,6 @@ export const StyledTableHeaderWrapper = styled.div`
   padding: 1rem 0;
 
   .machines-home-page__machine-title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
   }
 `;

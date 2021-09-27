@@ -33,7 +33,7 @@ function App() {
                 <Route path="/finishedTasks" exact>
                   <FinishedTasksPageContainer />
                 </Route>
-                <Route path="/machines">
+                <Route path="/machines" exact>
                   <MachinesHomePageContainer />
                 </Route>
                 <Route path="/machines/:machineName">
