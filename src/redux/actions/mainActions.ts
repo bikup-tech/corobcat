@@ -1,7 +1,7 @@
-import actionTypes from "./actionTypes";
+import { FORCE_RENDER } from "./actionTypes";
 
 export function forceRender() {
   return {
-    type: actionTypes.FORCE_RENDER,
+    type: FORCE_RENDER,
   };
 }

@@ -2,11 +2,19 @@
     {
         "_id": "vasdrqw12",
         "employerCode": "e124",
-        "name": "Mourin Deployer"
+        "name": "Mourin Deployer",
+        "role":"EMPLOYEE"
     },
     {
         "_id": "wrqs12",
         "employerCode": "e125",
-        "name": "Gerardo Ramono"
+        "name": "Gerardo Ramono",
+        "role":"EMPLOYEE"
+    },
+    {
+        "_id": "12rqwefqw2",
+        "employerCode": "a126",
+        "name": "Admin admin",
+        "role":"ADMIN"
     }
 ]

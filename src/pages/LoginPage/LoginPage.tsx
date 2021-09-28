@@ -1,23 +1,24 @@
-import React, {useRef} from "react";
-import {
-  Grid,
-  Paper,
-  Avatar,
-  TextField,
-  Button,
-} from "@material-ui/core";
+import React, { useRef } from "react";
+import { useDispatch } from "react-redux";
+
+// actions
+import { login } from "../../redux/actions/authActions";
+
+// styles
+import styled from "styled-components";
+
+// components
+import { Grid, Paper, Avatar, TextField, Button } from "@material-ui/core";
 import LoginIcon from "@mui/icons-material/Login";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
-import styled from "styled-components";
-
 const StyleLoadingWrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
 
   .MuiPaper-root {
     padding: 3rem 1.25rem;
@@ -43,12 +44,14 @@ const StyleLoadingWrapper = styled.div`
 `;
 
 function LoginPage() {
-    const valueRef = useRef<HTMLInputElement>(null)
-    function handleLogInClick(){
-        if(valueRef.current){
-            console.log(valueRef.current.value);
-        }
+  const dispatch = useDispatch();
+  const valueRef = useRef<HTMLInputElement>(null);
+
+  function handleLogInClick() {
+    if (valueRef.current) {
+      dispatch(login(valueRef.current.value));
     }
+  }
 
   return (
     <StyleLoadingWrapper>

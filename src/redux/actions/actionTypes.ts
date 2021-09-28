@@ -1,5 +1,5 @@
-const actionTypes = {
-  FORCE_RENDER: "FORCE_RENDER",
-};
-
-export default actionTypes;
+export const FORCE_RENDER = "FORCE_RENDER";
+// LOGIN
+export const LOGIN_LOADING = "LOGIN_LOADING";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_ERROR = "LOGIN_ERROR";
