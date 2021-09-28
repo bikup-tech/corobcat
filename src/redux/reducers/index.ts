@@ -3,6 +3,6 @@ import mainReducer from "./mainReducer";
 import authReducer from "./authReducer";
 
 export default combineReducers({
-  mainReducer,
   authReducer,
+  mainReducer,
 });

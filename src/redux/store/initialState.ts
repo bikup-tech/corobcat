@@ -18,6 +18,6 @@ export const initialState: TInitialState = {
     forceRender: 0,
   },
   authReducer: {
-    user: JSON.parse(localStorage.getItem("user") as string) || null,
+    user: JSON.parse(localStorage.getItem("user") as string) || "",
   },
 };

@@ -1,17 +1,18 @@
-import React, { useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 // actions
 import { login } from "../../redux/actions/authActions";
 
 // styles
 import styled from "styled-components";
+import "./LoginPage.scss";
 
 // components
 import { Grid, Paper, Avatar, TextField, Button } from "@material-ui/core";
 import LoginIcon from "@mui/icons-material/Login";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+import { CircularProgress } from "@mui/material";
 
 const StyleLoadingWrapper = styled.div`
   display: flex;
@@ -45,11 +46,27 @@ const StyleLoadingWrapper = styled.div`
 
 function LoginPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const { loginLoading, loginError, user } = useSelector(
+    (state: any) => state.authReducer
+  );
   const valueRef = useRef<HTMLInputElement>(null);
+  const [warningMessage, setWarningMessage] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      history.replace("/machines");
+      setWarningMessage("");
+    }
+    if (loginError) {
+      setWarningMessage(loginError);
+    }
+  }, [user, loginError]);
 
   function handleLogInClick() {
     if (valueRef.current) {
       dispatch(login(valueRef.current.value));
+      console.log(valueRef.current.value);
     }
   }
 
@@ -70,6 +87,8 @@ function LoginPage() {
             required
             inputRef={valueRef}
           />
+          {loginLoading && <CircularProgress />}
+          <small className="form_warningMessage">{warningMessage}</small>
           <Button
             type="submit"
             color="primary"
