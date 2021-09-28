@@ -13,6 +13,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 
 // components
 import Layout from "./components/Layout/Layout";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import MachinesHomePageContainer from "./pages/MachinesHomePage/MachinesHomePageContainer";
 
 const queryClient = new QueryClient();
@@ -28,9 +29,9 @@ function App() {
                 <LoginPage />
               </Route>
               <Layout>
-                <Route path="/employees" exact>
+                <ProtectedRoute path="/employees" exact>
                   <EmployeesListPageContainer />
-                </Route>
+                </ProtectedRoute>
                 <Route path="/employees/:employeeId">
                   <EmployeePageContainer />
                 </Route>
