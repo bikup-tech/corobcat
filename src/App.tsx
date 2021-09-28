@@ -13,6 +13,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 
 // components
 import Layout from "./components/Layout/Layout";
+import MachinesHomePageContainer from "./pages/MachinesHomePage/MachinesHomePageContainer";
 
 const queryClient = new QueryClient();
 
@@ -36,7 +37,10 @@ function App() {
                 <Route path="/finishedTasks" exact>
                   <FinishedTasksPageContainer />
                 </Route>
-                <Route path="/:machineName">
+                <Route path="/machines" exact>
+                  <MachinesHomePageContainer />
+                </Route>
+                <Route path="/machines/:machineName">
                   <MachinePageContainer />
                 </Route>
                 <Route path="/" exact>
