@@ -29,9 +29,9 @@ function App() {
                 <LoginPage />
               </Route>
               <Layout>
-                <ProtectedRoute path="/employees" exact>
+                <Route path="/employees" exact>
                   <EmployeesListPageContainer />
-                </ProtectedRoute>
+                </Route>
                 <Route path="/employees/:employeeId">
                   <EmployeePageContainer />
                 </Route>
