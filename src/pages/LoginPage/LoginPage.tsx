@@ -14,7 +14,7 @@ import { Grid, Paper, Avatar, TextField, Button } from "@material-ui/core";
 import LoginIcon from "@mui/icons-material/Login";
 import { CircularProgress } from "@mui/material";
 
-const StyleLoadingWrapper = styled.div`
+const StyledLoadingWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +57,6 @@ function LoginPage() {
   useEffect(() => {
     if (user) {
       history.replace("/machines");
-      setWarningMessage("");
     }
     if (loginError) {
       setWarningMessage(loginError);
@@ -67,12 +66,11 @@ function LoginPage() {
   function handleLogInClick() {
     if (valueRef.current) {
       dispatch(login(valueRef.current.value));
-      console.log(valueRef.current.value);
     }
   }
 
   return (
-    <StyleLoadingWrapper>
+    <StyledLoadingWrapper>
       <Grid>
         <Paper elevation={10}>
           <Grid>
@@ -89,7 +87,7 @@ function LoginPage() {
             inputRef={valueRef}
           />
           {loginLoading && <CircularProgress />}
-          <small className="form_warningMessage">{warningMessage}</small>
+          <small className="form__warningMessage">{warningMessage}</small>
           <Button
             type="submit"
             color="primary"
@@ -101,7 +99,7 @@ function LoginPage() {
           </Button>
         </Paper>
       </Grid>
-    </StyleLoadingWrapper>
+    </StyledLoadingWrapper>
   );
 }
 

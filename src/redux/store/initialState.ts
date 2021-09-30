@@ -5,7 +5,7 @@ export type TMainReducer = {
 };
 
 export type TAuthReducer = {
-  user: TUserResponse | null;
+  user: TUserResponse;
 };
 
 export type TInitialState = {
