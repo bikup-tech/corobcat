@@ -5,7 +5,7 @@ export type TMainReducer = {
 };
 
 export type TAuthReducer = {
-  user: TUserResponse;
+  user: TUserResponse | {};
 };
 
 export type TInitialState = {
@@ -18,6 +18,6 @@ export const initialState: TInitialState = {
     forceRender: 0,
   },
   authReducer: {
-    user: JSON.parse(localStorage.getItem("user") as string) || "",
+    user: JSON.parse(localStorage.getItem("user") as string) || {},
   },
 };
