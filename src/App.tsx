@@ -25,28 +25,32 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
             <Switch>
-              <Route path="/login" exact>
+              <Route path="/" exact>
                 <LoginPage />
               </Route>
               <Layout>
-                <Route path="/employees" exact>
-                  <EmployeesListPageContainer />
-                </Route>
-                <Route path="/employees/:employeeId">
-                  <EmployeePageContainer />
-                </Route>
-                <Route path="/finishedTasks" exact>
-                  <FinishedTasksPageContainer />
-                </Route>
-                <Route path="/machines" exact>
-                  <MachinesHomePageContainer />
-                </Route>
-                <Route path="/machines/:machineName">
-                  <MachinePageContainer />
-                </Route>
-                <Route path="/" exact>
-                  <p>Not found</p>
-                </Route>
+                <ProtectedRoute
+                  path="/employees"
+                  exact
+                  component={EmployeesListPageContainer}
+                />
+                <ProtectedRoute
+                  path="/employees/:employeeId"
+                  component={EmployeePageContainer}
+                />
+                <ProtectedRoute
+                  path="/finishedTasks"
+                  component={FinishedTasksPageContainer}
+                />
+                <ProtectedRoute
+                  path="/machines"
+                  exact
+                  component={MachinesHomePageContainer}
+                />
+                <ProtectedRoute
+                  path="/machines/:machineName"
+                  component={MachinePageContainer}
+                />
               </Layout>
             </Switch>
           </BrowserRouter>

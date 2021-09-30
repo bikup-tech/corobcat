@@ -1,22 +1,24 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
+import { TInitialState } from "../../redux/store/initialState";
 
 interface IProtectedRouteProps {
   path: string;
-  children: any;
-  exact: boolean;
-  rest: any;
+  component: any;
+  exact?: boolean;
 }
 
 function ProtectedRoute(props: IProtectedRouteProps) {
-  const { path, children: Compo, exact, ...rest } = props;
-  const access = useSelector((state: any) => state.authReducer?.user);
+  const { path, component: Compo, exact, ...rest } = props;
+  const user = useSelector((state: TInitialState) => state.authReducer.user);
 
   return (
-    <Route path={path} exact={exact} {...rest}>
-      {access ? <Compo {...props} /> : <Redirect to="/" />}
-    </Route>
+    <Route
+      path={path}
+      exact={exact}
+      {...rest}
+      render={(props) => (user ? <Compo {...props} /> : <Redirect to="/" />)}
+    />
   );
 }
 

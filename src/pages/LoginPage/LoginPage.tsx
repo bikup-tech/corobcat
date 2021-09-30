@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 
@@ -13,6 +13,7 @@ import "./LoginPage.scss";
 import { Grid, Paper, Avatar, TextField, Button } from "@material-ui/core";
 import LoginIcon from "@mui/icons-material/Login";
 import { CircularProgress } from "@mui/material";
+import { TInitialState } from "../../redux/store/initialState";
 
 const StyledLoadingWrapper = styled.div`
   display: flex;
@@ -48,9 +49,11 @@ const StyledLoadingWrapper = styled.div`
 function LoginPage() {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const { loginLoading, loginError, user } = useSelector(
-    (state: any) => state.authReducer
+    (state: TInitialState) => state.authReducer
   );
+
   const valueRef = useRef<HTMLInputElement>(null);
   const [warningMessage, setWarningMessage] = useState("");
 
@@ -88,7 +91,7 @@ function LoginPage() {
           />
           {loginLoading && <CircularProgress />}
           <small className="form__warningMessage">{warningMessage}</small>
-          <Button
+          {/* <Button
             type="submit"
             color="primary"
             variant="contained"
@@ -96,7 +99,8 @@ function LoginPage() {
             onClick={handleLogInClick}
           >
             Login
-          </Button>
+          </Button> */}
+          <button onClick={handleLogInClick}>login</button>
         </Paper>
       </Grid>
     </StyledLoadingWrapper>
