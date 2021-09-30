@@ -9,9 +9,11 @@ import EmployeesListPageContainer from "./pages/EmployeesListPage/EmployeesListP
 import MachinePageContainer from "./pages/MachinePage/MachinePageContainer";
 import EmployeePageContainer from "./pages/EmployeePage/EmployeePageContainer";
 import FinishedTasksPageContainer from "./pages/FinishedTasksPage/FinishedTasksPageContainer";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 // components
 import Layout from "./components/Layout/Layout";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import MachinesHomePageContainer from "./pages/MachinesHomePage/MachinesHomePageContainer";
 
 const queryClient = new QueryClient();
@@ -22,8 +24,11 @@ function App() {
       <Provider store={configureStore(initialState)}>
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
-            <Layout>
-              <Switch>
+            <Switch>
+              <Route path="/login" exact>
+                <LoginPage />
+              </Route>
+              <Layout>
                 <Route path="/employees" exact>
                   <EmployeesListPageContainer />
                 </Route>
@@ -42,8 +47,8 @@ function App() {
                 <Route path="/" exact>
                   <p>Not found</p>
                 </Route>
-              </Switch>
-            </Layout>
+              </Layout>
+            </Switch>
           </BrowserRouter>
         </QueryClientProvider>
       </Provider>

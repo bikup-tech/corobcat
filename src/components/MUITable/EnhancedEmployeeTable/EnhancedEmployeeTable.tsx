@@ -10,6 +10,7 @@ import {
   Paper,
 } from "@mui/material";
 import React from "react";
+import { maxTableHeight } from "../../../styles/styleConstants";
 import { TTaskResponse } from "../../../types/taskTypes";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import { THeadCell } from "../MUITableTypes";
@@ -52,9 +53,9 @@ export default function EnhnacedEmployeeTasksTable(
     <StyledTablePageContainer className="EnhancedTaskTable">
       <StyledTableWrapper className="EnhancedTaskTable__container">
         <Box sx={{ width: "100%" }}>
-          <TableContainer component={Paper}>
+          <TableContainer component={Paper} sx={{ maxHeight: maxTableHeight }}>
             <Table
-              sx={{ minWidth: 750 }}
+              sx={{ minWidth: 750, maxHeight: 250 }}
               aria-labelledby="tableTitle"
               size="medium"
               stickyHeader

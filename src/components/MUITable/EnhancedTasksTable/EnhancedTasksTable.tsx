@@ -24,6 +24,7 @@ import {
 } from "../SCMuiTable";
 
 import { setTableRowBackgroundColorByPriority } from "../setTableRowBackgroundColorByPriority";
+import { maxTableHeight } from "../../../styles/styleConstants";
 
 interface IEnhancedTableProps {
   tasks: TTaskResponse[] | undefined;
@@ -59,7 +60,7 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
     <StyledTablePageContainer className="EnhancedTaskTable">
       <StyledTableWrapper className="EnhancedTaskTable__container">
         <Box sx={{ width: "100%" }}>
-          <TableContainer component={Paper}>
+          <TableContainer component={Paper} sx={{ maxHeight: maxTableHeight }}>
             <Table
               sx={{ minWidth: 750 }}
               aria-labelledby="tableTitle"
