@@ -25,6 +25,7 @@ const StyleLoadingWrapper = styled.div`
     padding: 3rem 1.25rem;
     width: 17rem;
   }
+
   .MuiGrid-root {
     display: flex;
     flex-direction: column;

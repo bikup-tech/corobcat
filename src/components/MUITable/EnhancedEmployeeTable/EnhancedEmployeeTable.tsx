@@ -52,9 +52,9 @@ export default function EnhnacedEmployeeTasksTable(
     <StyledTablePageContainer className="EnhancedTaskTable">
       <StyledTableWrapper className="EnhancedTaskTable__container">
         <Box sx={{ width: "100%" }}>
-          <TableContainer component={Paper}>
+          <TableContainer component={Paper} sx={{ maxHeight: "78vh" }}>
             <Table
-              sx={{ minWidth: 750 }}
+              sx={{ minWidth: 750, maxHeight: 250 }}
               aria-labelledby="tableTitle"
               size="medium"
               stickyHeader
