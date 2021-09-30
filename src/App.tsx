@@ -23,7 +23,7 @@ function App() {
     <>
       <Provider store={configureStore(initialState)}>
         <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
+          <BrowserRouter basename="/corobcat">
             <Switch>
               <Route path="/" exact>
                 <LoginPage />
