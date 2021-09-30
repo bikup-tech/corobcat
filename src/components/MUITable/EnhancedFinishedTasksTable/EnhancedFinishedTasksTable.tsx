@@ -10,6 +10,7 @@ import {
   TableRow,
 } from "@mui/material";
 import React from "react";
+import { maxTableHeight } from "../../../styles/styleConstants";
 import { TEnhancedTaskResponse } from "../../../types/taskTypes";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import { THeadCell } from "../MUITableTypes";
@@ -50,7 +51,7 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
     <StyledTablePageContainer className="EnhancedTaskTable">
       <StyledTableWrapper className="EnhancedTaskTable__container">
         <Box sx={{ width: "100%" }}>
-          <TableContainer component={Paper}>
+          <TableContainer component={Paper} sx={{ maxHeight: maxTableHeight }}>
             <Table
               sx={{ minWidth: 750 }}
               aria-labelledby="tableTitle"
