@@ -4,6 +4,7 @@ import { LOGIN_ERROR, LOGIN_SUCCESS, LOGIN_LOADING } from "./actionTypes";
 // mocks
 import { getUserByCode } from "../../mocks/userRepository";
 import { TUserResponse } from "../../types/employeeTypes";
+import { ERROR_MESSAGE_INVALID_CREDENTIALS } from "../../constants/errorMessages";
 
 type TLoginLoadingAction = {
   type: typeof LOGIN_LOADING;
@@ -47,12 +48,12 @@ export function login(userCode: string) {
       // TODO: const {data} = await axios.get('/api/user/employerCode/${userCode')
       const data = await getUserByCode(userCode);
 
-      if (data === null || data === undefined) {
-        throw new Error("Código de empleado incorrecto");
+      if (data) {
+        localStorage.setItem("user", JSON.stringify(data));
+        dispatch(loginSuccess(data));
+      } else {
+        dispatch(loginError(ERROR_MESSAGE_INVALID_CREDENTIALS(userCode)));
       }
-
-      localStorage.setItem("user", JSON.stringify(data));
-      dispatch(loginSuccess(data));
     } catch (error: any) {
       if (error.response) {
         dispatch(loginError(error.response.message));
