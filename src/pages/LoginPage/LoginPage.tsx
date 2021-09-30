@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 
@@ -59,7 +59,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (user) {
-      history.replace("/machines");
+      history.push("/machines");
     }
     if (loginError) {
       setWarningMessage(loginError);
@@ -91,7 +91,7 @@ function LoginPage() {
           />
           {loginLoading && <CircularProgress />}
           <small className="form__warningMessage">{warningMessage}</small>
-          <Button
+          {/* <Button
             type="submit"
             color="primary"
             variant="contained"
@@ -99,7 +99,8 @@ function LoginPage() {
             onClick={handleLogInClick}
           >
             Login
-          </Button>
+          </Button> */}
+          <button onClick={handleLogInClick}>login</button>
         </Paper>
       </Grid>
     </StyledLoadingWrapper>
