@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/corobcat/static/css/main.22fb2203.chunk.css",
-    "main.js": "/corobcat/static/js/main.900b52cd.chunk.js",
-    "main.js.map": "/corobcat/static/js/main.900b52cd.chunk.js.map",
-    "runtime-main.js": "/corobcat/static/js/runtime-main.7dc17aff.js",
-    "runtime-main.js.map": "/corobcat/static/js/runtime-main.7dc17aff.js.map",
-    "static/js/2.b8d7f567.chunk.js": "/corobcat/static/js/2.b8d7f567.chunk.js",
-    "static/js/2.b8d7f567.chunk.js.map": "/corobcat/static/js/2.b8d7f567.chunk.js.map",
-    "static/js/3.6918dbf3.chunk.js": "/corobcat/static/js/3.6918dbf3.chunk.js",
-    "static/js/3.6918dbf3.chunk.js.map": "/corobcat/static/js/3.6918dbf3.chunk.js.map",
-    "index.html": "/corobcat/index.html",
-    "static/css/main.22fb2203.chunk.css.map": "/corobcat/static/css/main.22fb2203.chunk.css.map",
-    "static/js/2.b8d7f567.chunk.js.LICENSE.txt": "/corobcat/static/js/2.b8d7f567.chunk.js.LICENSE.txt"
+    "main.css": "/static/css/main.22fb2203.chunk.css",
+    "main.js": "/static/js/main.900b52cd.chunk.js",
+    "main.js.map": "/static/js/main.900b52cd.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.6d2e13ae.js",
+    "runtime-main.js.map": "/static/js/runtime-main.6d2e13ae.js.map",
+    "static/js/2.e8138e1f.chunk.js": "/static/js/2.e8138e1f.chunk.js",
+    "static/js/2.e8138e1f.chunk.js.map": "/static/js/2.e8138e1f.chunk.js.map",
+    "static/js/3.6918dbf3.chunk.js": "/static/js/3.6918dbf3.chunk.js",
+    "static/js/3.6918dbf3.chunk.js.map": "/static/js/3.6918dbf3.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.22fb2203.chunk.css.map": "/static/css/main.22fb2203.chunk.css.map",
+    "static/js/2.e8138e1f.chunk.js.LICENSE.txt": "/static/js/2.e8138e1f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.7dc17aff.js",
-    "static/js/2.b8d7f567.chunk.js",
+    "static/js/runtime-main.6d2e13ae.js",
+    "static/js/2.e8138e1f.chunk.js",
     "static/css/main.22fb2203.chunk.css",
     "static/js/main.900b52cd.chunk.js"
   ]
