@@ -59,7 +59,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (user) {
-      history.push("/machines");
+      history.replace("/machines");
     }
     if (loginError) {
       setWarningMessage(loginError);
