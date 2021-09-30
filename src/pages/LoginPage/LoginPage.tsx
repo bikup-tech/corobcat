@@ -13,6 +13,7 @@ import "./LoginPage.scss";
 import { Grid, Paper, Avatar, TextField, Button } from "@material-ui/core";
 import LoginIcon from "@mui/icons-material/Login";
 import { CircularProgress } from "@mui/material";
+import { TInitialState } from "../../redux/store/initialState";
 
 const StyledLoadingWrapper = styled.div`
   display: flex;
@@ -48,9 +49,11 @@ const StyledLoadingWrapper = styled.div`
 function LoginPage() {
   const dispatch = useDispatch();
   const history = useHistory();
+
   const { loginLoading, loginError, user } = useSelector(
-    (state: any) => state.authReducer
+    (state: TInitialState) => state.authReducer
   );
+
   const valueRef = useRef<HTMLInputElement>(null);
   const [warningMessage, setWarningMessage] = useState("");
 

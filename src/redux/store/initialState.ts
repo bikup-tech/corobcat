@@ -6,6 +6,8 @@ export type TMainReducer = {
 
 export type TAuthReducer = {
   user: TUserResponse | {};
+  loginLoading?: boolean;
+  loginError?: string;
 };
 
 export type TInitialState = {
