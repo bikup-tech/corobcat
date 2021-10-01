@@ -1,10 +1,9 @@
-/* eslint-disable no-param-reassign */
 import {
   FORCE_RENDER,
   SET_CREATE_TASK_MODAL_ISOPEN,
   SET_CREATE_TASK_MODAL_SELECTED_MACHINE,
 } from "../actions/actionTypes";
-import { TInitialState } from "../store/initialState";
+
 import { TAction } from "../../types/storeActionType";
 
 export default function mainReducer(state: any = {}, action: TAction) {
