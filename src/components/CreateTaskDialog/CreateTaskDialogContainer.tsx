@@ -1,20 +1,8 @@
-import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Formik } from "formik";
 import * as Yup from "yup";
 
-// import "./CreateTaksDialog.scss";
-
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  TextField,
-} from "@mui/material";
 import { TInitialState } from "../../redux/store/initialState";
 import { setIsCreateTaskModalOpen } from "../../redux/actions/mainActions";
 import CreateTaskDialog from "./CreateTaskDialog";
@@ -37,7 +25,7 @@ function CreateTaksDialogContainer() {
     programNumber: "",
     priority: 1,
     duration: 0,
-    correctionalFactor: 0.1,
+    correctionalFactor: 10,
     selectedMachine: selectedMachine || 1,
   };
 

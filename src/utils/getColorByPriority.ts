@@ -1,4 +1,4 @@
-export function setTableRowBackgroundColorByPriority(priority: number) {
+export default function getColorByPriority(priority: number) {
   let bgColor = "";
   if (priority > 0 && priority <= 2) {
     bgColor = "rgba(93, 172, 245, 0.5)";
@@ -13,7 +13,5 @@ export function setTableRowBackgroundColorByPriority(priority: number) {
     bgColor = "rgba(246, 91, 92, 0.5)";
   }
 
-  return {
-    backgroundColor: bgColor,
-  };
+  return bgColor;
 }

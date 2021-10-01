@@ -13,6 +13,7 @@ interface IFormikTextFieldProps {
   autofocus?: boolean;
   fullWidth?: boolean;
   adornment?: string;
+  disabled?: boolean;
 }
 
 function FormikTextField(props: IFormikTextFieldProps) {
@@ -29,6 +30,7 @@ function FormikTextField(props: IFormikTextFieldProps) {
     autofocus = false,
     fullWidth = false,
     adornment = null,
+    disabled = false,
   } = props;
 
   function handleChange({ target }: React.ChangeEvent<HTMLInputElement>) {
@@ -50,6 +52,7 @@ function FormikTextField(props: IFormikTextFieldProps) {
       margin={margin}
       helperText={formikContext.errors[name]}
       error={!!formikContext.errors[name]}
+      disabled={disabled}
       InputProps={{
         endAdornment: adornment && (
           <InputAdornment position="end">{adornment}</InputAdornment>
