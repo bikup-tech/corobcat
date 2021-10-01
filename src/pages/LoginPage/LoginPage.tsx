@@ -72,6 +72,12 @@ function LoginPage() {
     }
   }
 
+  function handleKeyUp(event: React.KeyboardEvent) {
+    if (event.key === "Enter") {
+      handleLogInClick();
+    }
+  }
+
   return (
     <StyledLoadingWrapper>
       <Grid>
@@ -88,19 +94,14 @@ function LoginPage() {
             fullWidth
             required
             inputRef={valueRef}
+            onKeyUp={handleKeyUp}
           />
           {loginLoading && <CircularProgress />}
           <small className="form__warningMessage">{warningMessage}</small>
-          {/* <Button
-            type="submit"
-            color="primary"
-            variant="contained"
-            fullWidth
-            onClick={handleLogInClick}
-          >
+
+          <button onClick={handleLogInClick} className="login__button">
             Login
-          </Button> */}
-          <button onClick={handleLogInClick}>login</button>
+          </button>
         </Paper>
       </Grid>
     </StyledLoadingWrapper>
