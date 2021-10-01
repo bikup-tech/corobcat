@@ -33,8 +33,20 @@ export const StyledTableWrapper = styled.div`
 
 export const StyledTableHeaderWrapper = styled.div`
   padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .flex-grow {
+    flex: 1;
+  }
 
   .machines-home-page__machine-title {
     font-size: 1.75rem;
+  }
+
+  .machines__header-actions {
+    display: flex;
+    justify-content: flex-end;
   }
 `;
