@@ -1,4 +1,4 @@
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress } from "@mui/material";
 import EnhancedTaksTable from "../../components/MUITable/EnhancedTasksTable/EnhancedTasksTable";
 import LiteTasksTable from "../../components/MUITable/LiteTasksTable/LiteTasksTable";
 import { THeadCell } from "../../components/MUITable/MUITableTypes";

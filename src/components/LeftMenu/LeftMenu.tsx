@@ -1,4 +1,5 @@
-import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import { List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
 import PeopleIcon from "@mui/icons-material/People";
