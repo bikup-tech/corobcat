@@ -106,13 +106,9 @@ function LoginPage() {
           {loginLoading && <CircularProgress />}
           <small className="form__warningMessage">{warningMessage}</small>
 
-          <Button variant="contained" fullWidth>
+          <Button variant="contained" fullWidth onClick={handleLogInClick}>
             login
           </Button>
-
-          {/* <button onClick={handleLogInClick} className="login__button">
-            Login
-          </button> */}
         </Paper>
       </Grid>
     </StyledLoadingWrapper>
