@@ -9,10 +9,16 @@ import { login } from "../../redux/actions/authActions";
 import styled from "styled-components";
 import "./LoginPage.scss";
 
-// components
-import { Grid, Paper, Avatar, TextField, Button } from "@material-ui/core";
+import {
+  Grid,
+  Paper,
+  Avatar,
+  TextField,
+  CircularProgress,
+  Button,
+} from "@mui/material";
+
 import LoginIcon from "@mui/icons-material/Login";
-import { CircularProgress } from "@mui/material";
 import { TInitialState } from "../../redux/store/initialState";
 
 const StyledLoadingWrapper = styled.div`
@@ -91,6 +97,7 @@ function LoginPage() {
           <TextField
             label="Código de empleado"
             placeholder="Entra el código de empleado"
+            variant="standard"
             fullWidth
             required
             inputRef={valueRef}
@@ -99,9 +106,9 @@ function LoginPage() {
           {loginLoading && <CircularProgress />}
           <small className="form__warningMessage">{warningMessage}</small>
 
-          <button onClick={handleLogInClick} className="login__button">
-            Login
-          </button>
+          <Button variant="contained" fullWidth onClick={handleLogInClick}>
+            login
+          </Button>
         </Paper>
       </Grid>
     </StyledLoadingWrapper>
