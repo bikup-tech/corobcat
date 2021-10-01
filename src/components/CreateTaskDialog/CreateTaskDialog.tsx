@@ -1,8 +1,3 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-
-// import "./CreateTaksDialog.scss";
-
 import {
   Button,
   Dialog,
@@ -10,46 +5,64 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Grid,
   TextField,
 } from "@mui/material";
-import { TInitialState } from "../../redux/store/initialState";
-import { setIsCreateTaskModalOpen } from "../../redux/actions/mainActions";
+import { Form } from "formik";
+import styled from "styled-components";
+import FormikTextField from "../FormikComponents/FormikTextField";
 
-function CreateTaksDialog() {
-  const dispatch = useDispatch();
-
-  const { isOpen, selectedMachine } = useSelector(
-    (state: TInitialState) => state.mainReducer.createTaskModal
-  );
-
-  function handleClose() {
-    dispatch(setIsCreateTaskModalOpen(false));
+const StyledCreateTaskDialogWrapper = styled(Dialog)`
+  .MuiPaper-root {
+    max-width: 26rem;
   }
+`;
+
+interface ICreateTaskDialogProps {
+  isOpen: boolean;
+  handleClose: () => void;
+}
+
+function CreateTaskDialog(props: ICreateTaskDialogProps) {
+  const { isOpen, handleClose } = props;
 
   return (
-    <Dialog open={isOpen} onClose={handleClose}>
-      <DialogTitle>Subscribe</DialogTitle>
-      <DialogContent>
-        <DialogContentText>
-          To subscribe to this website, please enter your email address here. We
-          will send updates occasionally.
-        </DialogContentText>
-        <TextField
-          autoFocus
-          margin="dense"
-          id="name"
-          label="Email Address"
-          type="email"
-          fullWidth
-          variant="standard"
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleClose}>Subscribe</Button>
-      </DialogActions>
-    </Dialog>
+    <StyledCreateTaskDialogWrapper open={isOpen} onClose={handleClose}>
+      <Form noValidate>
+        <DialogTitle sx={{ textAlign: "center" }}>Nuevo programa</DialogTitle>
+        <DialogContent>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <FormikTextField
+                name="employee"
+                label="Código de empleado"
+                fullWidth
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <FormikTextField name="material" label="Material" />
+            </Grid>
+            <Grid item xs={6}>
+              <FormikTextField
+                name="thickness"
+                label="Espesor (mm)"
+                type="number"
+                adornment="mm"
+              />
+            </Grid>
+          </Grid>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} variant="outlined">
+            Cancel
+          </Button>
+          <Button type="submit" variant="contained">
+            Submit
+          </Button>
+        </DialogActions>
+      </Form>
+    </StyledCreateTaskDialogWrapper>
   );
 }
 
-export default CreateTaksDialog;
+export default CreateTaskDialog;
