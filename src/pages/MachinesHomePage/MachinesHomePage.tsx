@@ -1,9 +1,8 @@
-import { CircularProgress } from "@mui/material";
-import EnhancedTaksTable from "../../components/MUITable/EnhancedTasksTable/EnhancedTasksTable";
+import { CircularProgress, Button } from "@mui/material";
 import LiteTasksTable from "../../components/MUITable/LiteTasksTable/LiteTasksTable";
 import { THeadCell } from "../../components/MUITable/MUITableTypes";
-import { TTaskResponse } from "../../types/taskTypes";
 
+import { useDispatch } from "react-redux";
 import { sortTasksByPriority } from "../../utils/sortTasksByPriority";
 import { TMachinesHomeTasks } from "./MachinesHomePageTypes";
 import {
@@ -12,6 +11,10 @@ import {
   StyledTableHeaderWrapper,
   StyledTableWrapper,
 } from "./SCMachinesHomePage";
+import {
+  setCreateTaskModalSelectedMachine,
+  setIsCreateTaskModalOpen,
+} from "../../redux/actions/mainActions";
 
 interface IMachinePageProps {
   tasks: TMachinesHomeTasks | undefined;
@@ -22,6 +25,8 @@ interface IMachinePageProps {
 
 function MachinesHomePage(props: IMachinePageProps) {
   const { tasks, isLoading, isError } = props;
+
+  const dispatch = useDispatch();
 
   const headCells: THeadCell[] = [
     {
@@ -42,6 +47,11 @@ function MachinesHomePage(props: IMachinePageProps) {
     },
   ];
 
+  function handleNewTaskClick(machine: number) {
+    dispatch(setCreateTaskModalSelectedMachine(machine));
+    dispatch(setIsCreateTaskModalOpen(true));
+  }
+
   return (
     <>
       {isLoading && (
@@ -54,7 +64,19 @@ function MachinesHomePage(props: IMachinePageProps) {
         <StyledMachinesHomePageWrapper>
           <StyledTableWrapper>
             <StyledTableHeaderWrapper>
+              <div className="flex-grow" />
               <h3 className="machines-home-page__machine-title">Máquina 1</h3>
+              <div className="flex-grow machines__header-actions">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => {
+                    handleNewTaskClick(1);
+                  }}
+                >
+                  Nuevo programa
+                </Button>
+              </div>
             </StyledTableHeaderWrapper>
             <LiteTasksTable
               tasks={sortTasksByPriority(tasks.machine1)}
@@ -63,7 +85,19 @@ function MachinesHomePage(props: IMachinePageProps) {
           </StyledTableWrapper>
           <StyledTableWrapper>
             <StyledTableHeaderWrapper>
+              <div className="flex-grow" />
               <h3 className="machines-home-page__machine-title">Máquina 2</h3>
+              <div className="flex-grow machines__header-actions">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  onClick={() => {
+                    handleNewTaskClick(2);
+                  }}
+                >
+                  Nuevo programa
+                </Button>
+              </div>
             </StyledTableHeaderWrapper>
             <LiteTasksTable
               tasks={sortTasksByPriority(tasks.machine2)}

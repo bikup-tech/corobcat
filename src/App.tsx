@@ -15,6 +15,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import Layout from "./components/Layout/Layout";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import MachinesHomePageContainer from "./pages/MachinesHomePage/MachinesHomePageContainer";
+import CreateTaskDialog from "./components/CreateTaskDialog/CreateTaskDialogContainer";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,8 @@ function App() {
               </Layout>
             </Switch>
           </BrowserRouter>
+
+          <CreateTaskDialog />
         </QueryClientProvider>
       </Provider>
     </>

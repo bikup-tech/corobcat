@@ -18,6 +18,7 @@ export const StyledMachinesHomePageLoadingWrapper = styled.div`
   align-items: center;
   padding-top: 1.5rem;
   font-size: 1.5rem;
+  color: white;
 
   .MuiCircularProgress-root {
     margin-right: 1rem;
@@ -33,8 +34,21 @@ export const StyledTableWrapper = styled.div`
 
 export const StyledTableHeaderWrapper = styled.div`
   padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .flex-grow {
+    flex: 1;
+  }
 
   .machines-home-page__machine-title {
     font-size: 1.75rem;
+    color: white;
+  }
+
+  .machines__header-actions {
+    display: flex;
+    justify-content: flex-end;
   }
 `;
