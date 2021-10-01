@@ -9,9 +9,11 @@ import EmployeesListPageContainer from "./pages/EmployeesListPage/EmployeesListP
 import MachinePageContainer from "./pages/MachinePage/MachinePageContainer";
 import EmployeePageContainer from "./pages/EmployeePage/EmployeePageContainer";
 import FinishedTasksPageContainer from "./pages/FinishedTasksPage/FinishedTasksPageContainer";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 // components
 import Layout from "./components/Layout/Layout";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import MachinesHomePageContainer from "./pages/MachinesHomePage/MachinesHomePageContainer";
 
 const queryClient = new QueryClient();
@@ -21,29 +23,36 @@ function App() {
     <>
       <Provider store={configureStore(initialState)}>
         <QueryClientProvider client={queryClient}>
-          <BrowserRouter>
-            <Layout>
-              <Switch>
-                <Route path="/employees" exact>
-                  <EmployeesListPageContainer />
-                </Route>
-                <Route path="/employees/:employeeId">
-                  <EmployeePageContainer />
-                </Route>
-                <Route path="/finishedTasks" exact>
-                  <FinishedTasksPageContainer />
-                </Route>
-                <Route path="/machines" exact>
-                  <MachinesHomePageContainer />
-                </Route>
-                <Route path="/machines/:machineName">
-                  <MachinePageContainer />
-                </Route>
-                <Route path="/" exact>
-                  <p>Not found</p>
-                </Route>
-              </Switch>
-            </Layout>
+          <BrowserRouter basename="/corobcat">
+            <Switch>
+              <Route path="/" exact>
+                <LoginPage />
+              </Route>
+              <Layout>
+                <ProtectedRoute
+                  path="/employees"
+                  exact
+                  component={EmployeesListPageContainer}
+                />
+                <ProtectedRoute
+                  path="/employees/:employeeId"
+                  component={EmployeePageContainer}
+                />
+                <ProtectedRoute
+                  path="/finishedTasks"
+                  component={FinishedTasksPageContainer}
+                />
+                <ProtectedRoute
+                  path="/machines"
+                  exact
+                  component={MachinesHomePageContainer}
+                />
+                <ProtectedRoute
+                  path="/machines/:machineName"
+                  component={MachinePageContainer}
+                />
+              </Layout>
+            </Switch>
           </BrowserRouter>
         </QueryClientProvider>
       </Provider>
