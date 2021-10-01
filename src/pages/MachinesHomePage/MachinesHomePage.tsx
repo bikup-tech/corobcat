@@ -68,7 +68,7 @@ function MachinesHomePage(props: IMachinePageProps) {
               <h3 className="machines-home-page__machine-title">Máquina 1</h3>
               <div className="flex-grow machines__header-actions">
                 <Button
-                  variant="outlined"
+                  variant="contained"
                   color="secondary"
                   onClick={() => {
                     handleNewTaskClick(1);
@@ -89,7 +89,7 @@ function MachinesHomePage(props: IMachinePageProps) {
               <h3 className="machines-home-page__machine-title">Máquina 2</h3>
               <div className="flex-grow machines__header-actions">
                 <Button
-                  variant="outlined"
+                  variant="contained"
                   color="secondary"
                   onClick={() => {
                     handleNewTaskClick(2);

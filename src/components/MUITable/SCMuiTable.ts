@@ -26,6 +26,14 @@ export const StyledTableWrapper = styled.div`
     font-weight: 500;
     font-size: 1.1rem;
   }
+
+  .MuiTablePagination-root {
+    color: white;
+  }
+
+  .MuiSvgIcon-root {
+    color: white;
+  }
 `;
 
 export const StyledLoadingWrapper = styled.div`

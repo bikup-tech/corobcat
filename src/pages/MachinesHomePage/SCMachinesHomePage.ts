@@ -18,6 +18,7 @@ export const StyledMachinesHomePageLoadingWrapper = styled.div`
   align-items: center;
   padding-top: 1.5rem;
   font-size: 1.5rem;
+  color: white;
 
   .MuiCircularProgress-root {
     margin-right: 1rem;
@@ -43,6 +44,7 @@ export const StyledTableHeaderWrapper = styled.div`
 
   .machines-home-page__machine-title {
     font-size: 1.75rem;
+    color: white;
   }
 
   .machines__header-actions {
