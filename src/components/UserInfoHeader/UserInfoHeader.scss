@@ -1,28 +1,28 @@
-@import '../../styles/styleConstants.scss';
+@import "../../styles/styleConstants.scss";
 
 .user-data-table-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 8px;
 }
 
 .user-data-table {
-    display: flex;
-    align-items: center;
-    font-variant: small-caps;
-    max-width: 1200px;
-    width: 100%;
-    background-color: #f5f5f5;
-    font-weight: 700;
-    border-radius: 4px;
-    padding: 8px;
+  display: flex;
+  align-items: center;
+  font-variant: small-caps;
+  max-width: 1200px;
+  width: 100%;
+  background-color: #f5f5f5;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 8px;
 }
 
 .user-data-table__info {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 
 .user-data-table__info--name {
-    margin-left: 16px;
+  margin-left: 16px;
 }

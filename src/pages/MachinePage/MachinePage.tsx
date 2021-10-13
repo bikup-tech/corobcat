@@ -1,8 +1,10 @@
 import EnhancedTaksTable from "../../components/MUITable/EnhancedTasksTable/EnhancedTasksTable";
 import { THeadCell } from "../../components/MUITable/MUITableTypes";
 import { TTaskResponse } from "../../types/taskTypes";
+import { calculateTotalTime } from "../../utils/calculateTotalTime";
 
 import { sortTasksByPriority } from "../../utils/sortTasksByPriority";
+import MachineInfoHeader from "./components/MachineInfoHeader/MachineInfoHeader";
 
 interface IMachinePageProps {
   tasks: TTaskResponse[] | undefined;
@@ -47,6 +49,11 @@ function MachinePage(props: IMachinePageProps) {
 
   return (
     <>
+      <MachineInfoHeader
+        machineName="Maquina1"
+        activeOrders={tasks?.length || 0}
+        timeToFinish={calculateTotalTime(tasks)}
+      />
       <EnhancedTaksTable
         headCells={headCells}
         tasks={sortTasksByPriority(tasks)}
