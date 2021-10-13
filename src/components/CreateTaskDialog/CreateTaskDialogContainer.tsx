@@ -32,6 +32,9 @@ function CreateTaksDialogContainer() {
   const validationSchema = Yup.object({
     employee: Yup.string().required("El código de empleado es obligatorio."),
     material: Yup.string().required("El material es obligatorio."),
+    programNumber: Yup.string().required(
+      "El número de programa es obligatorio."
+    ),
     thickness: Yup.number()
       .integer("No puede contener decimales.")
       .min(0, "No puede ser negativo.")

@@ -50,6 +50,12 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
     formikContext.values.selectedMachine = selectedMachine;
   }, [selectedMachine]);
 
+  useEffect(() => {
+    if (!isOpen) {
+      formikContext.resetForm();
+    }
+  }, [isOpen]);
+
   return (
     <StyledCreateTaskDialogWrapper open={isOpen} onClose={handleClose}>
       <Form noValidate>
@@ -60,6 +66,7 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
               <FormikTextField
                 name="employee"
                 label="Código de empleado"
+                autofocus
                 fullWidth
               />
             </Grid>
