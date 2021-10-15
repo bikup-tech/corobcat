@@ -7,6 +7,7 @@ export const StyledTableHeaderWrapper = styled.div`
   align-items: center;
   max-width: ${maxWidth}px;
   width: 100%;
+  margin: auto;
   margin-bottom: 0.5rem;
   background-color: #f5f5f5;
   border-radius: 0.25rem;
