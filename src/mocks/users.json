@@ -12,9 +12,16 @@
         "role":"EMPLOYEE"
     },
     {
-        "_id": "12rqwefqw2",
-        "employerCode": "a126",
-        "name": "Admin admin",
-        "role":"ADMIN"
+        "_id": "wrq12421s12",
+        "employerCode": "e126",
+        "name": "Adrià Lòpez",
+        "role":"EMPLOYEE"
+    },
+    {
+        "_id": "wrqsr425112",
+        "employerCode": "e127",
+        "name": "Anna Sànchez",
+        "role":"EMPLOYEE"
     }
+
 ]
