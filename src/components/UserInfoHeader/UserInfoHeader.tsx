@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import { StyledTableHeaderInfoWrapper, StyledTableHeaderWrapper } from "../../StyledComponents/StyledTableHeader";
 import { TTaskResponse } from "../../types/taskTypes";
 import { TMachineResponse } from "../../types/machineTypes";
-import { calculateTotalTimePerMachine } from "../../utils/calculateTotalTimePerMachine";
+import { calculateMachineGeneralValues } from "../../utils/calculateMachineGeneralValues";
 
 const StyledTableHeaderInfo = styled.p`
   margin-left: 3rem;
@@ -27,7 +27,7 @@ interface IUserInfoHeaderProps {
 
 function UserInfoHeader(props:IUserInfoHeaderProps) {
   const { employee, activeOrders, tasks,machines } = props;
-  console.log(calculateTotalTimePerMachine('asd5as5d7a8ad8a', tasks));
+  console.log(calculateMachineGeneralValues('asd5as5d7a8ad8a', tasks));
   
   const history = useHistory();
   

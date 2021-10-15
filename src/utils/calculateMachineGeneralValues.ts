@@ -1,7 +1,7 @@
 import { TTaskResponse } from '../types/taskTypes';
 import { calculateTotalTime } from './calculateTotalTime';
 
-export function calculateTotalTimePerMachine(
+export function calculateMachineGeneralValues(
   machineId: string,
   tasks: TTaskResponse[] | undefined
 ) {
