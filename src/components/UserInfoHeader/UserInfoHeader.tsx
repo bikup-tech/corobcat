@@ -10,11 +10,12 @@ import { StyledTableHeaderInfoWrapper, StyledTableHeaderWrapper } from "../../St
 import { TTaskResponse } from "../../types/taskTypes";
 import { TMachineResponse } from "../../types/machineTypes";
 import { calculateMachineGeneralValues } from "../../utils/calculateMachineGeneralValues";
+import TableHeaderInfoCard from "../TableHeaderInfoCard/TableHeaderInfoCard";
+import { calculateTotalTime } from "../../utils/calculateTotalTime";
 
-const StyledTableHeaderInfo = styled.p`
-  margin-left: 3rem;
+const StyledFlexGrow = styled.div`
+  flex: 1;
 `;
-
 
 interface IUserInfoHeaderProps {
   employee: TUserResponse | undefined;
@@ -27,27 +28,28 @@ interface IUserInfoHeaderProps {
 
 function UserInfoHeader(props:IUserInfoHeaderProps) {
   const { employee, activeOrders, tasks,machines } = props;
-  console.log(calculateMachineGeneralValues('asd5as5d7a8ad8a', tasks));
   
+  const tasksData = calculateMachineGeneralValues(tasks, machines)
   const history = useHistory();
   
   return (
     <StyledTableHeaderWrapper className="user-data-table-container">
-      <div className="user-data-table">
+      <StyledTableHeaderInfoWrapper className="user-data-table">
         <IconButton onClick={() => history.goBack()} aria-label="goBack">
           <ArrowBackIcon />
         </IconButton>
-        <StyledTableHeaderInfoWrapper>
         <p className="user-data-table__info--name">{employee?.name}</p>
         <p className="user-data-table__info">{employee?.employerCode}</p>
-        <StyledTableHeaderInfo className="user-data-table__info">
-          Programas activos: {activeOrders}
-        </StyledTableHeaderInfo>
-        <StyledTableHeaderInfo className="user-data-table__info">
-          Tiempo restante: 12 min
-        </StyledTableHeaderInfo>
-        </StyledTableHeaderInfoWrapper>
-      </div>
+        <StyledFlexGrow />
+        <TableHeaderInfoCard
+          machine1Tasks={tasksData.machine1.activeTasks as number}
+          machine1TimeToFinish={tasksData.machine1.timeToFinish as number}
+          machine2Tasks={tasksData.machine1.activeTasks as number}
+          machine2TimeToFinish={tasksData.machine1.activeTasks as number}
+          totalTasks={tasks?.length as number}
+          totalTimeToFinish={calculateTotalTime(tasks)}
+        />
+      </StyledTableHeaderInfoWrapper>
     </StyledTableHeaderWrapper>
   );
 }

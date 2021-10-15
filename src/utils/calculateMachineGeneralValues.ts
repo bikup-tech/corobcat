@@ -1,18 +1,45 @@
+import { TMachineResponse } from '../types/machineTypes';
 import { TTaskResponse } from '../types/taskTypes';
 import { calculateTotalTime } from './calculateTotalTime';
 
+
+
+type TTasksData = {
+  machine1: {
+    activeTasks: number | undefined
+    timeToFinish: number
+  },
+  machine2: {
+    activeTasks: number |undefined
+    
+    timeToFinish: number
+  },
+}
+
 export function calculateMachineGeneralValues(
-  machineId: string,
-  tasks: TTaskResponse[] | undefined
-) {
-  const machineValues = {
-    machineTasks: 0,
-    machineTimeLeft: 0,
-  };
+  tasks: TTaskResponse[] | undefined,
+  machines: TMachineResponse[] | undefined,
+):TTasksData {
+  
+  const machine1 = machines?.find(machine=>machine.name==='machine1')
+  const machine2 = machines?.find(machine=>machine.name==='machine2')
 
-  const machineTasks = tasks?.filter((task) => task.machineId === machineId);
-  machineValues.machineTimeLeft = calculateTotalTime(machineTasks);
-  machineValues.machineTasks = machineTasks?.length || 0;
+  const machine1Tasks = tasks?.filter((task) => task.machineId === machine1?._id);
+  const machine2Tasks = tasks?.filter((task) => task.machineId === machine2?._id);
+  
+  const machine1TimeToFinish = calculateTotalTime(machine1Tasks)
+  const machine2TimeToFinish = calculateTotalTime(machine2Tasks)
 
-  return machineValues;
+  return {
+    machine1: {
+      activeTasks: machine1Tasks?.length,
+      timeToFinish: machine1TimeToFinish
+    },
+    machine2: {
+      activeTasks: machine2Tasks?.length,
+      timeToFinish: machine2TimeToFinish
+    },
+  }
+
+
 }
