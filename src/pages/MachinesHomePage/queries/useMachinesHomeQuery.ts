@@ -17,11 +17,11 @@ export default function useLoadMachineTasksQuery(forceRender: number) {
       const activeTasks = getActiveTasks();
 
       const machine1Tasks = activeTasks.filter(
-        (task) => task.machineId === "asd5as5d7a8ad8a"
+        (task) => task.machine.name === "maquina1"
       );
 
       const machine2Tasks = activeTasks.filter(
-        (task) => task.machineId === "f87gh6fgh87fg89"
+        (task) => task.machine.name === "maquina2"
       );
 
       return {

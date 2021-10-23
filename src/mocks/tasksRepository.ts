@@ -1,24 +1,46 @@
 import { TTaskResponse } from "../types/taskTypes";
+import populateTasks from "../utils/populateTasks";
 import jsonTasks from "./tasks.json";
 
-const tasks = [...jsonTasks];
+const tasks: TTaskResponse[] = [...jsonTasks];
 
 export function getTaskByMachineId(machineId: string): TTaskResponse[] {
-  return tasks.filter(
-    (task: TTaskResponse) => task.machineId === machineId && task.status === 0
+  console.log(machineId);
+
+  console.log(tasks);
+
+  const filteredTasks = tasks.filter(
+    (task: TTaskResponse) => task.machine === machineId && task.status === 0
   );
+
+  const populatedTasks = populateTasks(filteredTasks);
+
+  return populatedTasks;
 }
 
 export function getTaskByUserId(userId: string) {
-  return tasks.filter((task) => task.userId === userId);
+  const filteredTasks = tasks.filter((task) => task.user === userId);
+  const populatedTasks = populateTasks(filteredTasks);
+
+  return populatedTasks;
 }
 
 export function getActiveTasks() {
-  return tasks.filter((task: TTaskResponse) => task.status === 0);
+  const filteredTasks = tasks.filter(
+    (task: TTaskResponse) => task.status === 0
+  );
+  const populatedTasks = populateTasks(filteredTasks);
+
+  return populatedTasks;
 }
 
 export function getFinishedTasks() {
-  return tasks.filter((task: TTaskResponse) => task.status === 1);
+  const filteredTasks = tasks.filter(
+    (task: TTaskResponse) => task.status === 1
+  );
+  const populatedTasks = populateTasks(filteredTasks);
+
+  return populatedTasks;
 }
 
 export function saveFinishedTask(taskId: string) {

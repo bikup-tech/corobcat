@@ -1,9 +1,9 @@
 import EnhancedFinishedTasksTable from "../../components/MUITable/EnhancedFinishedTasksTable/EnhancedFinishedTasksTable";
 import { THeadCell } from "../../components/MUITable/MUITableTypes";
-import { TEnhancedTaskResponse } from "../../types/taskTypes";
+import { TTaskResponse } from "../../types/taskTypes";
 
 interface IFinishedTasksPageProps {
-  tasks: TEnhancedTaskResponse[] | undefined;
+  tasks: TTaskResponse[] | undefined;
   isLoading: boolean;
   isError: boolean;
   handleTaskClick?: (taskId: string) => void;
@@ -40,6 +40,10 @@ function FinishedTasksPage(props: IFinishedTasksPageProps) {
     {
       id: "duration",
       label: "Tiempo",
+    },
+    {
+      id: "date",
+      label: "Fecha",
     },
   ];
 

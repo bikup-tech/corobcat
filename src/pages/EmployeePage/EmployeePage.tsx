@@ -6,7 +6,7 @@ import { THeadCell } from "../../components/MUITable/MUITableTypes";
 import { TUserResponse } from "../../types/employeeTypes";
 
 // components
-import EnhancedEmployeeTable from '../../components/MUITable/EnhancedEmployeeTable/EnhancedEmployeeTable';
+import EnhancedEmployeeTable from "../../components/MUITable/EnhancedEmployeeTable/EnhancedEmployeeTable";
 import UserInfoHeader from "../../components/UserInfoHeader/UserInfoHeader";
 import { TMachineResponse } from "../../types/machineTypes";
 
@@ -19,12 +19,16 @@ interface IEmployeePage {
 }
 
 function EmployeePage(props: IEmployeePage) {
-  const { tasks, isLoading, isError,employee, machines } = props;  
+  const { tasks, isLoading, isError, employee, machines } = props;
 
   const headCells: THeadCell[] = [
     {
       id: "taskNumber",
       label: "Nº tarea",
+    },
+    {
+      id: "status",
+      label: "Estado",
     },
     {
       id: "material",
@@ -39,18 +43,26 @@ function EmployeePage(props: IEmployeePage) {
       label: "Nº Programa",
     },
     {
+      id: "machine",
+      label: "Máquina",
+    },
+    {
       id: "duration",
       label: "Tiempo",
+    },
+    {
+      id: "date",
+      label: "Fecha",
     },
   ];
 
   return (
     <>
-      <UserInfoHeader 
-      employee={employee} 
-      activeOrders={tasks?.length || 0}
-      tasks={tasks}
-      machines={machines}
+      <UserInfoHeader
+        employee={employee}
+        activeOrders={tasks?.length || 0}
+        tasks={tasks}
+        machines={machines}
       />
       <EnhancedEmployeeTable
         headCells={headCells}

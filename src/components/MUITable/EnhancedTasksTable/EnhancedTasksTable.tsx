@@ -107,7 +107,7 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                           {task.programNumber}
                         </TableCell>
                         <TableCell align="center">
-                          {task.employerCode}
+                          {task.user.employerCode}
                         </TableCell>
                         <TableCell align="center">
                           {task.duration} min

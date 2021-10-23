@@ -6,7 +6,10 @@ import styled from "styled-components";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import IconButton from "@mui/material/IconButton";
-import { StyledTableHeaderInfoWrapper, StyledTableHeaderWrapper } from "../../StyledComponents/StyledTableHeader";
+import {
+  StyledTableHeaderInfoWrapper,
+  StyledTableHeaderWrapper,
+} from "../../StyledComponents/StyledTableHeader";
 import { TTaskResponse } from "../../types/taskTypes";
 import { TMachineResponse } from "../../types/machineTypes";
 import { calculateMachineGeneralValues } from "../../utils/calculateMachineGeneralValues";
@@ -24,14 +27,12 @@ interface IUserInfoHeaderProps {
   machines: TMachineResponse[] | undefined;
 }
 
+function UserInfoHeader(props: IUserInfoHeaderProps) {
+  const { employee, activeOrders, tasks, machines } = props;
 
-
-function UserInfoHeader(props:IUserInfoHeaderProps) {
-  const { employee, activeOrders, tasks,machines } = props;
-  
-  const tasksData = calculateMachineGeneralValues(tasks, machines)
+  const tasksData = calculateMachineGeneralValues(tasks, machines);
   const history = useHistory();
-  
+
   return (
     <StyledTableHeaderWrapper className="user-data-table-container">
       <StyledTableHeaderInfoWrapper className="user-data-table">

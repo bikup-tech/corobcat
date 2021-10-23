@@ -1,12 +1,12 @@
 [
-    {
-        "_id":"asd5as5d7a8ad8a",
-        "name":"maquina1",
-        "status":0
-    },
-    {
-        "_id":"f87gh6fgh87fg89",
-        "name":"maquina2",
-        "status":0
-    }
+  {
+    "_id": "6173d7ab09e9989a0b651daf",
+    "name": "maquina1",
+    "status": 1
+  },
+  {
+    "_id": "6173d7cd25fe50dac1ceae48",
+    "name": "maquina2",
+    "status": 1
+  }
 ]

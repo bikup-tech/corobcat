@@ -19,6 +19,8 @@ export default function useLoadMachineTasksQuery(
       if (machine) {
         const data = getTaskByMachineId(machine._id);
 
+        console.log("data", data);
+
         return data;
       }
     },

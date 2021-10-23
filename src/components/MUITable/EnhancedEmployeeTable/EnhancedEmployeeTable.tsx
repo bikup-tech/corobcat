@@ -15,6 +15,8 @@ import {
   maxTableHeight_small,
 } from "../../../styles/styleConstants";
 import { TTaskResponse } from "../../../types/taskTypes";
+import formatDate from "../../../utils/formatDate";
+import TaskStatus from "../../TaskStatus/TaskStatus";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import { THeadCell } from "../MUITableTypes";
 
@@ -100,13 +102,23 @@ export default function EnhnacedEmployeeTasksTable(
                         >
                           {task.taskNumber}
                         </TableCell>
+
+                        <TableCell align="center">
+                          <TaskStatus status={task.status} />
+                        </TableCell>
                         <TableCell align="center">{task.material}</TableCell>
                         <TableCell align="center">{task.thickness}</TableCell>
                         <TableCell align="center">
                           {task.programNumber}
                         </TableCell>
                         <TableCell align="center">
+                          {task.machine.name}
+                        </TableCell>
+                        <TableCell align="center">
                           {task.duration} min
+                        </TableCell>
+                        <TableCell align="center">
+                          {formatDate(task.end || task.start)}
                         </TableCell>
                       </TableRow>
                     );
