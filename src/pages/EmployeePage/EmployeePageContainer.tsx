@@ -14,12 +14,12 @@ interface IEmployeePageContainerParams {
 function EmployeePageContainer() {
     const {employeeId} = useParams<IEmployeePageContainerParams>();
 
-  const { isLoading, isError, data } = useLoadEmployeeTasksQuery(employeeId); 
+  const { isLoading, isError, data } = useLoadEmployeeTasksQuery(employeeId);
 
-    
+
   return (
     <>
-      <EmployeePage 
+      <EmployeePage
         tasks={data?.employeeTasks}
         employee={data?.employee}
         isLoading={isLoading}

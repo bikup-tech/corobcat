@@ -6,7 +6,7 @@ import { THeadCell } from "../../components/MUITable/MUITableTypes";
 import { TUserResponse } from "../../types/employeeTypes";
 
 // components
-import EnhancedEmployeeTable from '../../components/MUITable/EnhancedEmployeeTable/EnhancedEmployeeTable';
+import EnhancedEmployeeTable from "../../components/MUITable/EnhancedEmployeeTable/EnhancedEmployeeTable";
 import UserInfoHeader from "../../components/UserInfoHeader/UserInfoHeader";
 
 interface IEmployeePage {
@@ -17,7 +17,7 @@ interface IEmployeePage {
 }
 
 function EmployeePage(props: IEmployeePage) {
-  const { tasks, isLoading, isError,employee } = props;
+  const { tasks, isLoading, isError, employee } = props;
 
   const headCells: THeadCell[] = [
     {
@@ -37,8 +37,16 @@ function EmployeePage(props: IEmployeePage) {
       label: "Nº Programa",
     },
     {
+      id: "machine",
+      label: "Máquina",
+    },
+    {
       id: "duration",
       label: "Tiempo",
+    },
+    {
+      id: "date",
+      label: "Fecha",
     },
   ];
 

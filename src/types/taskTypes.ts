@@ -5,28 +5,10 @@ export type TTaskResponse = {
   start: Date | string;
   end: Date | string | null;
   duration: number;
-  userId: string;
-  employerCode: string;
-  machineId: string;
+  user: string; // s'hauria de dir user i fer seriv el populate
+  machine: string; // s'hauria de dir machine i fer el populate
   material: string;
   thickness: number;
   programNumber: string;
   priority: number;
-};
-
-export type TEnhancedTaskResponse = {
-  _id: string;
-  taskNumber: number;
-  status: number;
-  start: Date | string;
-  end: Date | string | null;
-  duration: number;
-  userId: string;
-  employerCode: string;
-  machineId: string;
-  material: string;
-  thickness: number;
-  programNumber: string;
-  priority: number;
-  machineName: string;
 };

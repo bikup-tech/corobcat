@@ -105,8 +105,12 @@ export default function EnhnacedEmployeeTasksTable(
                         <TableCell align="center">
                           {task.programNumber}
                         </TableCell>
+                        <TableCell align="center">{task.machineId}</TableCell>
                         <TableCell align="center">
                           {task.duration} min
+                        </TableCell>
+                        <TableCell align="center">
+                          {task.end || task.start} min
                         </TableCell>
                       </TableRow>
                     );
