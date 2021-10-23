@@ -5,10 +5,6 @@ import jsonTasks from "./tasks.json";
 const tasks: TTaskResponse[] = [...jsonTasks];
 
 export function getTaskByMachineId(machineId: string): TTaskResponse[] {
-  console.log(machineId);
-
-  console.log(tasks);
-
   const filteredTasks = tasks.filter(
     (task: TTaskResponse) => task.machine === machineId && task.status === 0
   );
@@ -19,11 +15,8 @@ export function getTaskByMachineId(machineId: string): TTaskResponse[] {
 }
 
 export function getTaskByUserId(userId: string) {
-  console.log(userId);
-
   const filteredTasks = tasks.filter((task) => task.user === userId);
   const populatedTasks = populateTasks(filteredTasks);
-  console.log(filteredTasks);
 
   return populatedTasks;
 }

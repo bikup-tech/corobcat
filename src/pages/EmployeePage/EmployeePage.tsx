@@ -13,13 +13,12 @@ import { TMachineResponse } from "../../types/machineTypes";
 interface IEmployeePage {
   tasks: TTaskResponse[] | undefined;
   employee: TUserResponse | undefined;
-  machines: TMachineResponse[] | undefined;
   isLoading: boolean;
   isError: boolean;
 }
 
 function EmployeePage(props: IEmployeePage) {
-  const { tasks, isLoading, isError, employee, machines } = props;
+  const { tasks, isLoading, isError, employee } = props;
 
   const headCells: THeadCell[] = [
     {
@@ -58,12 +57,7 @@ function EmployeePage(props: IEmployeePage) {
 
   return (
     <>
-      <UserInfoHeader
-        employee={employee}
-        activeOrders={tasks?.length || 0}
-        tasks={tasks}
-        machines={machines}
-      />
+      <UserInfoHeader employee={employee} tasks={tasks} />
       <EnhancedEmployeeTable
         headCells={headCells}
         tasks={tasks}

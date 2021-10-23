@@ -15,14 +15,17 @@ type TTasksData = {
 };
 
 export function calculateMachineGeneralValues(
-  tasks: TTaskResponse[] | undefined,
-  machines: TMachineResponse[] | undefined
+  tasks: TTaskResponse[] | undefined
 ): TTasksData {
-  const machine1 = machines?.find((machine) => machine.name === "machine1");
-  const machine2 = machines?.find((machine) => machine.name === "machine2");
+  const machine1Tasks = tasks?.filter(
+    (task) => task.machine.name === "maquina1"
+  );
+  const machine2Tasks = tasks?.filter(
+    (task) => task.machine.name === "maquina2"
+  );
 
-  const machine1Tasks = tasks?.filter((task) => task.machine === machine1?._id);
-  const machine2Tasks = tasks?.filter((task) => task.machine === machine2?._id);
+  console.log("m1", machine1Tasks);
+  console.log("m2", machine2Tasks);
 
   const machine1TimeToFinish = calculateTotalTime(machine1Tasks);
   const machine2TimeToFinish = calculateTotalTime(machine2Tasks);

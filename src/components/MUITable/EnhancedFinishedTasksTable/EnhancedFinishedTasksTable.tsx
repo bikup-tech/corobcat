@@ -97,9 +97,6 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
                           {task.taskNumber}
                         </TableCell>
                         <TableCell align="center">
-                          <TaskStatus status={task.status} />
-                        </TableCell>
-                        <TableCell align="center">
                           {task.machine.name}
                         </TableCell>
                         <TableCell align="center">{task.material}</TableCell>

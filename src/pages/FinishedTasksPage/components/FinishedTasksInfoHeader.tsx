@@ -1,32 +1,36 @@
 import React from "react";
-import { TUserResponse } from "../../types/employeeTypes";
-import "./UserInfoHeader.scss";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import IconButton from "@mui/material/IconButton";
+
+import { ROUTE_MACHINES } from "../../../routes/routes";
+import { TTaskResponse } from "../../../types/taskTypes";
+import { calculateMachineGeneralValues } from "../../../utils/calculateMachineGeneralValues";
 import {
   StyledTableHeaderInfoWrapper,
   StyledTableHeaderWrapper,
-} from "../../StyledComponents/StyledTableHeader";
-import { TTaskResponse } from "../../types/taskTypes";
-import { TMachineResponse } from "../../types/machineTypes";
-import { calculateMachineGeneralValues } from "../../utils/calculateMachineGeneralValues";
-import TableHeaderInfoCard from "../TableHeaderInfoCard/TableHeaderInfoCard";
-import { calculateTotalTime } from "../../utils/calculateTotalTime";
+} from "../../../StyledComponents/StyledTableHeader";
+import TableHeaderInfoCard from "../../../components/TableHeaderInfoCard/TableHeaderInfoCard";
+import { calculateTotalTime } from "../../../utils/calculateTotalTime";
 
 const StyledFlexGrow = styled.div`
   flex: 1;
 `;
 
-interface IUserInfoHeaderProps {
-  employee: TUserResponse | undefined;
+const StyledTableHeaderName = styled.p`
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+  justify-self: flex-start;
+`;
+
+interface IFinishedTasksInfoHeaderProps {
   tasks: TTaskResponse[] | undefined;
 }
 
-function UserInfoHeader(props: IUserInfoHeaderProps) {
-  const { employee, tasks } = props;
+function FinishedTasksInfoHeader(props: IFinishedTasksInfoHeaderProps) {
+  const { tasks } = props;
 
   const tasksData = calculateMachineGeneralValues(tasks);
   const history = useHistory();
@@ -34,11 +38,13 @@ function UserInfoHeader(props: IUserInfoHeaderProps) {
   return (
     <StyledTableHeaderWrapper className="user-data-table-container">
       <StyledTableHeaderInfoWrapper className="user-data-table">
-        <IconButton onClick={() => history.goBack()} aria-label="goBack">
+        <IconButton
+          onClick={() => history.push(ROUTE_MACHINES)}
+          aria-label="goBack"
+        >
           <ArrowBackIcon />
         </IconButton>
-        <p className="user-data-table__info--name">{employee?.name}</p>
-        <p className="user-data-table__info">{employee?.employerCode}</p>
+        <StyledTableHeaderName>Programas finalizados</StyledTableHeaderName>
         <StyledFlexGrow />
         <TableHeaderInfoCard
           machine1Tasks={tasksData.machine1.activeTasks as number}
@@ -53,4 +59,4 @@ function UserInfoHeader(props: IUserInfoHeaderProps) {
   );
 }
 
-export default UserInfoHeader;
+export default FinishedTasksInfoHeader;
