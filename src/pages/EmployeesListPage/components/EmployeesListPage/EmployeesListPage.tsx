@@ -12,10 +12,9 @@ import { CircularProgress } from "@mui/material";
 const StyledEmployeePageContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  height: 100%;
 `;
 
 const StyledLoadingWrapper = styled.div`

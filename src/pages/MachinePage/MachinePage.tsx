@@ -10,11 +10,12 @@ interface IMachinePageProps {
   tasks: TTaskResponse[] | undefined;
   isLoading: boolean;
   isError: boolean;
+  machineName: string;
   handleTaskClick?: (taskId: string) => void;
 }
 
 function MachinePage(props: IMachinePageProps) {
-  const { tasks, isLoading, isError } = props;
+  const { tasks, isLoading, isError, machineName } = props;
 
   const headCells: THeadCell[] = [
     {
@@ -50,7 +51,7 @@ function MachinePage(props: IMachinePageProps) {
   return (
     <>
       <MachineInfoHeader
-        machineName="Maquina1"
+        machineName={machineName}
         activeOrders={tasks?.length || 0}
         timeToFinish={calculateTotalTime(tasks)}
       />

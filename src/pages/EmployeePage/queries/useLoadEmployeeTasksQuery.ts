@@ -14,8 +14,7 @@ export default function useLoadEmployeeTasksQuery(employeeId: string) {
       // TODO const {data:machines} = await axios.get("/api/machines")
       const employee = getUserById(employeeId);
       const employeeTasks = getTaskByUserId(employeeId);
-      const machines = getMachines();
-      return { employeeTasks, employee,machines };
+      return { employeeTasks, employee };
     },
     {
       refetchInterval: 60000,

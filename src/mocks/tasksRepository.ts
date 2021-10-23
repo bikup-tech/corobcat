@@ -5,10 +5,6 @@ import jsonTasks from "./tasks.json";
 const tasks: TTaskResponse[] = [...jsonTasks];
 
 export function getTaskByMachineId(machineId: string): TTaskResponse[] {
-  console.log(machineId);
-
-  console.log(tasks);
-
   const filteredTasks = tasks.filter(
     (task: TTaskResponse) => task.machine === machineId && task.status === 0
   );

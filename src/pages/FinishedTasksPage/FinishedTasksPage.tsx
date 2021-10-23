@@ -1,6 +1,7 @@
 import EnhancedFinishedTasksTable from "../../components/MUITable/EnhancedFinishedTasksTable/EnhancedFinishedTasksTable";
 import { THeadCell } from "../../components/MUITable/MUITableTypes";
 import { TTaskResponse } from "../../types/taskTypes";
+import FinishedTasksInfoHeader from "./components/FinishedTasksInfoHeader";
 
 interface IFinishedTasksPageProps {
   tasks: TTaskResponse[] | undefined;
@@ -49,6 +50,7 @@ function FinishedTasksPage(props: IFinishedTasksPageProps) {
 
   return (
     <>
+      <FinishedTasksInfoHeader tasks={tasks} />
       <EnhancedFinishedTasksTable
         headCells={headCells}
         tasks={tasks}

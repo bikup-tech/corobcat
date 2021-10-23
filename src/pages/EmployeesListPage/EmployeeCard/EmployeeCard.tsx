@@ -20,7 +20,7 @@ function EmployeeCard(props: IEmployeeCardProps) {
     <Card key={employee._id} className={`employee__card`}>
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
-          Código empleado: {employee.employerCode}
+          Cód. empleado: {employee.employerCode}
         </Typography>
         <Typography variant="h5" component="h2">
           {employee.name}
