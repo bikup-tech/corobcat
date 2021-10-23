@@ -12,6 +12,8 @@ import {
 import React from "react";
 import { maxTableHeight } from "../../../styles/styleConstants";
 import { TTaskResponse } from "../../../types/taskTypes";
+import formatDate from "../../../utils/formatDate";
+import TaskStatus from "../../TaskStatus/TaskStatus";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import { THeadCell } from "../MUITableTypes";
 
@@ -46,6 +48,8 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+  console.log(tasks);
 
   return (
     <StyledTablePageContainer className="EnhancedTaskTable">
@@ -93,6 +97,9 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
                           {task.taskNumber}
                         </TableCell>
                         <TableCell align="center">
+                          <TaskStatus status={task.status} />
+                        </TableCell>
+                        <TableCell align="center">
                           {task.machine.name}
                         </TableCell>
                         <TableCell align="center">{task.material}</TableCell>
@@ -105,6 +112,9 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
                         </TableCell>
                         <TableCell align="center">
                           {task.duration} min
+                        </TableCell>
+                        <TableCell align="center">
+                          {formatDate(task.end)}
                         </TableCell>
                       </TableRow>
                     );

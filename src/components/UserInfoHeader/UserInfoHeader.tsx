@@ -7,6 +7,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import IconButton from "@mui/material/IconButton";
 import TableHeaderInfoCard from "../TableHeaderInfoCard/TableHeaderInfoCard";
 import styled from "styled-components";
+import { TTaskResponse } from "../../types/taskTypes";
 
 const StyledFlexGrow = styled.div`
   flex: 1;
@@ -14,10 +15,11 @@ const StyledFlexGrow = styled.div`
 
 interface IUserInfoHeaderProps {
   employee: TUserResponse | undefined;
+  tasks: TTaskResponse[] | undefined;
 }
 
 function UserInfoHeader(props: IUserInfoHeaderProps) {
-  const { employee } = props;
+  const { employee, tasks } = props;
   const history = useHistory();
 
   return (

@@ -13,8 +13,6 @@ export function getTaskByMachineId(machineId: string): TTaskResponse[] {
     (task: TTaskResponse) => task.machine === machineId && task.status === 0
   );
 
-  console.log("filtered", filteredTasks);
-
   const populatedTasks = populateTasks(filteredTasks);
 
   return populatedTasks;

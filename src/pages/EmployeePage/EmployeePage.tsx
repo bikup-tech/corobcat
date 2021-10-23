@@ -25,6 +25,10 @@ function EmployeePage(props: IEmployeePage) {
       label: "Nº tarea",
     },
     {
+      id: "status",
+      label: "Estado",
+    },
+    {
       id: "material",
       label: "Material",
     },
@@ -52,7 +56,7 @@ function EmployeePage(props: IEmployeePage) {
 
   return (
     <>
-      <UserInfoHeader employee={employee} />
+      <UserInfoHeader employee={employee} tasks={tasks} />
       <EnhancedEmployeeTable
         headCells={headCells}
         tasks={tasks}

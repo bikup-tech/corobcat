@@ -5,8 +5,8 @@ export type TTaskResponse = {
   _id: string;
   taskNumber: number;
   status: number;
-  start: Date | string;
-  end: Date | string | null;
+  start: string;
+  end: string | null;
   duration: number;
   user: TUserResponse | string | any;
   machine: TMachineResponse | string | any;

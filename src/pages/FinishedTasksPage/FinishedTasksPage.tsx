@@ -41,6 +41,10 @@ function FinishedTasksPage(props: IFinishedTasksPageProps) {
       id: "duration",
       label: "Tiempo",
     },
+    {
+      id: "date",
+      label: "Fecha",
+    },
   ];
 
   return (
