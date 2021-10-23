@@ -20,6 +20,11 @@ const StyledFlexGrow = styled.div`
   flex: 1;
 `;
 
+const StyledInfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 interface IUserInfoHeaderProps {
   employee: TUserResponse | undefined;
   tasks: TTaskResponse[] | undefined;
@@ -37,8 +42,12 @@ function UserInfoHeader(props: IUserInfoHeaderProps) {
         <IconButton onClick={() => history.goBack()} aria-label="goBack">
           <ArrowBackIcon />
         </IconButton>
-        <p className="user-data-table__info--name">{employee?.name}</p>
-        <p className="user-data-table__info">{employee?.employerCode}</p>
+        <StyledInfoWrapper>
+          <span className="user-data-table__info--name">{employee?.name}</span>
+          <span className="user-data-table__info">
+            Cód. Empleado: {employee?.employerCode}
+          </span>
+        </StyledInfoWrapper>
         <StyledFlexGrow />
         <TableHeaderInfoCard
           machine1Tasks={tasksData.machine1.activeTasks as number}
