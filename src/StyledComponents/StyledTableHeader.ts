@@ -20,3 +20,7 @@ export const StyledTableHeaderInfoWrapper = styled.div`
   align-items: center;
   flex: 1;
 `;
+
+export const StyledFlexGrow = styled.div`
+  flex: 1;
+`;

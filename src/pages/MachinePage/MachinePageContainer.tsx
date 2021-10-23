@@ -24,6 +24,7 @@ function MachinePageContainer() {
   return (
     <>
       <MachinePage
+        machineName={machineName}
         tasks={data}
         handleTaskClick={handleTaskClick}
         isLoading={isLoading}

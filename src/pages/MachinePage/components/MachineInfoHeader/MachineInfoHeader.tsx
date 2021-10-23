@@ -1,14 +1,20 @@
 import React from "react";
 
 import { useHistory } from "react-router-dom";
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import styled from "styled-components";
 import { ROUTE_MACHINES } from "../../../../routes/routes";
 import {
+  StyledFlexGrow,
   StyledTableHeaderInfoWrapper,
   StyledTableHeaderWrapper,
 } from "../../../../StyledComponents/StyledTableHeader";
+import { useDispatch } from "react-redux";
+import {
+  setCreateTaskModalSelectedMachine,
+  setIsCreateTaskModalOpen,
+} from "../../../../redux/actions/mainActions";
 
 const StyledTableHeaderName = styled.p`
   margin-left: 0.5rem;
@@ -17,7 +23,8 @@ const StyledTableHeaderName = styled.p`
 `;
 
 const StyledTableHeaderInfo = styled.p`
-  margin-left: 3rem;
+  width: 15rem;
+  margin-left: 2rem;
 `;
 
 interface IMachineInfoHeaderProps {
@@ -29,6 +36,14 @@ interface IMachineInfoHeaderProps {
 function MachineInfoHeader(props: IMachineInfoHeaderProps) {
   const { machineName, activeOrders, timeToFinish } = props;
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const machineNumber = machineName.split("")[machineName.length - 1];
+
+  function handleNewTaskClick(machine: number) {
+    dispatch(setCreateTaskModalSelectedMachine(machine));
+    dispatch(setIsCreateTaskModalOpen(true));
+  }
 
   return (
     <StyledTableHeaderWrapper className="user-data-table-container">
@@ -49,6 +64,16 @@ function MachineInfoHeader(props: IMachineInfoHeaderProps) {
           Tiempo restante: {timeToFinish} min
         </StyledTableHeaderInfo>
       </StyledTableHeaderInfoWrapper>
+      <StyledFlexGrow />
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => {
+          handleNewTaskClick(Number(machineNumber));
+        }}
+      >
+        Nuevo programa
+      </Button>
     </StyledTableHeaderWrapper>
   );
 }
