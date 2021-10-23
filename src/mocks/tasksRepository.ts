@@ -19,8 +19,11 @@ export function getTaskByMachineId(machineId: string): TTaskResponse[] {
 }
 
 export function getTaskByUserId(userId: string) {
+  console.log(userId);
+
   const filteredTasks = tasks.filter((task) => task.user === userId);
   const populatedTasks = populateTasks(filteredTasks);
+  console.log(filteredTasks);
 
   return populatedTasks;
 }
