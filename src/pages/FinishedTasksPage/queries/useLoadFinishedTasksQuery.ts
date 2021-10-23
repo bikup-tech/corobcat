@@ -18,17 +18,7 @@ export default function useFinisedTasksQuery() {
       // TODO: const {data: tasks} = await axios.get('/api/tasks/finished}')
       const tasks = getFinishedTasks();
 
-      // TODO: const { data: machines } = await axios.get("/api/machines");
-      const machines = getMachines();
-
-      const finishedTasks = tasks.map((task) => {
-        return {
-          ...task,
-          machineName: getMachineNameById(machines, task.machineId),
-        };
-      });
-
-      return finishedTasks;
+      return tasks;
     },
     {
       refetchInterval: 60000,

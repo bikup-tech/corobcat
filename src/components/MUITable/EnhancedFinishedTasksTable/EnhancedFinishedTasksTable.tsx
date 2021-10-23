@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { maxTableHeight } from "../../../styles/styleConstants";
-import { TEnhancedTaskResponse } from "../../../types/taskTypes";
+import { TTaskResponse } from "../../../types/taskTypes";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import { THeadCell } from "../MUITableTypes";
 
@@ -24,7 +24,7 @@ import {
 import { setTableRowBackgroundColorByPriority } from "../setTableRowBackgroundColorByPriority";
 
 interface IEnhancedTableProps {
-  tasks: TEnhancedTaskResponse[] | undefined;
+  tasks: TTaskResponse[] | undefined;
   isLoading: boolean;
   isError: boolean;
   headCells: THeadCell[];
@@ -92,14 +92,16 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
                         >
                           {task.taskNumber}
                         </TableCell>
-                        <TableCell align="center">{task.machineName}</TableCell>
+                        <TableCell align="center">
+                          {task.machine.name}
+                        </TableCell>
                         <TableCell align="center">{task.material}</TableCell>
                         <TableCell align="center">{task.thickness}</TableCell>
                         <TableCell align="center">
                           {task.programNumber}
                         </TableCell>
                         <TableCell align="center">
-                          {task.employerCode}
+                          {task.user.employerCode}
                         </TableCell>
                         <TableCell align="center">
                           {task.duration} min

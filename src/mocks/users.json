@@ -1,20 +1,51 @@
 [
-    {
-        "_id": "vasdrqw12",
-        "employerCode": "e124",
-        "name": "Mourin Deployer",
-        "role":"EMPLOYEE"
-    },
-    {
-        "_id": "wrqs12",
-        "employerCode": "e125",
-        "name": "Gerardo Ramono",
-        "role":"EMPLOYEE"
-    },
-    {
-        "_id": "12rqwefqw2",
-        "employerCode": "a126",
-        "name": "Admin admin",
-        "role":"ADMIN"
-    }
+  {
+    "_id": "6173d6b92030904bc60b5b5a",
+    "role": 1,
+    "name": "user-2",
+    "employerCode": "e2",
+    "__v": 0
+  },
+  {
+    "_id": "6173d6b92030904bc60b5b59",
+    "role": 1,
+    "name": "user-1",
+    "employerCode": "e1",
+    "__v": 0
+  },
+  {
+    "_id": "6173d6b92030904bc60b5b5b",
+    "role": 1,
+    "name": "user-3",
+    "employerCode": "e3",
+    "__v": 0
+  },
+  {
+    "_id": "6173d6b92030904bc60b5b58",
+    "role": 1,
+    "name": "user-0",
+    "employerCode": "e0",
+    "__v": 0
+  },
+  {
+    "_id": "6173d6b92030904bc60b5b5c",
+    "role": 1,
+    "name": "user-4",
+    "employerCode": "e4",
+    "__v": 0
+  },
+  {
+    "_id": "6173d6b92030904bc60b5b5d",
+    "role": 1,
+    "name": "user-5",
+    "employerCode": "e5",
+    "__v": 0
+  },
+  {
+    "_id": "6173d6b92030904bc60b5b5e",
+    "role": 1,
+    "name": "user-6",
+    "employerCode": "e6",
+    "__v": 0
+  }
 ]

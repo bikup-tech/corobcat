@@ -1,3 +1,6 @@
+import { TUserResponse } from "./employeeTypes";
+import { TMachineResponse } from "./machineTypes";
+
 export type TTaskResponse = {
   _id: string;
   taskNumber: number;
@@ -5,10 +8,12 @@ export type TTaskResponse = {
   start: Date | string;
   end: Date | string | null;
   duration: number;
-  user: string; // s'hauria de dir user i fer seriv el populate
-  machine: string; // s'hauria de dir machine i fer el populate
+  user: TUserResponse | string | any;
+  machine: TMachineResponse | string | any;
   material: string;
   thickness: number;
   programNumber: string;
   priority: number;
 };
+
+// TODO: Borrar els any de user i machine
