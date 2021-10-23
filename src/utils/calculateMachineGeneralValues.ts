@@ -24,9 +24,6 @@ export function calculateMachineGeneralValues(
     (task) => task.machine.name === "maquina2"
   );
 
-  console.log("m1", machine1Tasks);
-  console.log("m2", machine2Tasks);
-
   const machine1TimeToFinish = calculateTotalTime(machine1Tasks);
   const machine2TimeToFinish = calculateTotalTime(machine2Tasks);
 
