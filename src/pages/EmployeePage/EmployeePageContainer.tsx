@@ -22,6 +22,7 @@ function EmployeePageContainer() {
       <EmployeePage
         tasks={data?.employeeTasks}
         employee={data?.employee}
+        machines={data?.machines}
         isLoading={isLoading}
         isError={isError}
       />

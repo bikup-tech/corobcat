@@ -2,12 +2,19 @@ import React from "react";
 import { TUserResponse } from "../../types/employeeTypes";
 import "./UserInfoHeader.scss";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import IconButton from "@mui/material/IconButton";
-import TableHeaderInfoCard from "../TableHeaderInfoCard/TableHeaderInfoCard";
-import styled from "styled-components";
+import {
+  StyledTableHeaderInfoWrapper,
+  StyledTableHeaderWrapper,
+} from "../../StyledComponents/StyledTableHeader";
 import { TTaskResponse } from "../../types/taskTypes";
+import { TMachineResponse } from "../../types/machineTypes";
+import { calculateMachineGeneralValues } from "../../utils/calculateMachineGeneralValues";
+import TableHeaderInfoCard from "../TableHeaderInfoCard/TableHeaderInfoCard";
+import { calculateTotalTime } from "../../utils/calculateTotalTime";
 
 const StyledFlexGrow = styled.div`
   flex: 1;
@@ -15,16 +22,20 @@ const StyledFlexGrow = styled.div`
 
 interface IUserInfoHeaderProps {
   employee: TUserResponse | undefined;
+  activeOrders: number;
   tasks: TTaskResponse[] | undefined;
+  machines: TMachineResponse[] | undefined;
 }
 
 function UserInfoHeader(props: IUserInfoHeaderProps) {
-  const { employee, tasks } = props;
+  const { employee, activeOrders, tasks, machines } = props;
+
+  const tasksData = calculateMachineGeneralValues(tasks, machines);
   const history = useHistory();
 
   return (
-    <div className="user-data-table-container">
-      <div className="user-data-table">
+    <StyledTableHeaderWrapper className="user-data-table-container">
+      <StyledTableHeaderInfoWrapper className="user-data-table">
         <IconButton onClick={() => history.goBack()} aria-label="goBack">
           <ArrowBackIcon />
         </IconButton>
@@ -32,15 +43,15 @@ function UserInfoHeader(props: IUserInfoHeaderProps) {
         <p className="user-data-table__info">{employee?.employerCode}</p>
         <StyledFlexGrow />
         <TableHeaderInfoCard
-          machine1Tasks={50}
-          machine1TimeToFinish={50}
-          machine2Tasks={50}
-          machine2TimeToFinish={50}
-          totalTasks={50}
-          totalTimeToFinish={50}
+          machine1Tasks={tasksData.machine1.activeTasks as number}
+          machine1TimeToFinish={tasksData.machine1.timeToFinish as number}
+          machine2Tasks={tasksData.machine1.activeTasks as number}
+          machine2TimeToFinish={tasksData.machine1.activeTasks as number}
+          totalTasks={tasks?.length as number}
+          totalTimeToFinish={calculateTotalTime(tasks)}
         />
-      </div>
-    </div>
+      </StyledTableHeaderInfoWrapper>
+    </StyledTableHeaderWrapper>
   );
 }
 

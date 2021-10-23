@@ -8,16 +8,18 @@ import { TUserResponse } from "../../types/employeeTypes";
 // components
 import EnhancedEmployeeTable from "../../components/MUITable/EnhancedEmployeeTable/EnhancedEmployeeTable";
 import UserInfoHeader from "../../components/UserInfoHeader/UserInfoHeader";
+import { TMachineResponse } from "../../types/machineTypes";
 
 interface IEmployeePage {
   tasks: TTaskResponse[] | undefined;
   employee: TUserResponse | undefined;
+  machines: TMachineResponse[] | undefined;
   isLoading: boolean;
   isError: boolean;
 }
 
 function EmployeePage(props: IEmployeePage) {
-  const { tasks, isLoading, isError, employee } = props;
+  const { tasks, isLoading, isError, employee, machines } = props;
 
   const headCells: THeadCell[] = [
     {
@@ -56,7 +58,12 @@ function EmployeePage(props: IEmployeePage) {
 
   return (
     <>
-      <UserInfoHeader employee={employee} tasks={tasks} />
+      <UserInfoHeader
+        employee={employee}
+        activeOrders={tasks?.length || 0}
+        tasks={tasks}
+        machines={machines}
+      />
       <EnhancedEmployeeTable
         headCells={headCells}
         tasks={tasks}

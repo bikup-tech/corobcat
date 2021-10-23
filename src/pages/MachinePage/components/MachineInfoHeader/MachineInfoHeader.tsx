@@ -1,7 +1,5 @@
 import React from "react";
 
-import { maxWidth } from "../../../../styles/styleConstants";
-
 import { useHistory } from "react-router-dom";
 import { IconButton } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
