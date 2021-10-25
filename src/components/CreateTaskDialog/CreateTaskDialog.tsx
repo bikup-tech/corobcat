@@ -82,7 +82,6 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
               <FormikSelect
                 name="material"
                 label="Material"
-                placeholder="Material"
                 values={materialsMock}
               />
             </Grid>

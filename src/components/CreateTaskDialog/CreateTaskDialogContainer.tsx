@@ -50,7 +50,7 @@ function CreateTaksDialogContainer() {
   });
 
   function handleCreateTaskFormSubmit(values: TCreateTaskDialogFormValues) {
-    console.log(values);
+    console.log("submitting");
     handleClose();
   }
 

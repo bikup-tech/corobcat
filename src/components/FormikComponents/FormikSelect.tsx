@@ -11,17 +11,15 @@ interface IFormikSelectProps {
   name: string;
   label: string;
   values: string[];
-  placeholder?: string;
   variant?: "outlined" | "filled" | "standard";
   size?: "medium" | "small";
-  margin?: "normal" | "dense";
+  margin?: "none" | "dense";
 }
 
 const FormikSelect: FC<IFormikSelectProps> = ({
   name,
   label,
   values,
-  placeholder,
   variant = "outlined",
   size = "medium",
   margin = "dense",
@@ -40,22 +38,33 @@ const FormikSelect: FC<IFormikSelectProps> = ({
   return (
     <>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">{placeholder}</InputLabel>
+        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={formikContext.values[name]}
           label={label}
           onChange={handleChange}
-          error={!!formikContext.errors[name]}
+          error={
+            formikContext.touched[name] && formikContext.errors[name]
+              ? true
+              : false
+          }
+          variant={variant}
+          size={size}
+          margin={margin}
         >
           {selectValues.map((item) => (
-            <MenuItem value={item.value}>{item.label}</MenuItem>
+            <MenuItem value={item.value} key={item.value}>
+              {item.label}
+            </MenuItem>
           ))}
         </Select>
-        <FormHelperText sx={{ color: "red" }}>
-          {formikContext.errors[name]}
-        </FormHelperText>
+        {formikContext.touched[name] && formikContext.errors[name] && (
+          <FormHelperText sx={{ color: "red" }}>
+            {formikContext.errors[name]}
+          </FormHelperText>
+        )}
       </FormControl>
     </>
   );

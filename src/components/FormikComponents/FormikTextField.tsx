@@ -43,6 +43,7 @@ function FormikTextField(props: IFormikTextFieldProps) {
 
   function handleChange({ target }: React.ChangeEvent<HTMLInputElement>) {
     formikContext.setFieldValue(name, target.value);
+    console.log(formikContext);
   }
 
   return (
@@ -59,8 +60,16 @@ function FormikTextField(props: IFormikTextFieldProps) {
         autoFocus={autofocus}
         fullWidth={fullWidth}
         margin={margin}
-        helperText={formikContext.errors[name]}
-        error={!!formikContext.errors[name]}
+        helperText={
+          formikContext.touched[name] &&
+          formikContext.errors[name] &&
+          formikContext.errors[name]
+        }
+        error={
+          formikContext.touched[name] && formikContext.errors[name]
+            ? true
+            : false
+        }
         disabled={disabled}
         InputProps={{
           endAdornment: adornment && (
