@@ -15,6 +15,7 @@ import {
   setCreateTaskModalSelectedMachine,
   setIsCreateTaskModalOpen,
 } from "../../../../redux/actions/mainActions";
+import { MACHINE_1, MACHINE_2 } from "../../../../constants/machineNames";
 
 const StyledTableHeaderName = styled.p`
   margin-left: 0.5rem;
@@ -28,7 +29,7 @@ const StyledTableHeaderInfo = styled.p`
 `;
 
 interface IMachineInfoHeaderProps {
-  machineName: string;
+  machineName: typeof MACHINE_1 | typeof MACHINE_2;
   activeOrders: number;
   timeToFinish: number;
 }
@@ -38,9 +39,7 @@ function MachineInfoHeader(props: IMachineInfoHeaderProps) {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const machineNumber = machineName.split("")[machineName.length - 1];
-
-  function handleNewTaskClick(machine: number) {
+  function handleNewTaskClick(machine: string) {
     dispatch(setCreateTaskModalSelectedMachine(machine));
     dispatch(setIsCreateTaskModalOpen(true));
   }
@@ -69,7 +68,7 @@ function MachineInfoHeader(props: IMachineInfoHeaderProps) {
         variant="contained"
         color="secondary"
         onClick={() => {
-          handleNewTaskClick(Number(machineNumber));
+          handleNewTaskClick(machineName);
         }}
       >
         Nuevo programa

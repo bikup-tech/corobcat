@@ -17,7 +17,9 @@ export function setIsCreateTaskModalOpen(isOpen: boolean) {
   };
 }
 
-export function setCreateTaskModalSelectedMachine(machine: number) {
+export function setCreateTaskModalSelectedMachine(machine: string) {
+  console.log("changing to machine", machine);
+
   return {
     type: SET_CREATE_TASK_MODAL_SELECTED_MACHINE,
     payload: machine,

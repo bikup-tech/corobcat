@@ -1,3 +1,4 @@
+import { MACHINE_1, MACHINE_2 } from "../constants/machineNames";
 import { TMachineResponse } from "../types/machineTypes";
 import { TTaskResponse } from "../types/taskTypes";
 import { calculateTotalTime } from "./calculateTotalTime";
@@ -18,10 +19,10 @@ export function calculateMachineGeneralValues(
   tasks: TTaskResponse[] | undefined
 ): TTasksData {
   const machine1Tasks = tasks?.filter(
-    (task) => task.machine.name === "maquina1"
+    (task) => task.machine.name === MACHINE_1
   );
   const machine2Tasks = tasks?.filter(
-    (task) => task.machine.name === "maquina2"
+    (task) => task.machine.name === MACHINE_2
   );
 
   const machine1TimeToFinish = calculateTotalTime(machine1Tasks);

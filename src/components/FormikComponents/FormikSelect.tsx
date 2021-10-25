@@ -8,6 +8,7 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { FormHelperText } from "@mui/material";
 
 const StyledFormikSelectWrapper = styled.div`
+  margin-top: 0.5rem;
   .MuiSelect-select {
     padding: 0.75rem 0.5rem;
   }
@@ -59,6 +60,7 @@ const FormikSelect: FC<IFormikSelectProps> = ({
           variant={variant}
           size={size}
           margin={margin}
+          defaultValue={formikContext.values[name]}
         >
           {selectValues.map((item) => (
             <MenuItem value={item.value} key={item.value}>

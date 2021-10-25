@@ -15,6 +15,7 @@ import {
   setCreateTaskModalSelectedMachine,
   setIsCreateTaskModalOpen,
 } from "../../redux/actions/mainActions";
+import { MACHINE_1, MACHINE_2 } from "../../constants/machineNames";
 
 interface IMachinePageProps {
   tasks: TMachinesHomeTasks | undefined;
@@ -47,7 +48,7 @@ function MachinesHomePage(props: IMachinePageProps) {
     },
   ];
 
-  function handleNewTaskClick(machine: number) {
+  function handleNewTaskClick(machine: string) {
     dispatch(setCreateTaskModalSelectedMachine(machine));
     dispatch(setIsCreateTaskModalOpen(true));
   }
@@ -71,7 +72,7 @@ function MachinesHomePage(props: IMachinePageProps) {
                   variant="contained"
                   color="secondary"
                   onClick={() => {
-                    handleNewTaskClick(1);
+                    handleNewTaskClick(MACHINE_1);
                   }}
                 >
                   Nuevo programa
@@ -92,7 +93,7 @@ function MachinesHomePage(props: IMachinePageProps) {
                   variant="contained"
                   color="secondary"
                   onClick={() => {
-                    handleNewTaskClick(2);
+                    handleNewTaskClick(MACHINE_2);
                   }}
                 >
                   Nuevo programa

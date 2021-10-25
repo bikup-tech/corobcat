@@ -2,9 +2,10 @@ import { useParams } from "react-router-dom";
 import MachinePage from "./MachinePage";
 import useLoadMachineTasksQuery from "./queries/useLoadMachineTasksQuery";
 import { useSelector } from "react-redux";
+import { MACHINE_1, MACHINE_2 } from "../../constants/machineNames";
 
 interface IMachinePageContainerParams {
-  machineName: string;
+  machineName: typeof MACHINE_1 | typeof MACHINE_2;
 }
 
 function MachinePageContainer() {

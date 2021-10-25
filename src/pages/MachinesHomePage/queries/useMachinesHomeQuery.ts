@@ -6,6 +6,7 @@ import {
   getTaskByMachineId,
 } from "../../../mocks/tasksRepository";
 import { getMachineByName } from "../../../mocks/machineRepository";
+import { MACHINE_1, MACHINE_2 } from "../../../constants/machineNames";
 
 export default function useLoadMachineTasksQuery(forceRender: number) {
   // el useQuery reb un array amb el nom de la "action" i les variables que si canvien torna a executar
@@ -17,11 +18,11 @@ export default function useLoadMachineTasksQuery(forceRender: number) {
       const activeTasks = getActiveTasks();
 
       const machine1Tasks = activeTasks.filter(
-        (task) => task.machine.name === "maquina1"
+        (task) => task.machine.name === MACHINE_1
       );
 
       const machine2Tasks = activeTasks.filter(
-        (task) => task.machine.name === "maquina2"
+        (task) => task.machine.name === MACHINE_2
       );
 
       return {

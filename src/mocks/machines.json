@@ -1,12 +1,12 @@
 [
   {
     "_id": "6173d7ab09e9989a0b651daf",
-    "name": "maquina1",
+    "name": "máquina1",
     "status": 1
   },
   {
     "_id": "6173d7cd25fe50dac1ceae48",
-    "name": "maquina2",
+    "name": "máquina2",
     "status": 1
   }
 ]

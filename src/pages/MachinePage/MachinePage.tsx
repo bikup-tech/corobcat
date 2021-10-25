@@ -1,5 +1,6 @@
 import EnhancedTaksTable from "../../components/MUITable/EnhancedTasksTable/EnhancedTasksTable";
 import { THeadCell } from "../../components/MUITable/MUITableTypes";
+import { MACHINE_1, MACHINE_2 } from "../../constants/machineNames";
 import { TTaskResponse } from "../../types/taskTypes";
 import { calculateTotalTime } from "../../utils/calculateTotalTime";
 
@@ -10,7 +11,7 @@ interface IMachinePageProps {
   tasks: TTaskResponse[] | undefined;
   isLoading: boolean;
   isError: boolean;
-  machineName: string;
+  machineName: typeof MACHINE_1 | typeof MACHINE_2;
   handleTaskClick?: (taskId: string) => void;
 }
 

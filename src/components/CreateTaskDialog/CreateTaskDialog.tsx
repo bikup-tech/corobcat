@@ -49,6 +49,8 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
   );
 
   useEffect(() => {
+    console.log("machine", selectedMachine);
+
     formikContext.values.selectedMachine = selectedMachine;
   }, [selectedMachine]);
 
