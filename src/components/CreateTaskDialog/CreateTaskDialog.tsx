@@ -36,6 +36,8 @@ interface ICreateTaskDialogProps {
   handleClose: () => void;
 }
 
+const materialsMock = ["Madera", "Hierro", "Acero", "Aluminio"];
+
 function CreateTaskDialog(props: ICreateTaskDialogProps) {
   const { isOpen, handleClose } = props;
 
@@ -77,8 +79,12 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
               />
             </Grid>
             <Grid item xs={6}>
-              <FormikTextField name="material" label="Material" fullWidth />
-              <FormikSelect name="material" label="Material" values={[]} />
+              <FormikSelect
+                name="material"
+                label="Material"
+                placeholder="Material"
+                values={materialsMock}
+              />
             </Grid>
             <Grid item xs={6}>
               <FormikTextField

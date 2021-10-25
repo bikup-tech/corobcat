@@ -10,7 +10,7 @@ import { FormHelperText } from "@mui/material";
 interface IFormikSelectProps {
   name: string;
   label: string;
-  values: any[];
+  values: string[];
   placeholder?: string;
   variant?: "outlined" | "filled" | "standard";
   size?: "medium" | "small";
@@ -29,26 +29,33 @@ const FormikSelect: FC<IFormikSelectProps> = ({
   const formikContext = useFormikContext<any>();
 
   function handleChange({ target }: SelectChangeEvent) {
-    console.log(target.value);
-
     formikContext.setFieldValue(name, target.value);
   }
+
+  const selectValues = values.map((item) => ({
+    label: item,
+    value: item.toLowerCase(),
+  }));
+
   return (
     <>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
+        <InputLabel id="demo-simple-select-label">{placeholder}</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={formikContext.values[name]}
           label={label}
           onChange={handleChange}
+          error={!!formikContext.errors[name]}
         >
-          {values.map((item) => (
+          {selectValues.map((item) => (
             <MenuItem value={item.value}>{item.label}</MenuItem>
           ))}
         </Select>
-        <FormHelperText>{formikContext.errors[name]}</FormHelperText>
+        <FormHelperText sx={{ color: "red" }}>
+          {formikContext.errors[name]}
+        </FormHelperText>
       </FormControl>
     </>
   );
