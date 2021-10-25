@@ -43,7 +43,6 @@ function FormikTextField(props: IFormikTextFieldProps) {
 
   function handleChange({ target }: React.ChangeEvent<HTMLInputElement>) {
     formikContext.setFieldValue(name, target.value);
-    console.log(formikContext);
   }
 
   return (
