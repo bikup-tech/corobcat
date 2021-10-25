@@ -15,6 +15,7 @@ import { useFormikContext } from "formik";
 import { useSelector } from "react-redux";
 import { TInitialState } from "../../redux/store/initialState";
 import { useEffect } from "react";
+import FormikSelect from "../FormikComponents/FormikSelect";
 
 const StyledCreateTaskDialogWrapper = styled(Dialog)`
   .MuiPaper-root {
@@ -77,6 +78,7 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
             </Grid>
             <Grid item xs={6}>
               <FormikTextField name="material" label="Material" fullWidth />
+              <FormikSelect name="material" label="Material" values={[]} />
             </Grid>
             <Grid item xs={6}>
               <FormikTextField
