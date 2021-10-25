@@ -37,6 +37,7 @@ interface ICreateTaskDialogProps {
 }
 
 const materialsMock = ["Madera", "Hierro", "Acero", "Aluminio"];
+const machinesMock = ["Máquina1", "Máquina2"];
 
 function CreateTaskDialog(props: ICreateTaskDialogProps) {
   const { isOpen, handleClose } = props;
@@ -125,10 +126,10 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
               />
             </Grid>
             <Grid item xs={12}>
-              <FormikTextField
+              <FormikSelect
                 name="selectedMachine"
                 label="Máquina"
-                fullWidth
+                values={machinesMock}
               />
             </Grid>
           </Grid>

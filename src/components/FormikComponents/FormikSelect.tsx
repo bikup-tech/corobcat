@@ -7,6 +7,12 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { FormHelperText } from "@mui/material";
 
+const StyledFormikSelectWrapper = styled.div`
+  .MuiSelect-select {
+    padding: 0.75rem 0.5rem;
+  }
+`;
+
 interface IFormikSelectProps {
   name: string;
   label: string;
@@ -36,7 +42,7 @@ const FormikSelect: FC<IFormikSelectProps> = ({
   }));
 
   return (
-    <>
+    <StyledFormikSelectWrapper>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">{label}</InputLabel>
         <Select
@@ -66,7 +72,7 @@ const FormikSelect: FC<IFormikSelectProps> = ({
           </FormHelperText>
         )}
       </FormControl>
-    </>
+    </StyledFormikSelectWrapper>
   );
 };
 
