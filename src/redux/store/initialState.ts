@@ -4,7 +4,7 @@ export type TMainReducer = {
   forceRender: number;
   createTaskModal: {
     isOpen: boolean;
-    selectedMachine: number;
+    selectedMachine: string;
   };
 };
 
@@ -24,7 +24,7 @@ export const initialState: TInitialState = {
     forceRender: 0,
     createTaskModal: {
       isOpen: false,
-      selectedMachine: 1,
+      selectedMachine: "máquina1",
     },
   },
   authReducer: {

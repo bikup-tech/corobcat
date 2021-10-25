@@ -26,7 +26,7 @@ function CreateTaksDialogContainer() {
     priority: 1,
     duration: 0,
     correctionalFactor: 10,
-    selectedMachine: selectedMachine || 1,
+    selectedMachine: selectedMachine || "máquina1",
   };
 
   const validationSchema = Yup.object({
@@ -46,11 +46,11 @@ function CreateTaksDialogContainer() {
     duration: Yup.number()
       .integer("No puede contener decimales.")
       .required("La duración es obligatoria."),
-    selectedMachine: Yup.number().required("La máquina es obligatoria."),
+    selectedMachine: Yup.string().required("La máquina es obligatoria."),
   });
 
   function handleCreateTaskFormSubmit(values: TCreateTaskDialogFormValues) {
-    console.log(values);
+    console.log("submitting");
     handleClose();
   }
 
