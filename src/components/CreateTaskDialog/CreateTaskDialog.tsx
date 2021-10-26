@@ -90,6 +90,7 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
             </Grid>
             <Grid item xs={6}>
               <FormikTextField
+                min={0}
                 name="thickness"
                 label="Espesor (mm)"
                 type="number"
@@ -102,6 +103,8 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
                 name="priority"
                 label="Prioridad"
                 type="number"
+                min={1}
+                max={10}
                 fullWidth
               />
             </Grid>

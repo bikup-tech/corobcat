@@ -69,7 +69,7 @@ const FormikSelect: FC<IFormikSelectProps> = ({
           ))}
         </Select>
         {formikContext.touched[name] && formikContext.errors[name] && (
-          <FormHelperText sx={{ color: "red" }}>
+          <FormHelperText sx={{ color: "#D32F2F" }}>
             {formikContext.errors[name]}
           </FormHelperText>
         )}
