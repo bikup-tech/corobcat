@@ -40,6 +40,7 @@ function CreateTaksDialogContainer() {
       .min(0, "No puede ser negativo.")
       .required("El espesor es obligatorio."),
     priority: Yup.number()
+      .integer("No puede contener decimales.")
       .min(1, "El valor mínimo es 1.")
       .max(10, "El valor máximo es 10.")
       .required("La prioridad es obligatoria."),

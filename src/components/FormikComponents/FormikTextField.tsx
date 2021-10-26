@@ -22,6 +22,8 @@ interface IFormikTextFieldProps {
   fullWidth?: boolean;
   adornment?: string;
   disabled?: boolean;
+  min?: number;
+  max?: number;
 }
 
 function FormikTextField(props: IFormikTextFieldProps) {
@@ -39,6 +41,8 @@ function FormikTextField(props: IFormikTextFieldProps) {
     fullWidth = false,
     adornment = null,
     disabled = false,
+    min,
+    max,
   } = props;
 
   function handleChange({ target }: React.ChangeEvent<HTMLInputElement>) {
@@ -71,6 +75,10 @@ function FormikTextField(props: IFormikTextFieldProps) {
         }
         disabled={disabled}
         InputProps={{
+          inputProps: {
+            min,
+            max,
+          },
           endAdornment: adornment && (
             <InputAdornment position="end">{adornment}</InputAdornment>
           ),
