@@ -63,7 +63,6 @@ function App() {
                   path={ROUTE_MACHINES_NAME}
                   component={MachinePageContainer}
                 />
-
                 <SuperProtectedRoute
                   path={ROUTE_ADMIN_PROFILE}
                   component={AdminProfilePageContainer}

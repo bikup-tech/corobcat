@@ -119,6 +119,7 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
                 label="Tiempo"
                 type="number"
                 adornment="min"
+                min={0}
                 fullWidth
               />
             </Grid>

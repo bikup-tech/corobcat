@@ -4,15 +4,17 @@ import AdminProfilePage from "./AdminProfilePage";
 import useAdminProfilePageQuery from "./queries/useAdminProfilePageQuery";
 
 const AdminProfilePageContainer: FC = () => {
-  const { isError, data } = useAdminProfilePageQuery();
+  const { isLoading, isError, data } = useAdminProfilePageQuery();
 
-  const isLoading = true;
   return (
     <>
-      {isLoading && <StandardLoading />}
-      <AdminProfilePage
-        correctionalFactors={{ machine1: 0.5, machine2: 0.1 }}
-      />
+      {isLoading ? (
+        <StandardLoading />
+      ) : (
+        <AdminProfilePage
+          correctionalFactors={{ machine1: 0.5, machine2: 0.1 }}
+        />
+      )}
     </>
   );
 };
