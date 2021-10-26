@@ -9,6 +9,13 @@ import Avatar from "@mui/material/Avatar";
 import { NavLink } from "react-router-dom";
 
 import "./LeftMenu.scss";
+import {
+  ROUTE_EMPLOYEES,
+  ROUTE_FINISHEDTASKS,
+  ROUTE_MACHINES,
+  ROUTE_MACHINES_NAME_FACTORY,
+} from "../../routes/routes";
+import { MACHINE_1, MACHINE_2 } from "../../constants/machineNames";
 
 function LeftMenu() {
   return (
@@ -19,7 +26,7 @@ function LeftMenu() {
       <nav>
         <List>
           <ListItem disableGutters>
-            <NavLink to="/machines" className="left-menu__nav-item">
+            <NavLink to={ROUTE_MACHINES} className="left-menu__nav-item">
               <ListItemButton>
                 <ListItemIcon>
                   <StoreIcon />
@@ -29,7 +36,10 @@ function LeftMenu() {
             </NavLink>
           </ListItem>
           <List component="div" disablePadding>
-            <NavLink to="/machines/máquina1" className="left-menu__nav-item">
+            <NavLink
+              to={ROUTE_MACHINES_NAME_FACTORY(MACHINE_1)}
+              className="left-menu__nav-item"
+            >
               <ListItemButton sx={{ pl: 5 }}>
                 <ListItemIcon>
                   <PrecisionManufacturingIcon />
@@ -37,7 +47,10 @@ function LeftMenu() {
                 <ListItemText primary="Maquina 1" />
               </ListItemButton>
             </NavLink>
-            <NavLink to="/machines/máquina2" className="left-menu__nav-item">
+            <NavLink
+              to={ROUTE_MACHINES_NAME_FACTORY(MACHINE_2)}
+              className="left-menu__nav-item"
+            >
               <ListItemButton sx={{ pl: 5 }}>
                 <ListItemIcon>
                   <PrecisionManufacturingIcon />
@@ -48,7 +61,7 @@ function LeftMenu() {
           </List>
 
           <ListItem disableGutters>
-            <NavLink to="/employees" className="left-menu__nav-item">
+            <NavLink to={ROUTE_EMPLOYEES} className="left-menu__nav-item">
               <ListItemButton>
                 <ListItemIcon>
                   <PeopleIcon />
@@ -59,7 +72,7 @@ function LeftMenu() {
           </ListItem>
 
           <ListItem disableGutters>
-            <NavLink to="/finishedTasks" className="left-menu__nav-item">
+            <NavLink to={ROUTE_FINISHEDTASKS} className="left-menu__nav-item">
               <ListItemButton>
                 <ListItemIcon>
                   <AssignmentTurnedInIcon />

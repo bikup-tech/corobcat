@@ -16,6 +16,14 @@ import Layout from "./components/Layout/Layout";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import MachinesHomePageContainer from "./pages/MachinesHomePage/MachinesHomePageContainer";
 import CreateTaskDialog from "./components/CreateTaskDialog/CreateTaskDialogContainer";
+import {
+  ROUTE_EMPLOYEES,
+  ROUTE_EMPLOYEES_ID,
+  ROUTE_FINISHEDTASKS,
+  ROUTE_LOGIN,
+  ROUTE_MACHINES,
+  ROUTE_MACHINES_NAME,
+} from "./routes/routes";
 
 const queryClient = new QueryClient();
 
@@ -26,30 +34,30 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <BrowserRouter basename="/corobcat">
             <Switch>
-              <Route path="/" exact>
+              <Route path={ROUTE_LOGIN} exact>
                 <LoginPage />
               </Route>
               <Layout>
                 <ProtectedRoute
-                  path="/employees"
+                  path={ROUTE_EMPLOYEES}
                   exact
                   component={EmployeesListPageContainer}
                 />
                 <ProtectedRoute
-                  path="/employees/:employeeId"
+                  path={ROUTE_EMPLOYEES_ID}
                   component={EmployeePageContainer}
                 />
                 <ProtectedRoute
-                  path="/finishedTasks"
+                  path={ROUTE_FINISHEDTASKS}
                   component={FinishedTasksPageContainer}
                 />
                 <ProtectedRoute
-                  path="/machines"
+                  path={ROUTE_MACHINES}
                   exact
                   component={MachinesHomePageContainer}
                 />
                 <ProtectedRoute
-                  path="/machines/:machineName"
+                  path={ROUTE_MACHINES_NAME}
                   component={MachinePageContainer}
                 />
               </Layout>
