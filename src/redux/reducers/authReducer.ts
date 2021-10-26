@@ -2,6 +2,7 @@ import {
   LOGIN_ERROR,
   LOGIN_LOADING,
   LOGIN_SUCCESS,
+  LOGOUT,
 } from "../actions/actionTypes";
 
 import { TAction } from "../../types/storeActionType";
@@ -28,6 +29,14 @@ export default function authReducer(state: any = {}, action: TAuthActions) {
         user: action.payload.user,
       };
       break;
+
+    case LOGOUT:
+      newState = {
+        ...state,
+        user: null,
+      };
+      break;
+
     default:
       newState = state;
       break;

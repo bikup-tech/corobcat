@@ -6,24 +6,33 @@ import PeopleIcon from "@mui/icons-material/People";
 import StoreIcon from "@mui/icons-material/Store";
 import { ListItemButton } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import { NavLink } from "react-router-dom";
-
+import { NavLink, useHistory } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { useDispatch } from "react-redux";
+import SettingsIcon from "@mui/icons-material/Settings";
 import "./LeftMenu.scss";
 import {
+  ROUTE_ADMIN_PROFILE,
   ROUTE_EMPLOYEES,
   ROUTE_FINISHEDTASKS,
+  ROUTE_LOGIN,
   ROUTE_MACHINES,
   ROUTE_MACHINES_NAME_FACTORY,
 } from "../../routes/routes";
 import { MACHINE_1, MACHINE_2 } from "../../constants/machineNames";
+import { logout } from "../../redux/actions/authActions";
 
 function LeftMenu() {
+  const history = useHistory();
+  const dispatch = useDispatch();
+
   return (
     <div className="left-menu">
       <div className="left-menu__header">
         <Avatar>CRC</Avatar>
+        {/* TODO: Display del username */}
       </div>
-      <nav>
+      <nav className="left-menu__nav">
         <List>
           <ListItem disableGutters>
             <NavLink to={ROUTE_MACHINES} className="left-menu__nav-item">
@@ -81,7 +90,39 @@ function LeftMenu() {
               </ListItemButton>
             </NavLink>
           </ListItem>
+
+          <ListItem disableGutters>
+            <NavLink
+              to={ROUTE_ADMIN_PROFILE}
+              className="left-menu__nav-item left-menu__nav-item--admin"
+            >
+              <ListItemButton>
+                <ListItemIcon sx={{ color: "#1664c0" }}>
+                  <SettingsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Zona Admin" />
+              </ListItemButton>
+            </NavLink>
+          </ListItem>
         </List>
+        <div className="flex-grow"></div>
+
+        <ListItem
+          disableGutters
+          className="left-menu__nav-item left-menu__nav-item--bottom"
+        >
+          <ListItemButton
+            onClick={() => {
+              dispatch(logout());
+              history.replace("/");
+            }}
+          >
+            <ListItemIcon>
+              <LogoutIcon />
+            </ListItemIcon>
+            <ListItemText primary="Salir" />
+          </ListItemButton>
+        </ListItem>
       </nav>
     </div>
   );

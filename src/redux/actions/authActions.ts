@@ -1,5 +1,10 @@
 import { Dispatch } from "redux";
-import { LOGIN_ERROR, LOGIN_SUCCESS, LOGIN_LOADING } from "./actionTypes";
+import {
+  LOGIN_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_LOADING,
+  LOGOUT,
+} from "./actionTypes";
 
 // mocks
 import { getUserByCode } from "../../mocks/userRepository";
@@ -10,8 +15,13 @@ type TLoginLoadingAction = {
   type: typeof LOGIN_LOADING;
 };
 
+type TLogoutAction = {
+  type: typeof LOGOUT;
+};
+
 export type TAuthActions =
   | TLoginLoadingAction
+  | TLogoutAction
   | {
       type: typeof LOGIN_SUCCESS;
       payload: { user: TUserResponse };
@@ -61,5 +71,13 @@ export function login(userCode: string) {
         dispatch(loginError(error.message));
       }
     }
+  };
+}
+
+export function logout() {
+  localStorage.removeItem("user");
+
+  return {
+    type: LOGOUT,
   };
 }

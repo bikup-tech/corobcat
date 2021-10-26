@@ -12,3 +12,5 @@ export const ROUTE_EMPLOYEES_ID_FACTORY = (employeeId: string) =>
   `/employees/${employeeId}`;
 
 export const ROUTE_FINISHEDTASKS = "/finishedTasks";
+
+export const ROUTE_ADMIN_PROFILE = "/admin";
