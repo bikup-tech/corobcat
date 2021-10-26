@@ -17,6 +17,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import MachinesHomePageContainer from "./pages/MachinesHomePage/MachinesHomePageContainer";
 import CreateTaskDialog from "./components/CreateTaskDialog/CreateTaskDialogContainer";
 import {
+  ROUTE_ADMIN_PROFILE,
   ROUTE_EMPLOYEES,
   ROUTE_EMPLOYEES_ID,
   ROUTE_FINISHEDTASKS,
@@ -24,6 +25,8 @@ import {
   ROUTE_MACHINES,
   ROUTE_MACHINES_NAME,
 } from "./routes/routes";
+import AdminProfilePageContainer from "./pages/AdminProfilePage/AdminProfilePageContainer";
+import SuperProtectedRoute from "./components/SuperProtectedRoute/SuperProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +62,11 @@ function App() {
                 <ProtectedRoute
                   path={ROUTE_MACHINES_NAME}
                   component={MachinePageContainer}
+                />
+
+                <SuperProtectedRoute
+                  path={ROUTE_ADMIN_PROFILE}
+                  component={AdminProfilePageContainer}
                 />
               </Layout>
             </Switch>

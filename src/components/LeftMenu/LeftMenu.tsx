@@ -35,7 +35,11 @@ function LeftMenu() {
       <nav className="left-menu__nav">
         <List>
           <ListItem disableGutters>
-            <NavLink to={ROUTE_MACHINES} className="left-menu__nav-item">
+            <NavLink
+              activeClassName="left-menu__nav-item--active"
+              to={ROUTE_MACHINES}
+              className="left-menu__nav-item"
+            >
               <ListItemButton>
                 <ListItemIcon>
                   <StoreIcon />
@@ -46,6 +50,7 @@ function LeftMenu() {
           </ListItem>
           <List component="div" disablePadding>
             <NavLink
+              activeClassName="left-menu__nav-item--active"
               to={ROUTE_MACHINES_NAME_FACTORY(MACHINE_1)}
               className="left-menu__nav-item"
             >
@@ -57,6 +62,7 @@ function LeftMenu() {
               </ListItemButton>
             </NavLink>
             <NavLink
+              activeClassName="left-menu__nav-item--active"
               to={ROUTE_MACHINES_NAME_FACTORY(MACHINE_2)}
               className="left-menu__nav-item"
             >
@@ -70,7 +76,11 @@ function LeftMenu() {
           </List>
 
           <ListItem disableGutters>
-            <NavLink to={ROUTE_EMPLOYEES} className="left-menu__nav-item">
+            <NavLink
+              activeClassName="left-menu__nav-item--active"
+              to={ROUTE_EMPLOYEES}
+              className="left-menu__nav-item"
+            >
               <ListItemButton>
                 <ListItemIcon>
                   <PeopleIcon />
@@ -81,7 +91,11 @@ function LeftMenu() {
           </ListItem>
 
           <ListItem disableGutters>
-            <NavLink to={ROUTE_FINISHEDTASKS} className="left-menu__nav-item">
+            <NavLink
+              activeClassName="left-menu__nav-item--active"
+              to={ROUTE_FINISHEDTASKS}
+              className="left-menu__nav-item"
+            >
               <ListItemButton>
                 <ListItemIcon>
                   <AssignmentTurnedInIcon />
@@ -93,11 +107,12 @@ function LeftMenu() {
 
           <ListItem disableGutters>
             <NavLink
+              activeClassName="left-menu__nav-item--active"
               to={ROUTE_ADMIN_PROFILE}
-              className="left-menu__nav-item left-menu__nav-item--admin"
+              className="left-menu__nav-item"
             >
               <ListItemButton>
-                <ListItemIcon sx={{ color: "#1664c0" }}>
+                <ListItemIcon>
                   <SettingsIcon />
                 </ListItemIcon>
                 <ListItemText primary="Zona Admin" />
