@@ -29,6 +29,10 @@ const StyledImportantCell = styled.span`
   font-weight: 700;
 `;
 
+const StyledValue = styled.span`
+  font-size: 1.5rem;
+`;
+
 const StyledTotalValue = styled.span`
   color: green;
   font-weight: 700;
@@ -73,13 +77,15 @@ function TableHeaderInfoCard(props: ITableHeaderInfoCardProps) {
           <StyledImportantCell>Prog. Activos</StyledImportantCell>
         </Grid>
         <Grid item alignItems="center" xs={3}>
-          {machine1Tasks}
+          <StyledValue>{machine1Tasks}</StyledValue>
         </Grid>
         <Grid item alignItems="center" xs={3}>
-          {machine2Tasks}
+          <StyledValue>{machine2Tasks}</StyledValue>
         </Grid>
         <Grid item alignItems="center" xs={3}>
-          <StyledTotalValue>{totalTasks}</StyledTotalValue>
+          <StyledValue>
+            <StyledTotalValue>{totalTasks}</StyledTotalValue>
+          </StyledValue>
         </Grid>
 
         <StyledInfoCardSeparator />
@@ -89,13 +95,15 @@ function TableHeaderInfoCard(props: ITableHeaderInfoCardProps) {
           <StyledImportantCell> T. Restante</StyledImportantCell>
         </Grid>
         <Grid item alignItems="center" xs={3}>
-          {machine1TimeToFinish} min
+          <StyledValue>{machine1TimeToFinish} min</StyledValue>
         </Grid>
         <Grid item alignItems="center" xs={3}>
-          {machine2TimeToFinish} min
+          <StyledValue>{machine2TimeToFinish} min</StyledValue>
         </Grid>
         <Grid item alignItems="center" xs={3}>
-          <StyledTotalValue>{totalTimeToFinish} min </StyledTotalValue>
+          <StyledValue>
+            <StyledTotalValue>{totalTimeToFinish} min </StyledTotalValue>
+          </StyledValue>
         </Grid>
       </Grid>
     </StyledTableHeaderInfoCardContainer>

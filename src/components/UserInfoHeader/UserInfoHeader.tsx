@@ -22,7 +22,10 @@ const StyledFlexGrow = styled.div`
 
 const StyledInfoWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100%;
 `;
 
 interface IUserInfoHeaderProps {
@@ -45,7 +48,7 @@ function UserInfoHeader(props: IUserInfoHeaderProps) {
         <StyledInfoWrapper>
           <span className="user-data-table__info--name">{employee?.name}</span>
           <span className="user-data-table__info">
-            Cód. Empleado: {employee?.employerCode}
+            Cód. Emp: {employee?.employerCode}
           </span>
         </StyledInfoWrapper>
         <StyledFlexGrow />
