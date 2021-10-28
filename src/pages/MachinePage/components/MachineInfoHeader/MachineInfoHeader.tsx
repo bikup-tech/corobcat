@@ -27,6 +27,7 @@ const StyledTableHeaderInfo = styled.p`
   width: 22rem;
   margin-left: 1.5rem;
   text-align: center;
+  font-size: 1.75rem;
 `;
 
 interface IMachineInfoHeaderProps {
