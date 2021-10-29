@@ -1,11 +1,13 @@
 import { Tabs, Tab, Box, AppBar } from "@mui/material";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { FC } from "react";
 import styled from "styled-components";
-import CorrectionalFactorTab from "./components/GeneralSettingsTab";
-import EmployeesTab from "./components/EmployeesTab";
+import GeneralSettingsTab from "./components/GeneralSettingsTab";
+import EmployeesTab from "./components/EmployeesTab/EmployeesTab";
 import TabPanel from "./components/TabPanel";
+import { TSettingsResponse } from "../../types/settingsTypes";
+import userData from "../../mocks/users.json";
 
 const StyledAdminProfileHeader = styled.div`
   width: 100%;
@@ -17,18 +19,11 @@ const StyledAdminProfileHeader = styled.div`
   margin-bottom: 1.5rem;
 `;
 
-type TCorrectionalFactors = {
-  machine1: number;
-  machine2: number;
-};
-
 interface IAdminProfilePageProps {
-  correctionalFactors: TCorrectionalFactors;
+  settings: TSettingsResponse;
 }
 
-const AdminProfilePage: FC<IAdminProfilePageProps> = ({
-  correctionalFactors,
-}) => {
+const AdminProfilePage: FC<IAdminProfilePageProps> = ({ settings }) => {
   const [value, setValue] = useState(0);
 
   function a11yProps(index: number) {
@@ -75,10 +70,10 @@ const AdminProfilePage: FC<IAdminProfilePageProps> = ({
         </AppBar>
         <AnimatePresence>
           <TabPanel value={value} index={0}>
-            <CorrectionalFactorTab />
+            <GeneralSettingsTab settings={settings} />
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <EmployeesTab />
+            <EmployeesTab employees={userData} />
           </TabPanel>
         </AnimatePresence>
       </Box>

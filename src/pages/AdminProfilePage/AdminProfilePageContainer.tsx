@@ -11,9 +11,7 @@ const AdminProfilePageContainer: FC = () => {
       {isLoading ? (
         <StandardLoading />
       ) : (
-        <AdminProfilePage
-          correctionalFactors={{ machine1: 0.5, machine2: 0.1 }}
-        />
+        data && <AdminProfilePage settings={data} />
       )}
     </>
   );
