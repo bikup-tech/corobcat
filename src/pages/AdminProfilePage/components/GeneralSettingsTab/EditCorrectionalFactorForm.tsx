@@ -64,6 +64,7 @@ const EditCorrectionalFactorFrom: FC<IEditCorrectionalFactorFromProps> =
             name="correctionalFactorMachine1"
             label="Máquina 1"
             placeholder="Nuevo factor corrector M1"
+            adornment="%"
             fullWidth
           />
           <StyledButton
@@ -85,6 +86,7 @@ const EditCorrectionalFactorFrom: FC<IEditCorrectionalFactorFromProps> =
             name="correctionalFactorMachine2"
             label="Máquina 2"
             placeholder="Nuevo factor corrector M2"
+            adornment="%"
             fullWidth
           />
 
