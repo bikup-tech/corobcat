@@ -50,7 +50,6 @@ export function updateCorrectionalFactor(machineName: string, value: number) {
 
       dispatch(forceRender());
     } catch (error: any) {
-      // TODO: react toast amb el error
       toast.error(error.message);
     }
   };
