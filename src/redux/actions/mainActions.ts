@@ -48,6 +48,8 @@ export function updateCorrectionalFactor(machineName: string, value: number) {
 
       const updatedSettings = await axios.patch(ENDPOINT_SETTINGS);
 
+      toast.success("Actualizado!");
+
       dispatch(forceRender());
     } catch (error: any) {
       toast.error(error.message);
