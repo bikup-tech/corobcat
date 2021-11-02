@@ -1,11 +1,17 @@
-import { FC, useRef } from "react";
-import styled from "styled-components";
-import { motion } from "framer-motion";
+import * as Yup from "yup";
+
 import { Button, Fab, IconButton, TextField, Typography } from "@mui/material";
+import { FC, useRef } from "react";
+import { Form, Formik } from "formik";
+
 import AddIcon from "@mui/icons-material/Add";
+import DeletableItemCard from "../DeletableItemCard";
+import EditCorrectionalFactorFrom from "./EditCorrectionalFactorForm";
+import FormikTextField from "../../../../components/FormikComponents/FormikTextField";
 import SaveIcon from "@mui/icons-material/Save";
-import { TSettingsResponse } from "../../../types/settingsTypes";
-import DeletableItemCard from "./DeletableItemCard";
+import { TSettingsResponse } from "../../../../types/settingsTypes";
+import { motion } from "framer-motion";
+import styled from "styled-components";
 
 const StyledTabContainer = styled(motion.div).attrs(() => ({
   initial: { opacity: 0 },
@@ -35,6 +41,8 @@ const StyledNewItemWrapper = styled.div`
 const StyledButton = styled(Button)`
   min-width: unset;
   border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
 `;
 
 const StyledTabTitle = styled(Typography)`
@@ -52,6 +60,18 @@ const StyledListWrapper = styled.ul`
   height: 100%;
 `;
 
+const validationSchema = Yup.object({
+  correctionalFactorMachine1: Yup.number()
+    .integer("No puede contener decimales")
+    .min(0, "El valor mínimo es 0")
+    .max(100, "El valor máximo es 100"),
+
+  correctionalFactorMachine2: Yup.number()
+    .integer("No puede contener decimales")
+    .min(0, "El valor mínimo es 0")
+    .max(100, "El valor máximo es 100"),
+});
+
 interface IGeneralSettingsTabProps {
   settings: TSettingsResponse;
 }
@@ -62,42 +82,28 @@ const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
   const newMaterialRef = useRef(null);
   const newThicknessRef = useRef(null);
 
+  const correctionalFactorInitialValues = {
+    correctionalFactorMachine1: settings.correctionalFactorMachine1,
+    correctionalFactorMachine2: settings.correctionalFactorMachine2,
+  };
+
   function handleDeleteMaterial() {}
+
+  function handleDeleteThickness() {}
 
   return (
     <StyledTabContainer className="tabContainer">
       <StyledGroupWrapper className="groupWrapper">
         {/* ---- CORRECTIONAL FACTORS ---- */}
-        <StyledTabTitle>Editar factor corrector:</StyledTabTitle>
-        <StyledNewItemWrapper>
-          <TextField
-            type="text"
-            name="correctionalFactorMachine1"
-            label="Máquina 1"
-            placeholder="Nuevo factor corrector M1"
-            size="small"
-            sx={{ marginRight: "1rem" }}
-            ref={correctionalFactorM1Ref}
-            value={settings.correctionalFactorMachine1}
-          />
-          <StyledButton variant="contained" size="small" disableElevation>
-            <SaveIcon fontSize="small" />
-          </StyledButton>
-        </StyledNewItemWrapper>
-        <StyledNewItemWrapper>
-          <TextField
-            type="text"
-            name="correctionalFactorMachine2"
-            label="Máquina 2"
-            placeholder="Nuevo factor corrector M2"
-            size="small"
-            sx={{ marginRight: "1rem" }}
-            ref={correctionalFactorM2Ref}
-          />
-          <StyledButton variant="contained" size="small" disableElevation>
-            <SaveIcon fontSize="small" />
-          </StyledButton>
-        </StyledNewItemWrapper>
+        <Formik
+          initialValues={correctionalFactorInitialValues}
+          onSubmit={() => {}}
+          validationSchema={validationSchema}
+        >
+          <Form noValidate>
+            <EditCorrectionalFactorFrom />
+          </Form>
+        </Formik>
       </StyledGroupWrapper>
       {/* ---- MATERIALS LIST ---- */}
       <StyledGroupWrapper className="groupWrapper">
@@ -143,6 +149,15 @@ const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
             <AddIcon fontSize="small" />
           </StyledButton>
         </StyledNewItemWrapper>
+        <StyledListWrapper className="itemsList">
+          {settings.thicknesses.map((value) => (
+            <DeletableItemCard
+              itemName={`${value} mm`}
+              handleDelete={handleDeleteThickness}
+              key={value}
+            />
+          ))}
+        </StyledListWrapper>
       </StyledGroupWrapper>
     </StyledTabContainer>
   );

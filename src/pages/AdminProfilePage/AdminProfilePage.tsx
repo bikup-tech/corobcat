@@ -1,12 +1,13 @@
-import { Tabs, Tab, Box, AppBar } from "@mui/material";
+import { AppBar, Box, Tab, Tabs } from "@mui/material";
+
 import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import { FC } from "react";
-import styled from "styled-components";
-import GeneralSettingsTab from "./components/GeneralSettingsTab";
 import EmployeesTab from "./components/EmployeesTab/EmployeesTab";
-import TabPanel from "./components/TabPanel";
+import { FC } from "react";
+import GeneralSettingsTab from "./components/GeneralSettingsTab/GeneralSettingsTab";
 import { TSettingsResponse } from "../../types/settingsTypes";
+import TabPanel from "./components/TabPanel";
+import styled from "styled-components";
+import { useState } from "react";
 import userData from "../../mocks/users.json";
 
 const StyledAdminProfileHeader = styled.div`
@@ -69,10 +70,10 @@ const AdminProfilePage: FC<IAdminProfilePageProps> = ({ settings }) => {
           </Tabs>
         </AppBar>
         <AnimatePresence>
-          <TabPanel value={value} index={0}>
+          <TabPanel value={value} index={0} key="generalSettingsTab">
             <GeneralSettingsTab settings={settings} />
           </TabPanel>
-          <TabPanel value={value} index={1}>
+          <TabPanel value={value} index={1} key="employeesTab">
             <EmployeesTab employees={userData} />
           </TabPanel>
         </AnimatePresence>

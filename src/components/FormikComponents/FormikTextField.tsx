@@ -1,10 +1,11 @@
 import { InputAdornment, TextField } from "@mui/material";
+
 import React from "react";
+import styled from "styled-components";
 import { useFormikContext } from "formik";
 
-import styled from "styled-components";
-
 const StyledFormikTextFieldWrapper = styled.div`
+  width: 100%;
   input {
     padding: 0.75rem 0.5rem;
   }

@@ -1,12 +1,14 @@
-import { FC } from "react";
-import styled from "styled-components";
-import { motion } from "framer-motion";
-import { Typography } from "@mui/material";
-import { Formik, Form } from "formik";
 import * as Yup from "yup";
+
+import { Form, Formik } from "formik";
+
 import CreateEmployeeForm from "./CreateEmployeeForm";
-import { TUserResponse } from "../../../../types/employeeTypes";
 import DeletableItemCard from "../DeletableItemCard";
+import { FC } from "react";
+import { TUserResponse } from "../../../../types/employeeTypes";
+import { Typography } from "@mui/material";
+import { motion } from "framer-motion";
+import styled from "styled-components";
 
 const StyledTabContainer = styled(motion.div).attrs(() => ({
   initial: { opacity: 0 },
@@ -22,6 +24,7 @@ const StyledTabTitle = styled(Typography)`
   font-size: 1.15rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
+  text-decoration: underline;
 `;
 
 const StyledEmployeesContainer = styled.div`

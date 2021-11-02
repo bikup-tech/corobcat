@@ -4,6 +4,12 @@ import {
   SET_CREATE_TASK_MODAL_SELECTED_MACHINE,
 } from "./actionTypes";
 
+import { AutoFixOffSharp } from "@mui/icons-material";
+import { ENDPOINT_SETTINGS } from "../../constants/apiConstants";
+import { MACHINE_1 } from "../../constants/machineNames";
+import axios from "axios";
+import toast from "react-hot-toast";
+
 export function forceRender() {
   return {
     type: FORCE_RENDER,
@@ -23,5 +29,29 @@ export function setCreateTaskModalSelectedMachine(machine: string) {
   return {
     type: SET_CREATE_TASK_MODAL_SELECTED_MACHINE,
     payload: machine,
+  };
+}
+
+export function updateCorrectionalFactor(machineName: string, value: number) {
+  return async (dispatch: any) => {
+    console.log("updateing corr factor..");
+
+    try {
+      const toUpdateMachine =
+        machineName === MACHINE_1
+          ? "correctionalFactorMachine1"
+          : "correctionalFactorMachine2";
+
+      const query = {
+        [toUpdateMachine]: value,
+      };
+
+      const updatedSettings = await axios.patch(ENDPOINT_SETTINGS);
+
+      dispatch(forceRender());
+    } catch (error: any) {
+      // TODO: react toast amb el error
+      toast.error(error.message);
+    }
   };
 }
