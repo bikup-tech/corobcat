@@ -22,13 +22,16 @@ const StyledNewItemWrapper = styled.div`
   width: 100%;
 `;
 
-const StyledButton = styled(Button)`
-  min-width: unset;
-  border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-left: 1rem;
-  margin-top: 0.6rem;
+const StyledButtonWrapper = styled.div`
+  flex: 1;
+  .MuiButton-root {
+    min-width: unset;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-left: 1rem;
+    margin-top: 0.6rem;
+  }
 `;
 
 interface IEditCorrectionalFactorFromProps {}
@@ -67,16 +70,19 @@ const EditCorrectionalFactorFrom: FC<IEditCorrectionalFactorFromProps> =
             adornment="%"
             fullWidth
           />
-          <StyledButton
-            variant="contained"
-            size="small"
-            disableElevation
-            onClick={() => {
-              handleMachineClick(MACHINE_1);
-            }}
-          >
-            <SaveIcon fontSize="small" />
-          </StyledButton>
+          <StyledButtonWrapper>
+            <Button
+              className="m1Button"
+              variant="contained"
+              size="small"
+              disableElevation
+              onClick={() => {
+                handleMachineClick(MACHINE_1);
+              }}
+            >
+              <SaveIcon fontSize="small" />
+            </Button>
+          </StyledButtonWrapper>
         </StyledNewItemWrapper>
         <StyledNewItemWrapper>
           <FormikTextField
@@ -90,16 +96,18 @@ const EditCorrectionalFactorFrom: FC<IEditCorrectionalFactorFromProps> =
             fullWidth
           />
 
-          <StyledButton
-            variant="contained"
-            size="small"
-            disableElevation
-            onClick={() => {
-              handleMachineClick(MACHINE_2);
-            }}
-          >
-            <SaveIcon fontSize="small" />
-          </StyledButton>
+          <StyledButtonWrapper>
+            <Button
+              variant="contained"
+              size="small"
+              disableElevation
+              onClick={() => {
+                handleMachineClick(MACHINE_2);
+              }}
+            >
+              <SaveIcon fontSize="small" />
+            </Button>
+          </StyledButtonWrapper>
         </StyledNewItemWrapper>
       </>
     );

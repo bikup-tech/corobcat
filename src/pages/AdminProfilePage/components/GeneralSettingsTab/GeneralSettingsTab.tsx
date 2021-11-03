@@ -38,11 +38,14 @@ const StyledNewItemWrapper = styled.div`
   margin-bottom: 1rem;
 `;
 
-const StyledButton = styled(Button)`
-  min-width: unset;
-  border-radius: 50%;
-  width: 2.5rem;
-  height: 2.5rem;
+const StyledButtonWrapper = styled.div`
+  flex: 1;
+  .MuiButton-root {
+    min-width: unset;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 `;
 
 const StyledTabTitle = styled(Typography)`
@@ -77,8 +80,6 @@ interface IGeneralSettingsTabProps {
 }
 
 const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
-  const correctionalFactorM1Ref = useRef(null);
-  const correctionalFactorM2Ref = useRef(null);
   const newMaterialRef = useRef(null);
   const newThicknessRef = useRef(null);
 
@@ -118,9 +119,11 @@ const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
             sx={{ marginRight: "1rem" }}
             ref={newMaterialRef}
           />
-          <StyledButton variant="contained" size="small" disableElevation>
-            <AddIcon fontSize="small" />
-          </StyledButton>
+          <StyledButtonWrapper>
+            <Button variant="contained" size="small" disableElevation>
+              <AddIcon fontSize="small" />
+            </Button>
+          </StyledButtonWrapper>
         </StyledNewItemWrapper>
         <StyledListWrapper className="itemsList">
           {settings.materials.map((material) => (
@@ -145,9 +148,11 @@ const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
             sx={{ marginRight: "1rem" }}
             ref={newThicknessRef}
           />
-          <StyledButton variant="contained" size="small" disableElevation>
-            <AddIcon fontSize="small" />
-          </StyledButton>
+          <StyledButtonWrapper>
+            <Button variant="contained" size="small" disableElevation>
+              <AddIcon fontSize="small" />
+            </Button>
+          </StyledButtonWrapper>
         </StyledNewItemWrapper>
         <StyledListWrapper className="itemsList">
           {settings.thicknesses.map((value) => (
