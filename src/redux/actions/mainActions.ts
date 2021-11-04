@@ -165,7 +165,7 @@ export function deleteEmployee(userId: string) {
       const endpoint = `${API_URL}${ENDPOINT_USERS_BY_ID(userId)}`;
       const newUser = await axios.delete(endpoint);
 
-      toast.success("Empleado creado!");
+      toast.success("Empleado eliminado!");
 
       dispatch(forceRender());
     } catch (error: any) {
