@@ -7,8 +7,10 @@ import DeletableItemCard from "../DeletableItemCard";
 import { FC } from "react";
 import { TUserResponse } from "../../../../types/employeeTypes";
 import { Typography } from "@mui/material";
+import { createEmployee } from "../../../../redux/actions/mainActions";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 
 const StyledTabContainer = styled(motion.div).attrs(() => ({
   initial: { opacity: 0 },
@@ -53,16 +55,17 @@ const validationSchema = Yup.object({
   employerCode: Yup.string().required("Cod. Emp. obligatorio"),
 });
 
-function handleSubmit(values: any) {
-  console.log(values);
-  // TODO: Crear employer, fer forceRender
-}
-
 interface IEmployeesTabprops {
   employees: TUserResponse[];
 }
 
 const EmployeesTab: FC<IEmployeesTabprops> = ({ employees }) => {
+  const dispatch = useDispatch();
+
+  function handleSubmit(values: any) {
+    dispatch(createEmployee(values));
+  }
+
   return (
     <StyledTabContainer className="tabContainer">
       <StyledTabTitle>Gestión de empleados</StyledTabTitle>

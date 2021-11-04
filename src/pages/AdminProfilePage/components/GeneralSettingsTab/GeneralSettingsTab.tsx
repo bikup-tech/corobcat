@@ -90,8 +90,6 @@ interface IGeneralSettingsTabProps {
 const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
   const dispatch = useDispatch();
 
-  console.log(settings);
-
   const [newMaterial, setNewMaterial] = useState("");
   const [newThickness, setNewThickness] = useState("");
 

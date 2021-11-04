@@ -1,4 +1,8 @@
-import { API_URL, ENDPOINT_SETTINGS } from "../../constants/apiConstants";
+import {
+  API_URL,
+  ENDPOINT_SETTINGS,
+  ENDPOINT_USERS,
+} from "../../constants/apiConstants";
 import {
   FORCE_RENDER,
   SET_CREATE_TASK_MODAL_ISOPEN,
@@ -9,6 +13,7 @@ import { AutoFixOffSharp } from "@mui/icons-material";
 import { MACHINE_1 } from "../../constants/machineNames";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { valueScaleCorrection } from "framer-motion/types/render/dom/projection/scale-correction";
 
 export function forceRender() {
   return {
@@ -124,6 +129,27 @@ export function deleteThickness(value: number) {
       const updatedSettings = await axios.patch(endpoint, query);
 
       toast.success("Espesor eliminado!");
+
+      dispatch(forceRender());
+    } catch (error: any) {
+      toast.error(error.message);
+    }
+  };
+}
+
+export function createEmployee(values: any) {
+  return async (dispatch: any) => {
+    try {
+      const body = {
+        role: 1,
+        name: `${values.name} ${values.surname}`,
+        employerCode: values.employerCode,
+      };
+
+      const endpoint = `${API_URL}${ENDPOINT_USERS}`;
+      const newUser = await axios.post(endpoint, body);
+
+      toast.success("Empleado creado!");
 
       dispatch(forceRender());
     } catch (error: any) {
