@@ -21,7 +21,7 @@ const StyledAdminProfileHeader = styled.div`
 `;
 
 interface IAdminProfilePageProps {
-  settings: TSettingsResponse;
+  settings: TSettingsResponse & { employees: any };
 }
 
 const AdminProfilePage: FC<IAdminProfilePageProps> = ({ settings }) => {
@@ -33,6 +33,8 @@ const AdminProfilePage: FC<IAdminProfilePageProps> = ({ settings }) => {
       "aria-controls": `simple-tabpanel-${index}`,
     };
   }
+
+  console.log(settings);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -73,7 +75,7 @@ const AdminProfilePage: FC<IAdminProfilePageProps> = ({ settings }) => {
           <GeneralSettingsTab settings={settings} />
         </TabPanel>
         <TabPanel value={value} index={1} key="employeesTab">
-          <EmployeesTab employees={userData} />
+          <EmployeesTab employees={settings.employees} />
         </TabPanel>
       </Box>
     </>
