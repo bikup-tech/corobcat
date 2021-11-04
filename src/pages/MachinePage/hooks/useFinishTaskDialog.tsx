@@ -8,11 +8,11 @@ import {
   Grid,
   TextField,
 } from "@mui/material";
-
 import React, { useState } from "react";
+
+import { forceRender } from "../../../redux/actions/mainActions";
 import { saveFinishedTask } from "../../../mocks/tasksRepository";
 import { useDispatch } from "react-redux";
-import { forceRender } from "../../../redux/actions/mainActions";
 
 const initialState = {
   taskId: "",
@@ -54,6 +54,7 @@ export default function useFinishTaskDialog() {
 
   function handleAccept() {
     // TODO: Dispatch de la action que comprova si existeix el employeeCode i l'asigna i finalitza.
+    // TODO: dispatch de la action que elimina la task al backend
     saveFinishedTask(finishTaskDialogState.taskId);
     setIsFinishTaskDialogOpen(false);
     dispatch(forceRender());

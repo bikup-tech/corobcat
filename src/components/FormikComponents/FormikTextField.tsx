@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { useFormikContext } from "formik";
 
 const StyledFormikTextFieldWrapper = styled.div`
-  width: 100%;
   input {
     padding: 0.75rem 0.5rem;
   }
@@ -51,7 +50,7 @@ function FormikTextField(props: IFormikTextFieldProps) {
   }
 
   return (
-    <StyledFormikTextFieldWrapper>
+    <StyledFormikTextFieldWrapper className="formikTextField">
       <TextField
         variant={variant}
         name={name}

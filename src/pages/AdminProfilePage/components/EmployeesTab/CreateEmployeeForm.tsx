@@ -1,12 +1,14 @@
 import { Button, Typography } from "@mui/material";
-import { FC } from "react";
-import styled from "styled-components";
-import FormikTextField from "../../../../components/FormikComponents/FormikTextField";
+
 import AddIcon from "@mui/icons-material/Add";
+import { FC } from "react";
+import FormikTextField from "../../../../components/FormikComponents/FormikTextField";
+import styled from "styled-components";
 
 const StyledNewEmployeeFormContainer = styled.div`
   display: flex;
   align-items: flex-start;
+  justify-content: flex-start;
   height: 60px;
   margin-bottom: 1rem;
 `;
@@ -22,11 +24,13 @@ const StyledText = styled(Typography)`
   margin-right: 1rem;
 `;
 
-const StyledButton = styled(Button)`
-  min-width: unset;
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
+const StyledButtonWrapper = styled.div`
+  .MuiButton-root {
+    min-width: unset;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 `;
 
 const StyledMargin = styled.div`
@@ -64,14 +68,16 @@ const CreateEmployeeForm: FC<ICreateEmployeeFormProps> = ({}) => {
       <StyledMargin />
 
       <StyledFlex100Height>
-        <StyledButton
-          variant="contained"
-          size="small"
-          sx={{ width: "2rem", height: "2rem" }}
-          type="submit"
-        >
-          <AddIcon fontSize="small" />
-        </StyledButton>
+        <StyledButtonWrapper>
+          <Button
+            variant="contained"
+            size="small"
+            sx={{ width: "2rem", height: "2rem" }}
+            type="submit"
+          >
+            <AddIcon fontSize="small" />
+          </Button>
+        </StyledButtonWrapper>
       </StyledFlex100Height>
     </StyledNewEmployeeFormContainer>
   );

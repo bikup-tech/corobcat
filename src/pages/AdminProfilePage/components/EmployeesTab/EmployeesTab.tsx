@@ -66,17 +66,17 @@ const EmployeesTab: FC<IEmployeesTabprops> = ({ employees }) => {
   return (
     <StyledTabContainer className="tabContainer">
       <StyledTabTitle>Gestión de empleados</StyledTabTitle>
-      <>
-        <Formik
-          initialValues={initialFormValues}
-          onSubmit={handleSubmit}
-          validationSchema={validationSchema}
-        >
-          <Form noValidate>
-            <CreateEmployeeForm />
-          </Form>
-        </Formik>
-      </>
+
+      <Formik
+        initialValues={initialFormValues}
+        onSubmit={handleSubmit}
+        validationSchema={validationSchema}
+      >
+        <Form noValidate>
+          <CreateEmployeeForm />
+        </Form>
+      </Formik>
+
       <StyledEmployeesContainer>
         {employees.map((employee) => (
           <StyledEmployeeCardContainer className="employeesList">

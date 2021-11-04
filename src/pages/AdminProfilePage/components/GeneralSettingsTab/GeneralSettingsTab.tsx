@@ -39,7 +39,6 @@ const StyledNewItemWrapper = styled.div`
 `;
 
 const StyledButtonWrapper = styled.div`
-  flex: 1;
   .MuiButton-root {
     min-width: unset;
     border-radius: 50%;
