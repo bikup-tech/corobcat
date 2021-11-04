@@ -1,12 +1,13 @@
 import { AppBar, Box, Tab, Tabs } from "@mui/material";
+import { FC, useEffect } from "react";
 
 import { AnimatePresence } from "framer-motion";
 import EmployeesTab from "./components/EmployeesTab/EmployeesTab";
-import { FC } from "react";
 import GeneralSettingsTab from "./components/GeneralSettingsTab/GeneralSettingsTab";
 import { TSettingsResponse } from "../../types/settingsTypes";
 import TabPanel from "./components/TabPanel";
 import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import userData from "../../mocks/users.json";
 
@@ -25,6 +26,7 @@ interface IAdminProfilePageProps {
 }
 
 const AdminProfilePage: FC<IAdminProfilePageProps> = ({ settings }) => {
+  const history = useHistory();
   const [value, setValue] = useState(0);
 
   function a11yProps(index: number) {
@@ -34,9 +36,16 @@ const AdminProfilePage: FC<IAdminProfilePageProps> = ({ settings }) => {
     };
   }
 
-  console.log(settings);
+  const params: any = new URLSearchParams(window.location.search);
+
+  useEffect(() => {
+    const tab = params.get("tab") || 0;
+
+    setValue(Number(tab));
+  }, [params]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    history.push(`/admin?tab=${newValue}`);
     setValue(newValue);
   };
 
