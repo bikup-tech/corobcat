@@ -46,7 +46,6 @@ const AdminProfilePage: FC<IAdminProfilePageProps> = ({ settings }) => {
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     history.push(`/admin?tab=${newValue}`);
-    setValue(newValue);
   };
 
   return (
