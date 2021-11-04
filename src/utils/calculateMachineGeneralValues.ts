@@ -1,5 +1,5 @@
 import { MACHINE_1, MACHINE_2 } from "../constants/machineNames";
-import { TMachineResponse } from "../types/machineTypes";
+
 import { TTaskResponse } from "../types/taskTypes";
 import { calculateTotalTime } from "./calculateTotalTime";
 

@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 
-import { Button, Fab, IconButton, TextField, Typography } from "@mui/material";
-import { FC, useRef, useState } from "react";
+import { Button, TextField, Typography } from "@mui/material";
+import { FC, useState } from "react";
 import { Form, Formik } from "formik";
 import {
   createNewMaterial,
@@ -13,14 +13,11 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import DeletableItemCard from "../DeletableItemCard";
 import EditCorrectionalFactorFrom from "./EditCorrectionalFactorForm";
-import FormikTextField from "../../../../components/FormikComponents/FormikTextField";
-import SaveIcon from "@mui/icons-material/Save";
 import { TSettingsResponse } from "../../../../types/settingsTypes";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { valueScaleCorrection } from "framer-motion/types/render/dom/projection/scale-correction";
 
 const StyledTabContainer = styled(motion.div).attrs(() => ({
   initial: { opacity: 1 },

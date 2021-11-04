@@ -10,11 +10,9 @@ import {
   SET_CREATE_TASK_MODAL_SELECTED_MACHINE,
 } from "./actionTypes";
 
-import { AutoFixOffSharp } from "@mui/icons-material";
 import { MACHINE_1 } from "../../constants/machineNames";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { valueScaleCorrection } from "framer-motion/types/render/dom/projection/scale-correction";
 
 export function forceRender() {
   return {
@@ -51,7 +49,7 @@ export function updateCorrectionalFactor(machineName: string, value: number) {
       };
 
       const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
-      const updatedSettings = await axios.patch(endpoint, query);
+      await axios.patch(endpoint, query);
 
       toast.success("Actualizado!");
 
@@ -70,7 +68,7 @@ export function createNewMaterial(value: string) {
       };
 
       const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
-      const updatedSettings = await axios.patch(endpoint, query);
+      await axios.patch(endpoint, query);
 
       toast.success("Material añadido!");
 
@@ -89,7 +87,7 @@ export function createNewThickness(value: number) {
       };
 
       const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
-      const updatedSettings = await axios.patch(endpoint, query);
+      await axios.patch(endpoint, query);
 
       toast.success("Espesor añadido!");
 
@@ -108,7 +106,7 @@ export function deleteMaterial(value: string) {
       };
 
       const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
-      const updatedSettings = await axios.patch(endpoint, query);
+      await axios.patch(endpoint, query);
 
       toast.success("Material eliminado!");
 
@@ -127,7 +125,7 @@ export function deleteThickness(value: number) {
       };
 
       const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
-      const updatedSettings = await axios.patch(endpoint, query);
+      await axios.patch(endpoint, query);
 
       toast.success("Espesor eliminado!");
 
@@ -148,7 +146,7 @@ export function createEmployee(values: any) {
       };
 
       const endpoint = `${API_URL}${ENDPOINT_USERS}`;
-      const newUser = await axios.post(endpoint, body);
+      await axios.post(endpoint, body);
 
       toast.success("Empleado creado!");
 
@@ -163,7 +161,7 @@ export function deleteEmployee(userId: string) {
   return async (dispatch: any) => {
     try {
       const endpoint = `${API_URL}${ENDPOINT_USERS_BY_ID(userId)}`;
-      const newUser = await axios.delete(endpoint);
+      await axios.delete(endpoint);
 
       toast.success("Empleado eliminado!");
 

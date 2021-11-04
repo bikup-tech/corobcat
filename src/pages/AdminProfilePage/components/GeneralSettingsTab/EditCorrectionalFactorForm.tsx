@@ -36,81 +36,80 @@ const StyledButtonWrapper = styled.div`
 
 interface IEditCorrectionalFactorFromProps {}
 
-const EditCorrectionalFactorFrom: FC<IEditCorrectionalFactorFromProps> =
-  ({}) => {
-    const formikContext = useFormikContext<any>();
-    const dispatch = useDispatch();
+const EditCorrectionalFactorFrom: FC<IEditCorrectionalFactorFromProps> = () => {
+  const formikContext = useFormikContext<any>();
+  const dispatch = useDispatch();
 
-    function handleMachineClick(machineName: string) {
-      const machineFormFieldName =
-        machineName === MACHINE_1
-          ? "correctionalFactorMachine1"
-          : "correctionalFactorMachine2";
+  function handleMachineClick(machineName: string) {
+    const machineFormFieldName =
+      machineName === MACHINE_1
+        ? "correctionalFactorMachine1"
+        : "correctionalFactorMachine2";
 
-      formikContext.setFieldTouched(machineFormFieldName, true);
+    formikContext.setFieldTouched(machineFormFieldName, true);
 
-      const value = Number(formikContext.values[machineFormFieldName]);
+    const value = Number(formikContext.values[machineFormFieldName]);
 
-      if (value) {
-        dispatch(updateCorrectionalFactor(machineName, value));
-      }
+    if (value) {
+      dispatch(updateCorrectionalFactor(machineName, value));
     }
+  }
 
-    return (
-      <>
-        <StyledTabTitle>Editar factor corrector:</StyledTabTitle>
-        <StyledNewItemWrapper>
-          <FormikTextField
-            type="number"
-            min={0}
-            max={100}
-            name="correctionalFactorMachine1"
-            label="Máquina 1"
-            placeholder="Nuevo factor corrector M1"
-            adornment="%"
-            fullWidth
-          />
-          <StyledButtonWrapper>
-            <Button
-              className="m1Button"
-              variant="contained"
-              size="small"
-              disableElevation
-              onClick={() => {
-                handleMachineClick(MACHINE_1);
-              }}
-            >
-              <SaveIcon fontSize="small" />
-            </Button>
-          </StyledButtonWrapper>
-        </StyledNewItemWrapper>
-        <StyledNewItemWrapper>
-          <FormikTextField
-            type="number"
-            min={0}
-            max={100}
-            name="correctionalFactorMachine2"
-            label="Máquina 2"
-            placeholder="Nuevo factor corrector M2"
-            adornment="%"
-            fullWidth
-          />
+  return (
+    <>
+      <StyledTabTitle>Editar factor corrector:</StyledTabTitle>
+      <StyledNewItemWrapper>
+        <FormikTextField
+          type="number"
+          min={0}
+          max={100}
+          name="correctionalFactorMachine1"
+          label="Máquina 1"
+          placeholder="Nuevo factor corrector M1"
+          adornment="%"
+          fullWidth
+        />
+        <StyledButtonWrapper>
+          <Button
+            className="m1Button"
+            variant="contained"
+            size="small"
+            disableElevation
+            onClick={() => {
+              handleMachineClick(MACHINE_1);
+            }}
+          >
+            <SaveIcon fontSize="small" />
+          </Button>
+        </StyledButtonWrapper>
+      </StyledNewItemWrapper>
+      <StyledNewItemWrapper>
+        <FormikTextField
+          type="number"
+          min={0}
+          max={100}
+          name="correctionalFactorMachine2"
+          label="Máquina 2"
+          placeholder="Nuevo factor corrector M2"
+          adornment="%"
+          fullWidth
+        />
 
-          <StyledButtonWrapper>
-            <Button
-              variant="contained"
-              size="small"
-              disableElevation
-              onClick={() => {
-                handleMachineClick(MACHINE_2);
-              }}
-            >
-              <SaveIcon fontSize="small" />
-            </Button>
-          </StyledButtonWrapper>
-        </StyledNewItemWrapper>
-      </>
-    );
-  };
+        <StyledButtonWrapper>
+          <Button
+            variant="contained"
+            size="small"
+            disableElevation
+            onClick={() => {
+              handleMachineClick(MACHINE_2);
+            }}
+          >
+            <SaveIcon fontSize="small" />
+          </Button>
+        </StyledButtonWrapper>
+      </StyledNewItemWrapper>
+    </>
+  );
+};
 
 export default EditCorrectionalFactorFrom;

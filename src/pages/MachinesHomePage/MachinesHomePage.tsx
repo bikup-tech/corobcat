@@ -1,10 +1,5 @@
-import { CircularProgress, Button } from "@mui/material";
-import LiteTasksTable from "../../components/MUITable/LiteTasksTable/LiteTasksTable";
-import { THeadCell } from "../../components/MUITable/MUITableTypes";
-
-import { useDispatch } from "react-redux";
-import { sortTasksByPriority } from "../../utils/sortTasksByPriority";
-import { TMachinesHomeTasks } from "./MachinesHomePageTypes";
+import { Button, CircularProgress } from "@mui/material";
+import { MACHINE_1, MACHINE_2 } from "../../constants/machineNames";
 import {
   StyledMachinesHomePageLoadingWrapper,
   StyledMachinesHomePageWrapper,
@@ -15,7 +10,12 @@ import {
   setCreateTaskModalSelectedMachine,
   setIsCreateTaskModalOpen,
 } from "../../redux/actions/mainActions";
-import { MACHINE_1, MACHINE_2 } from "../../constants/machineNames";
+
+import LiteTasksTable from "../../components/MUITable/LiteTasksTable/LiteTasksTable";
+import { THeadCell } from "../../components/MUITable/MUITableTypes";
+import { TMachinesHomeTasks } from "./MachinesHomePageTypes";
+import { sortTasksByPriority } from "../../utils/sortTasksByPriority";
+import { useDispatch } from "react-redux";
 
 interface IMachinePageProps {
   tasks: TMachinesHomeTasks | undefined;
@@ -25,7 +25,7 @@ interface IMachinePageProps {
 }
 
 function MachinesHomePage(props: IMachinePageProps) {
-  const { tasks, isLoading, isError } = props;
+  const { tasks, isLoading } = props;
 
   const dispatch = useDispatch();
 

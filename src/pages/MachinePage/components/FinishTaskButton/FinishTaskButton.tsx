@@ -7,7 +7,7 @@ interface IFinishTaskButtonProps {
 }
 
 function FinishTaskButton(props: IFinishTaskButtonProps) {
-  const { taskId, programNumber, openFinishedTaskDialog } = props;
+  const { taskId, openFinishedTaskDialog } = props;
 
   function handleClick() {
     openFinishedTaskDialog(taskId);

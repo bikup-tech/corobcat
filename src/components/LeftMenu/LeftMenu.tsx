@@ -1,26 +1,26 @@
-import { List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
-
-import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
-import PeopleIcon from "@mui/icons-material/People";
-import StoreIcon from "@mui/icons-material/Store";
-import { ListItemButton } from "@mui/material";
-import Avatar from "@mui/material/Avatar";
-import { NavLink, useHistory } from "react-router-dom";
-import LogoutIcon from "@mui/icons-material/Logout";
-import { useDispatch } from "react-redux";
-import SettingsIcon from "@mui/icons-material/Settings";
 import "./LeftMenu.scss";
+
+import { List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import { MACHINE_1, MACHINE_2 } from "../../constants/machineNames";
+import { NavLink, useHistory } from "react-router-dom";
 import {
   ROUTE_ADMIN_PROFILE,
   ROUTE_EMPLOYEES,
   ROUTE_FINISHEDTASKS,
-  ROUTE_LOGIN,
   ROUTE_MACHINES,
   ROUTE_MACHINES_NAME_FACTORY,
 } from "../../routes/routes";
-import { MACHINE_1, MACHINE_2 } from "../../constants/machineNames";
+
+import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
+import Avatar from "@mui/material/Avatar";
+import { ListItemButton } from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
+import PeopleIcon from "@mui/icons-material/People";
+import PrecisionManufacturingIcon from "@mui/icons-material/PrecisionManufacturing";
+import SettingsIcon from "@mui/icons-material/Settings";
+import StoreIcon from "@mui/icons-material/Store";
 import { logout } from "../../redux/actions/authActions";
+import { useDispatch } from "react-redux";
 
 function LeftMenu() {
   const history = useHistory();

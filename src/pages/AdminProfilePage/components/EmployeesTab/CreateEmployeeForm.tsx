@@ -39,7 +39,7 @@ const StyledMargin = styled.div`
 
 interface ICreateEmployeeFormProps {}
 
-const CreateEmployeeForm: FC<ICreateEmployeeFormProps> = ({}) => {
+const CreateEmployeeForm: FC<ICreateEmployeeFormProps> = () => {
   return (
     <StyledNewEmployeeFormContainer>
       <StyledFlex100Height>

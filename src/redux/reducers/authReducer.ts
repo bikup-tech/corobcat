@@ -5,7 +5,6 @@ import {
   LOGOUT,
 } from "../actions/actionTypes";
 
-import { TAction } from "../../types/storeActionType";
 import { TAuthActions } from "../actions/authActions";
 
 export default function authReducer(state: any = {}, action: TAuthActions) {
