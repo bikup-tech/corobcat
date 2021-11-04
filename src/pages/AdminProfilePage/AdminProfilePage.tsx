@@ -1,7 +1,6 @@
 import { AppBar, Box, Tab, Tabs } from "@mui/material";
 import { FC, useEffect } from "react";
 
-import { AnimatePresence } from "framer-motion";
 import EmployeesTab from "./components/EmployeesTab/EmployeesTab";
 import GeneralSettingsTab from "./components/GeneralSettingsTab/GeneralSettingsTab";
 import { TSettingsResponse } from "../../types/settingsTypes";
@@ -9,7 +8,6 @@ import TabPanel from "./components/TabPanel";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import userData from "../../mocks/users.json";
 
 const StyledAdminProfileHeader = styled.div`
   width: 100%;

@@ -1,11 +1,9 @@
 import {
   API_URL,
   ENDPOINT_SETTINGS,
-  ENDPOINT_USERS,
   ENDPOINT_USERS_ROLE,
 } from "../../../constants/apiConstants";
 
-import { TSettingsResponse } from "../../../types/settingsTypes";
 import axios from "axios";
 import { useQuery } from "react-query";
 

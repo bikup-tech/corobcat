@@ -1,14 +1,5 @@
-import { useQuery } from "react-query";
-import { getMachines } from "../../../mocks/machineRepository";
-
 import { getFinishedTasks } from "../../../mocks/tasksRepository";
-import { TMachineResponse } from "../../../types/machineTypes";
-
-function getMachineNameById(machines: TMachineResponse[], machineId: string) {
-  const machine = machines.find((machine) => machine._id === machineId);
-
-  return machine ? machine.name : "";
-}
+import { useQuery } from "react-query";
 
 export default function useFinisedTasksQuery() {
   // el useQuery reb un array amb el nom de la "action" i les variables que si canvien torna a executar

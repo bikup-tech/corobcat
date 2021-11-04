@@ -1,5 +1,4 @@
-import { Typography, Box } from "@mui/material";
-import { height } from "@mui/system";
+import { Box } from "@mui/material";
 import { FC } from "react";
 import { StyledFlexGrow } from "../../../StyledComponents/StyledTableHeader";
 

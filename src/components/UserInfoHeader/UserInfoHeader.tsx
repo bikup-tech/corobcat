@@ -1,20 +1,19 @@
-import React from "react";
-import { TUserResponse } from "../../types/employeeTypes";
 import "./UserInfoHeader.scss";
-import { useHistory } from "react-router-dom";
-import styled from "styled-components";
 
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import IconButton from "@mui/material/IconButton";
 import {
   StyledTableHeaderInfoWrapper,
   StyledTableHeaderWrapper,
 } from "../../StyledComponents/StyledTableHeader";
+
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import IconButton from "@mui/material/IconButton";
 import { TTaskResponse } from "../../types/taskTypes";
-import { TMachineResponse } from "../../types/machineTypes";
-import { calculateMachineGeneralValues } from "../../utils/calculateMachineGeneralValues";
+import { TUserResponse } from "../../types/employeeTypes";
 import TableHeaderInfoCard from "../TableHeaderInfoCard/TableHeaderInfoCard";
+import { calculateMachineGeneralValues } from "../../utils/calculateMachineGeneralValues";
 import { calculateTotalTime } from "../../utils/calculateTotalTime";
+import styled from "styled-components";
+import { useHistory } from "react-router-dom";
 
 const StyledFlexGrow = styled.div`
   flex: 1;

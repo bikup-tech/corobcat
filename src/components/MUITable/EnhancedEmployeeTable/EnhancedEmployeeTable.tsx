@@ -1,31 +1,27 @@
 import {
   Box,
   CircularProgress,
+  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TablePagination,
   TableRow,
-  Paper,
 } from "@mui/material";
-import React from "react";
-import {
-  maxTableHeight,
-  maxTableHeight_small,
-} from "../../../styles/styleConstants";
-import { TTaskResponse } from "../../../types/taskTypes";
-import formatDate from "../../../utils/formatDate";
-import TaskStatus from "../../TaskStatus/TaskStatus";
-import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
-import { THeadCell } from "../MUITableTypes";
-
 import {
   StyledLoadingWrapper,
   StyledTablePageContainer,
   StyledTableWrapper,
 } from "../SCMuiTable";
 
+import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
+import React from "react";
+import { THeadCell } from "../MUITableTypes";
+import { TTaskResponse } from "../../../types/taskTypes";
+import TaskStatus from "../../TaskStatus/TaskStatus";
+import formatDate from "../../../utils/formatDate";
+import { maxTableHeight_small } from "../../../styles/styleConstants";
 import { setTableRowBackgroundColorByPriority } from "../setTableRowBackgroundColorByPriority";
 
 interface IEnhnacedEmployeeTasksTableProps {

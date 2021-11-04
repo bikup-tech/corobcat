@@ -1,6 +1,5 @@
 import {
   Box,
-  CircularProgress,
   Paper,
   Table,
   TableBody,
@@ -10,21 +9,15 @@ import {
   TableRow,
 } from "@mui/material";
 import React, { useState } from "react";
-import { TTaskResponse } from "../../../types/taskTypes";
+import { StyledTablePageContainer, StyledTableWrapper } from "../SCMuiTable";
+
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
-import { THeadCell } from "../MUITableTypes";
-
 import FinishTaskButton from "../../../pages/MachinePage/components/FinishTaskButton/FinishTaskButton";
-import useFinishTaskDialog from "../../../pages/MachinePage/hooks/useFinishTaskDialog";
-
-import {
-  StyledLoadingWrapper,
-  StyledTableWrapper,
-  StyledTablePageContainer,
-} from "../SCMuiTable";
-
-import { setTableRowBackgroundColorByPriority } from "../setTableRowBackgroundColorByPriority";
+import { THeadCell } from "../MUITableTypes";
+import { TTaskResponse } from "../../../types/taskTypes";
 import { maxTableHeight } from "../../../styles/styleConstants";
+import { setTableRowBackgroundColorByPriority } from "../setTableRowBackgroundColorByPriority";
+import useFinishTaskDialog from "../../../pages/MachinePage/hooks/useFinishTaskDialog";
 
 interface IEnhancedTableProps {
   tasks: TTaskResponse[] | undefined;
@@ -35,11 +28,8 @@ interface IEnhancedTableProps {
 export default function EnhancedTaksTable(props: IEnhancedTableProps) {
   const { tasks, headCells } = props;
 
-  const {
-    FinishTaskDialog,
-    handleFinishTaskDialogOpen,
-    handleFinishTaskDialogClose,
-  } = useFinishTaskDialog();
+  const { FinishTaskDialog, handleFinishTaskDialogOpen } =
+    useFinishTaskDialog();
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(25);

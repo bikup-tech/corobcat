@@ -1,9 +1,6 @@
-import { useParams } from "react-router-dom";
-
-import { useSelector } from "react-redux";
-
 import MachinesHomePage from "./MachinesHomePage";
 import useMachinesHomeQuery from "./queries/useMachinesHomeQuery";
+import { useSelector } from "react-redux";
 
 function MachinesHomePageContainer() {
   const { forceRender } = useSelector((state: any) => state.mainReducer);

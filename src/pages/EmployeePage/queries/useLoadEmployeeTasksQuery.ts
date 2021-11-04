@@ -1,9 +1,7 @@
-import { useQuery } from "react-query";
-import { getMachines } from "../../../mocks/machineRepository";
-
 // mocks
 import { getTaskByUserId } from "../../../mocks/tasksRepository";
 import { getUserById } from "../../../mocks/userRepository";
+import { useQuery } from "react-query";
 
 export default function useLoadEmployeeTasksQuery(employeeId: string) {
   return useQuery(

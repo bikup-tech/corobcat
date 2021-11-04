@@ -9,7 +9,7 @@ const AdminProfilePageContainer: FC = () => {
   const { forceRender } = useSelector(
     (state: TInitialState) => state.mainReducer
   );
-  const { isLoading, isError, data } = useAdminProfilePageQuery(forceRender);
+  const { isLoading, data } = useAdminProfilePageQuery(forceRender);
 
   return (
     <>

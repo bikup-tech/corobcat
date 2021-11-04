@@ -1,12 +1,8 @@
-import { useQuery } from "react-query";
+import { MACHINE_1, MACHINE_2 } from "../../../constants/machineNames";
 
 // Mocks
-import {
-  getActiveTasks,
-  getTaskByMachineId,
-} from "../../../mocks/tasksRepository";
-import { getMachineByName } from "../../../mocks/machineRepository";
-import { MACHINE_1, MACHINE_2 } from "../../../constants/machineNames";
+import { getActiveTasks } from "../../../mocks/tasksRepository";
+import { useQuery } from "react-query";
 
 export default function useLoadMachineTasksQuery(forceRender: number) {
   // el useQuery reb un array amb el nom de la "action" i les variables que si canvien torna a executar

@@ -1,14 +1,10 @@
-import React from "react";
-
-// types
-import { TTaskResponse } from "../../types/taskTypes";
-import { THeadCell } from "../../components/MUITable/MUITableTypes";
-import { TUserResponse } from "../../types/employeeTypes";
-
 // components
 import EnhancedEmployeeTable from "../../components/MUITable/EnhancedEmployeeTable/EnhancedEmployeeTable";
+import { THeadCell } from "../../components/MUITable/MUITableTypes";
+// types
+import { TTaskResponse } from "../../types/taskTypes";
+import { TUserResponse } from "../../types/employeeTypes";
 import UserInfoHeader from "../../components/UserInfoHeader/UserInfoHeader";
-import { TMachineResponse } from "../../types/machineTypes";
 
 interface IEmployeePage {
   tasks: TTaskResponse[] | undefined;
