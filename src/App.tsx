@@ -75,7 +75,7 @@ function App() {
         </QueryClientProvider>
         <Toaster
           toastOptions={{
-            duration: 2000,
+            duration: 3000,
           }}
         />
       </Provider>

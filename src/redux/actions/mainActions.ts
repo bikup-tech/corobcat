@@ -1,3 +1,4 @@
+import { API_URL, ENDPOINT_SETTINGS } from "../../constants/apiConstants";
 import {
   FORCE_RENDER,
   SET_CREATE_TASK_MODAL_ISOPEN,
@@ -5,7 +6,6 @@ import {
 } from "./actionTypes";
 
 import { AutoFixOffSharp } from "@mui/icons-material";
-import { ENDPOINT_SETTINGS } from "../../constants/apiConstants";
 import { MACHINE_1 } from "../../constants/machineNames";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -34,8 +34,6 @@ export function setCreateTaskModalSelectedMachine(machine: string) {
 
 export function updateCorrectionalFactor(machineName: string, value: number) {
   return async (dispatch: any) => {
-    console.log("updateing corr factor..");
-
     try {
       const toUpdateMachine =
         machineName === MACHINE_1
@@ -46,9 +44,48 @@ export function updateCorrectionalFactor(machineName: string, value: number) {
         [toUpdateMachine]: value,
       };
 
-      const updatedSettings = await axios.patch(ENDPOINT_SETTINGS);
+      const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
+      const updatedSettings = await axios.patch(endpoint, query);
 
       toast.success("Actualizado!");
+
+      dispatch(forceRender());
+    } catch (error: any) {
+      toast.error(error.message);
+    }
+  };
+}
+
+export function createNewMaterial(value: string) {
+  return async (dispatch: any) => {
+    try {
+      const query = {
+        $push: { materials: value },
+      };
+
+      const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
+      const updatedSettings = await axios.patch(endpoint, query);
+
+      toast.success("Material añadido!");
+
+      dispatch(forceRender());
+    } catch (error: any) {
+      toast.error(error.message);
+    }
+  };
+}
+
+export function createNewThickness(value: number) {
+  return async (dispatch: any) => {
+    try {
+      const query = {
+        $push: { thicknesses: value },
+      };
+
+      const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
+      const updatedSettings = await axios.patch(endpoint, query);
+
+      toast.success("Espesor añadido!");
 
       dispatch(forceRender());
     } catch (error: any) {

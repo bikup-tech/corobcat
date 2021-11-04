@@ -6,16 +6,16 @@ import {
   DialogTitle,
   Grid,
 } from "@mui/material";
+
 import { Form } from "formik";
-import styled from "styled-components";
+import FormikSelect from "../FormikComponents/FormikSelect";
 import FormikTextField from "../FormikComponents/FormikTextField";
 import PriorityBadge from "./components/PriorityBadge/PriorityBadge";
-
+import { TInitialState } from "../../redux/store/initialState";
+import styled from "styled-components";
+import { useEffect } from "react";
 import { useFormikContext } from "formik";
 import { useSelector } from "react-redux";
-import { TInitialState } from "../../redux/store/initialState";
-import { useEffect } from "react";
-import FormikSelect from "../FormikComponents/FormikSelect";
 
 const StyledCreateTaskDialogWrapper = styled(Dialog)`
   .MuiPaper-root {
@@ -49,8 +49,6 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
   );
 
   useEffect(() => {
-    console.log("machine", selectedMachine);
-
     formikContext.values.selectedMachine = selectedMachine;
   }, [selectedMachine]);
 

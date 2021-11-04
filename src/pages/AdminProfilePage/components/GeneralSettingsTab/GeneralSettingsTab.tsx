@@ -1,8 +1,12 @@
 import * as Yup from "yup";
 
 import { Button, Fab, IconButton, TextField, Typography } from "@mui/material";
-import { FC, useRef } from "react";
+import { FC, useRef, useState } from "react";
 import { Form, Formik } from "formik";
+import {
+  createNewMaterial,
+  createNewThickness,
+} from "../../../../redux/actions/mainActions";
 
 import AddIcon from "@mui/icons-material/Add";
 import DeletableItemCard from "../DeletableItemCard";
@@ -12,6 +16,9 @@ import SaveIcon from "@mui/icons-material/Save";
 import { TSettingsResponse } from "../../../../types/settingsTypes";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { valueScaleCorrection } from "framer-motion/types/render/dom/projection/scale-correction";
 
 const StyledTabContainer = styled(motion.div).attrs(() => ({
   initial: { opacity: 0 },
@@ -79,15 +86,48 @@ interface IGeneralSettingsTabProps {
 }
 
 const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
-  const newMaterialRef = useRef(null);
-  const newThicknessRef = useRef(null);
+  const dispatch = useDispatch();
+
+  console.log(settings);
+
+  const [newMaterial, setNewMaterial] = useState("");
+  const [newThickness, setNewThickness] = useState("");
 
   const correctionalFactorInitialValues = {
     correctionalFactorMachine1: settings.correctionalFactorMachine1,
     correctionalFactorMachine2: settings.correctionalFactorMachine2,
   };
 
+  function handleNewMaterialChange({ target }: any) {
+    setNewMaterial(target.value);
+  }
+
+  function handleNewMaterialClick() {
+    if (newMaterial) {
+      dispatch(createNewMaterial(newMaterial));
+    } else {
+      toast.error("No hay un material introducido");
+    }
+  }
+
   function handleDeleteMaterial() {}
+
+  function handleNewThicknessChange({ target }: any) {
+    let value: string = target.value;
+    if (value.includes(",")) {
+      value = value.replace(",", ".");
+    }
+
+    setNewThickness(value);
+  }
+
+  function handleNewThicknessClick() {
+    if (newThickness.match(/^[1-9]\d*(\.\d+)?$/)) {
+      dispatch(createNewThickness(Number(newThickness)));
+    } else {
+      toast.error("Espesor invalido. Solo puede contener números.");
+    }
+  }
 
   function handleDeleteThickness() {}
 
@@ -116,10 +156,16 @@ const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
             placeholder="Nuevo material"
             size="small"
             sx={{ marginRight: "1rem" }}
-            ref={newMaterialRef}
+            value={newMaterial}
+            onChange={handleNewMaterialChange}
           />
           <StyledButtonWrapper>
-            <Button variant="contained" size="small" disableElevation>
+            <Button
+              variant="contained"
+              size="small"
+              onClick={handleNewMaterialClick}
+              disableElevation
+            >
               <AddIcon fontSize="small" />
             </Button>
           </StyledButtonWrapper>
@@ -145,10 +191,16 @@ const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
             placeholder="Nuevo espesor"
             size="small"
             sx={{ marginRight: "1rem" }}
-            ref={newThicknessRef}
+            value={newThickness}
+            onChange={handleNewThicknessChange}
           />
           <StyledButtonWrapper>
-            <Button variant="contained" size="small" disableElevation>
+            <Button
+              variant="contained"
+              size="small"
+              onClick={handleNewThicknessClick}
+              disableElevation
+            >
               <AddIcon fontSize="small" />
             </Button>
           </StyledButtonWrapper>
