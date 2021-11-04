@@ -2,6 +2,7 @@ import {
   API_URL,
   ENDPOINT_SETTINGS,
   ENDPOINT_USERS,
+  ENDPOINT_USERS_BY_ID,
 } from "../../constants/apiConstants";
 import {
   FORCE_RENDER,
@@ -148,6 +149,21 @@ export function createEmployee(values: any) {
 
       const endpoint = `${API_URL}${ENDPOINT_USERS}`;
       const newUser = await axios.post(endpoint, body);
+
+      toast.success("Empleado creado!");
+
+      dispatch(forceRender());
+    } catch (error: any) {
+      toast.error(error.message);
+    }
+  };
+}
+
+export function deleteEmployee(userId: string) {
+  return async (dispatch: any) => {
+    try {
+      const endpoint = `${API_URL}${ENDPOINT_USERS_BY_ID(userId)}`;
+      const newUser = await axios.delete(endpoint);
 
       toast.success("Empleado creado!");
 

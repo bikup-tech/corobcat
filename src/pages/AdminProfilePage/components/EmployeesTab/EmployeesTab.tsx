@@ -1,13 +1,16 @@
 import * as Yup from "yup";
 
 import { Form, Formik } from "formik";
+import {
+  createEmployee,
+  deleteEmployee,
+} from "../../../../redux/actions/mainActions";
 
 import CreateEmployeeForm from "./CreateEmployeeForm";
 import DeletableItemCard from "../DeletableItemCard";
 import { FC } from "react";
 import { TUserResponse } from "../../../../types/employeeTypes";
 import { Typography } from "@mui/material";
-import { createEmployee } from "../../../../redux/actions/mainActions";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
@@ -66,6 +69,10 @@ const EmployeesTab: FC<IEmployeesTabprops> = ({ employees }) => {
     dispatch(createEmployee(values));
   }
 
+  function handleDeleteEmployee(userId: string) {
+    dispatch(deleteEmployee(userId));
+  }
+
   return (
     <StyledTabContainer className="tabContainer">
       <StyledTabTitle>Gestión de empleados</StyledTabTitle>
@@ -85,7 +92,9 @@ const EmployeesTab: FC<IEmployeesTabprops> = ({ employees }) => {
           <StyledEmployeeCardContainer className="employeesList">
             <DeletableItemCard
               itemName={`(${employee.employerCode}): ${employee.name} `}
-              handleDelete={() => {}}
+              handleDelete={() => {
+                handleDeleteEmployee(employee._id);
+              }}
               key={employee._id}
             />
           </StyledEmployeeCardContainer>
