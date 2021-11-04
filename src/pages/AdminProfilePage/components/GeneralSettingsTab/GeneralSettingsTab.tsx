@@ -6,6 +6,8 @@ import { Form, Formik } from "formik";
 import {
   createNewMaterial,
   createNewThickness,
+  deleteMaterial,
+  deleteThickness,
 } from "../../../../redux/actions/mainActions";
 
 import AddIcon from "@mui/icons-material/Add";
@@ -21,7 +23,7 @@ import { useDispatch } from "react-redux";
 import { valueScaleCorrection } from "framer-motion/types/render/dom/projection/scale-correction";
 
 const StyledTabContainer = styled(motion.div).attrs(() => ({
-  initial: { opacity: 0 },
+  initial: { opacity: 1 },
   animate: { opacity: 1 },
 }))`
   width: 100%;
@@ -110,7 +112,11 @@ const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
     }
   }
 
-  function handleDeleteMaterial() {}
+  function handleDeleteMaterial(material: string) {
+    if (window.confirm("Seguro que quieres eliminar el material?")) {
+      dispatch(deleteMaterial(material));
+    }
+  }
 
   function handleNewThicknessChange({ target }: any) {
     let value: string = target.value;
@@ -129,7 +135,11 @@ const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
     }
   }
 
-  function handleDeleteThickness() {}
+  function handleDeleteThickness(value: number) {
+    if (window.confirm("Seguro que quieres eliminar el espesor?")) {
+      dispatch(deleteThickness(value));
+    }
+  }
 
   return (
     <StyledTabContainer className="tabContainer">
@@ -174,7 +184,9 @@ const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
           {settings.materials.map((material) => (
             <DeletableItemCard
               itemName={material}
-              handleDelete={handleDeleteMaterial}
+              handleDelete={() => {
+                handleDeleteMaterial(material);
+              }}
               key={material}
             />
           ))}
@@ -209,7 +221,9 @@ const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
           {settings.thicknesses.map((value) => (
             <DeletableItemCard
               itemName={`${value} mm`}
-              handleDelete={handleDeleteThickness}
+              handleDelete={() => {
+                handleDeleteThickness(value);
+              }}
               key={value}
             />
           ))}

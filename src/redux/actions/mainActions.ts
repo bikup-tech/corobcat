@@ -93,3 +93,41 @@ export function createNewThickness(value: number) {
     }
   };
 }
+
+export function deleteMaterial(value: string) {
+  return async (dispatch: any) => {
+    try {
+      const query = {
+        $pull: { materials: value },
+      };
+
+      const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
+      const updatedSettings = await axios.patch(endpoint, query);
+
+      toast.success("Material eliminado!");
+
+      dispatch(forceRender());
+    } catch (error: any) {
+      toast.error(error.message);
+    }
+  };
+}
+
+export function deleteThickness(value: number) {
+  return async (dispatch: any) => {
+    try {
+      const query = {
+        $pull: { thicknesses: value },
+      };
+
+      const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
+      const updatedSettings = await axios.patch(endpoint, query);
+
+      toast.success("Espesor eliminado!");
+
+      dispatch(forceRender());
+    } catch (error: any) {
+      toast.error(error.message);
+    }
+  };
+}

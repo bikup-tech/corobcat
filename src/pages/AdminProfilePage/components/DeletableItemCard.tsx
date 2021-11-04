@@ -1,7 +1,8 @@
+import { IconButton, Typography } from "@mui/material";
+
+import DeleteIcon from "@mui/icons-material/Delete";
 import { FC } from "react";
 import styled from "styled-components";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { Typography } from "@mui/material";
 
 const StyledDeletableItemCardContainer = styled.li`
   width: 100%;
@@ -22,7 +23,7 @@ const StyledText = styled(Typography)`
 `;
 
 interface IDeletableItemCardProps {
-  handleDelete: Function;
+  handleDelete: any;
   itemName: string;
 }
 
@@ -33,12 +34,14 @@ const DeletableItemCard: FC<IDeletableItemCardProps> = ({
   return (
     <StyledDeletableItemCardContainer>
       <StyledText>{itemName}</StyledText>
-      <DeleteIcon
-        sx={{
-          cursor: "pointer",
-          ":hover": { color: "#1876D1" },
-        }}
-      />
+      <IconButton onClick={handleDelete}>
+        <DeleteIcon
+          sx={{
+            cursor: "pointer",
+            ":hover": { color: "#1876D1" },
+          }}
+        />
+      </IconButton>
     </StyledDeletableItemCardContainer>
   );
 };

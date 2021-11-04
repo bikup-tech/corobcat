@@ -69,14 +69,12 @@ const AdminProfilePage: FC<IAdminProfilePageProps> = ({ settings }) => {
             <Tab label="Empleados" {...a11yProps(1)} sx={{ color: "white" }} />
           </Tabs>
         </AppBar>
-        <AnimatePresence>
-          <TabPanel value={value} index={0} key="generalSettingsTab">
-            <GeneralSettingsTab settings={settings} />
-          </TabPanel>
-          <TabPanel value={value} index={1} key="employeesTab">
-            <EmployeesTab employees={userData} />
-          </TabPanel>
-        </AnimatePresence>
+        <TabPanel value={value} index={0} key="generalSettingsTab">
+          <GeneralSettingsTab settings={settings} />
+        </TabPanel>
+        <TabPanel value={value} index={1} key="employeesTab">
+          <EmployeesTab employees={userData} />
+        </TabPanel>
       </Box>
     </>
   );
