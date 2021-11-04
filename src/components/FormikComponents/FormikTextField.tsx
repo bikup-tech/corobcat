@@ -1,8 +1,8 @@
 import { InputAdornment, TextField } from "@mui/material";
-import React from "react";
-import { useFormikContext } from "formik";
 
+import React from "react";
 import styled from "styled-components";
+import { useFormikContext } from "formik";
 
 const StyledFormikTextFieldWrapper = styled.div`
   input {
@@ -50,7 +50,7 @@ function FormikTextField(props: IFormikTextFieldProps) {
   }
 
   return (
-    <StyledFormikTextFieldWrapper>
+    <StyledFormikTextFieldWrapper className="formikTextField">
       <TextField
         variant={variant}
         name={name}

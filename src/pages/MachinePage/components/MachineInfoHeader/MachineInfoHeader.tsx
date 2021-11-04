@@ -18,14 +18,16 @@ import {
 import { MACHINE_1, MACHINE_2 } from "../../../../constants/machineNames";
 
 const StyledTableHeaderName = styled.p`
-  margin-left: 0.5rem;
-  font-size: 1.5rem;
-  justify-self: flex-start;
+  margin: 0 0.5rem;
+  font-size: 1.25rem;
+  width: 6.25rem;
 `;
 
 const StyledTableHeaderInfo = styled.p`
-  width: 15rem;
-  margin-left: 2rem;
+  width: 22rem;
+  margin-left: 1.5rem;
+  text-align: center;
+  font-size: 1.75rem;
 `;
 
 interface IMachineInfoHeaderProps {
@@ -54,7 +56,7 @@ function MachineInfoHeader(props: IMachineInfoHeaderProps) {
       </IconButton>
       <StyledTableHeaderInfoWrapper>
         <StyledTableHeaderName className="user-data-table__info--name">
-          {machineName}
+          {machineName === "máquina1" ? "Máquina 1" : "Máquina 2"}
         </StyledTableHeaderName>
         <StyledTableHeaderInfo className="user-data-table__info">
           Programas activos: {activeOrders}

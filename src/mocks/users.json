@@ -9,7 +9,7 @@
   {
     "_id": "6173d6b92030904bc60b5b59",
     "role": 1,
-    "name": "user-1",
+    "name": "Jose Luis Nombre largo ejemplo",
     "employerCode": "e1",
     "__v": 0
   },
@@ -46,6 +46,13 @@
     "role": 1,
     "name": "user-6",
     "employerCode": "e6",
+    "__v": 0
+  },
+  {
+    "_id": "6173d6b92030904bc60b5b5a",
+    "role": 0,
+    "name": "Admin",
+    "employerCode": "admin",
     "__v": 0
   }
 ]

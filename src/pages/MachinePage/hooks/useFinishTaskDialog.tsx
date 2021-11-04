@@ -5,15 +5,18 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
+  Grid,
+  TextField,
 } from "@mui/material";
-
 import React, { useState } from "react";
+
+import { forceRender } from "../../../redux/actions/mainActions";
 import { saveFinishedTask } from "../../../mocks/tasksRepository";
 import { useDispatch } from "react-redux";
-import { forceRender } from "../../../redux/actions/mainActions";
 
 const initialState = {
   taskId: "",
+  isAcceptButtonActive: false,
 };
 
 export default function useFinishTaskDialog() {
@@ -26,14 +29,32 @@ export default function useFinishTaskDialog() {
 
   function handleFinishTaskDialogOpen(taskId: string) {
     setIsFinishTaskDialogOpen(true);
-    setFinishTaskDialogState({ ...finishTaskDialogState, taskId });
+    setFinishTaskDialogState({
+      ...finishTaskDialogState,
+      taskId,
+      isAcceptButtonActive: false,
+    });
   }
 
   function handleFinishTaskDialogClose() {
     setIsFinishTaskDialogOpen(false);
   }
 
+  function handleEmployeeCodeChange({ target }: any) {
+    let hasValue = false;
+    if (target.value) {
+      hasValue = true;
+    }
+
+    setFinishTaskDialogState((prevState) => ({
+      ...prevState,
+      isAcceptButtonActive: hasValue,
+    }));
+  }
+
   function handleAccept() {
+    // TODO: Dispatch de la action que comprova si existeix el employeeCode i l'asigna i finalitza.
+    // TODO: dispatch de la action que elimina la task al backend
     saveFinishedTask(finishTaskDialogState.taskId);
     setIsFinishTaskDialogOpen(false);
     dispatch(forceRender());
@@ -51,12 +72,29 @@ export default function useFinishTaskDialog() {
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-           Estás seguro de que deseas finalizar el programa?
+           Introduce tu código de empleado para finalizar el programa:
         </DialogContentText>
+        <Grid container>
+          <Grid item xs={8}>
+            <TextField
+              variant="outlined"
+              label="Cód. Empleado"
+              placeholder="Código de empleado"
+              fullWidth
+              sx={{ marginTop: "1rem" }}
+              onChange={handleEmployeeCodeChange}
+            />
+          </Grid>
+        </Grid>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleFinishTaskDialogClose}>Cancelar</Button>
-        <Button onClick={handleAccept} autoFocus variant="contained">
+        <Button
+          onClick={handleAccept}
+          autoFocus
+          variant="contained"
+          disabled={finishTaskDialogState.isAcceptButtonActive ? false : true}
+        >
           Finalizar programa
         </Button>
       </DialogActions>
