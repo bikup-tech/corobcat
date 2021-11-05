@@ -11,6 +11,7 @@ import {
 import React, { useState } from 'react';
 import { StyledTablePageContainer, StyledTableWrapper } from '../SCMuiTable';
 
+import { ADMIN_NUMBER } from '../../../constants/rolesByNumber';
 import EnhancedTableHead from '../EnhancedTableHead/EnhancedTableHead';
 import FinishTaskButton from '../../../pages/MachinePage/components/FinishTaskButton/FinishTaskButton';
 import { THeadCell } from '../MUITableTypes';
@@ -75,7 +76,7 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                           {task.duration} min
                         </TableCell>
                         <TableCell align='center'>
-                          {task.user.employerCode === user?.employerCode && (
+                          {user?.role === ADMIN_NUMBER ? (
                             <FinishTaskButton
                               taskId={task._id}
                               programNumber={task.programNumber}
@@ -83,6 +84,16 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                                 handleFinishTaskDialogOpen
                               }
                             />
+                          ) : (
+                            task.user.employerCode === user?.employerCode && (
+                              <FinishTaskButton
+                                taskId={task._id}
+                                programNumber={task.programNumber}
+                                openFinishedTaskDialog={
+                                  handleFinishTaskDialogOpen
+                                }
+                              />
+                            )
                           )}
                         </TableCell>
                       </TableRow>
