@@ -1,8 +1,7 @@
-import { FC } from "react";
-import styled from "styled-components";
-
-import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { FC } from "react";
+import WatchLaterIcon from "@mui/icons-material/WatchLater";
+import styled from "styled-components";
 
 const StyledTaskStatusContainer = styled.div`
   display: flex;
@@ -13,6 +12,7 @@ const StyledTaskStatusContainer = styled.div`
   font-size: 0.9rem;
   font-weight: 600;
   width: fit-content;
+  margin: auto;
 `;
 
 const StyledTaskText = styled.span`

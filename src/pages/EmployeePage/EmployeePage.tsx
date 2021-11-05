@@ -18,10 +18,6 @@ function EmployeePage(props: IEmployeePage) {
 
   const headCells: THeadCell[] = [
     {
-      id: "taskNumber",
-      label: "Nº tarea",
-    },
-    {
       id: "status",
       label: "Estado",
     },

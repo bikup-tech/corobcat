@@ -90,15 +90,6 @@ export default function EnhnacedEmployeeTasksTable(
                           task.priority
                         )}
                       >
-                        <TableCell
-                          component="th"
-                          scope="row"
-                          align="center"
-                          width={100}
-                        >
-                          {task.taskNumber}
-                        </TableCell>
-
                         <TableCell align="center">
                           <TaskStatus status={task.status} />
                         </TableCell>
