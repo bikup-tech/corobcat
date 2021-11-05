@@ -21,11 +21,10 @@ export function calculateFinishedTasksGeneralValues(
   const machine1Tasks = tasks?.filter(
     (task) => task.machine.name === MACHINE_1
   );
+
   const machine2Tasks = tasks?.filter(
     (task) => task.machine.name === MACHINE_2
   );
-
-  console.log(machine1Tasks);
 
   const machine1Time = calculateTotalTime(machine1Tasks);
   const machine2Time = calculateTotalTime(machine2Tasks);
