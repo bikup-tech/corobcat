@@ -1,15 +1,15 @@
-import { Dispatch } from "redux";
+import { API_URL, ENDPOINT_AUTH } from '../../constants/apiConstants';
 import {
   LOGIN_ERROR,
-  LOGIN_SUCCESS,
   LOGIN_LOADING,
+  LOGIN_SUCCESS,
   LOGOUT,
-} from "./actionTypes";
+} from './actionTypes';
 
-// mocks
-import { getUserByCode } from "../../mocks/userRepository";
-import { TUserResponse } from "../../types/employeeTypes";
-import { ERROR_MESSAGE_INVALID_CREDENTIALS } from "../../constants/errorMessages";
+import { Dispatch } from 'redux';
+import { ERROR_MESSAGE_INVALID_CREDENTIALS } from '../../constants/errorMessages';
+import { TUserResponse } from '../../types/employeeTypes';
+import axios from 'axios';
 
 type TLoginLoadingAction = {
   type: typeof LOGIN_LOADING;
@@ -55,11 +55,13 @@ export function login(userCode: string) {
   return async (dispatch: Dispatch) => {
     try {
       dispatch(loginLoading());
-      // TODO: const {data} = await axios.get('/api/user/employerCode/${userCode')
-      const data = await getUserByCode(userCode);
+      const endpoint = `${API_URL}${ENDPOINT_AUTH}`;
+
+      const body: any = { employeeCode: userCode };
+      const { data } = await axios.post(endpoint, body);
 
       if (data) {
-        localStorage.setItem("user", JSON.stringify(data));
+        localStorage.setItem('user', JSON.stringify(data));
         dispatch(loginSuccess(data));
       } else {
         dispatch(loginError(ERROR_MESSAGE_INVALID_CREDENTIALS(userCode)));
@@ -75,7 +77,7 @@ export function login(userCode: string) {
 }
 
 export function logout() {
-  localStorage.removeItem("user");
+  localStorage.removeItem('user');
 
   return {
     type: LOGOUT,

@@ -1,25 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
-
-// actions
-import { login } from "../../redux/actions/authActions";
-
-// styles
-import styled from "styled-components";
-import "./LoginPage.scss";
+import './LoginPage.scss';
 
 import {
+  Avatar,
+  Button,
+  CircularProgress,
   Grid,
   Paper,
-  Avatar,
   TextField,
-  CircularProgress,
-  Button,
-} from "@mui/material";
+} from '@mui/material';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import LoginIcon from "@mui/icons-material/Login";
-import { TInitialState } from "../../redux/store/initialState";
+import LoginIcon from '@mui/icons-material/Login';
+import { TInitialState } from '../../redux/store/initialState';
+// actions
+import { login } from '../../redux/actions/authActions';
+// styles
+import styled from 'styled-components';
+import { useHistory } from 'react-router';
 
 const StyledLoadingWrapper = styled.div`
   display: flex;
@@ -61,11 +59,11 @@ function LoginPage() {
   );
 
   const valueRef = useRef<HTMLInputElement>(null);
-  const [warningMessage, setWarningMessage] = useState("");
+  const [warningMessage, setWarningMessage] = useState('');
 
   useEffect(() => {
     if (user) {
-      history.replace("/machines");
+      history.replace('/machines');
     }
     if (loginError) {
       setWarningMessage(loginError);
@@ -79,7 +77,7 @@ function LoginPage() {
   }
 
   function handleKeyUp(event: React.KeyboardEvent) {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       handleLogInClick();
     }
   }
@@ -95,18 +93,18 @@ function LoginPage() {
             <h2>Login</h2>
           </Grid>
           <TextField
-            label="Código de empleado"
-            placeholder="Entra el código de empleado"
-            variant="standard"
+            label='Código de empleado'
+            placeholder='Entra el código de empleado'
+            variant='standard'
             fullWidth
             required
             inputRef={valueRef}
             onKeyUp={handleKeyUp}
           />
           {loginLoading && <CircularProgress />}
-          <small className="form__warningMessage">{warningMessage}</small>
+          <small className='form__warningMessage'>{warningMessage}</small>
 
-          <Button variant="contained" fullWidth onClick={handleLogInClick}>
+          <Button variant='contained' fullWidth onClick={handleLogInClick}>
             login
           </Button>
         </Paper>

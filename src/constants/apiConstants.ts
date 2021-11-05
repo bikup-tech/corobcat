@@ -24,3 +24,6 @@ export const ENDPOINT_TASK_ACTIVE_BY_MACHINE_ID = (machineId: string) =>
 export const ENDPOINT_MACHINES = '/machines';
 export const ENDPOINT_MACHINES_BY_NAME = (machineName: string) =>
   `/machines/name/${machineName}`;
+
+// AUTH
+export const ENDPOINT_AUTH = '/auth/login';
