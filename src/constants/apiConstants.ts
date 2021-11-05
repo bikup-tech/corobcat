@@ -7,6 +7,8 @@ export const ENDPOINT_SETTINGS = "/settings";
 export const ENDPOINT_USERS = "/users";
 export const ENDPOINT_USERS_BY_ID = (userId: string) => `/users/${userId}`;
 export const ENDPOINT_USERS_ROLE = (role: number) => `/users/role/${role}`;
+export const ENDPOINT_USER_BY_EMPLOYEE_CODE = (employeeCode: string) =>
+  `/users/code/${employeeCode}`;
 
 // TASKS
 export const ENDPOINT_TASKS = "/tasks";
