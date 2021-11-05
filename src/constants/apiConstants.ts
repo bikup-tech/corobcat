@@ -9,6 +9,8 @@ export const ENDPOINT_USERS_BY_ID = (userId: string) => `/users/${userId}`;
 export const ENDPOINT_USERS_ROLE = (role: number) => `/users/role/${role}`;
 export const ENDPOINT_USER_BY_EMPLOYEE_CODE = (employeeCode: string) =>
   `/users/code/${employeeCode}`;
+export const ENDPOINT_USER_TASKS_BY_ID = (userId: string) =>
+  `/tasks/user/${userId}`;
 
 // TASKS
 export const ENDPOINT_TASKS = '/tasks';

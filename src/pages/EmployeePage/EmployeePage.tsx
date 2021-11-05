@@ -1,10 +1,10 @@
 // components
-import EnhancedEmployeeTable from "../../components/MUITable/EnhancedEmployeeTable/EnhancedEmployeeTable";
-import { THeadCell } from "../../components/MUITable/MUITableTypes";
+import EnhancedEmployeeTable from '../../components/MUITable/EnhancedEmployeeTable/EnhancedEmployeeTable';
+import { THeadCell } from '../../components/MUITable/MUITableTypes';
 // types
-import { TTaskResponse } from "../../types/taskTypes";
-import { TUserResponse } from "../../types/employeeTypes";
-import UserInfoHeader from "../../components/UserInfoHeader/UserInfoHeader";
+import { TTaskResponse } from '../../types/taskTypes';
+import { TUserResponse } from '../../types/employeeTypes';
+import UserInfoHeader from '../../components/UserInfoHeader/UserInfoHeader';
 
 interface IEmployeePage {
   tasks: TTaskResponse[] | undefined;
@@ -18,36 +18,36 @@ function EmployeePage(props: IEmployeePage) {
 
   const headCells: THeadCell[] = [
     {
-      id: "taskNumber",
-      label: "Nº tarea",
+      id: 'taskNumber',
+      label: 'Nº tarea',
     },
     {
-      id: "status",
-      label: "Estado",
+      id: 'status',
+      label: 'Estado',
     },
     {
-      id: "material",
-      label: "Material",
+      id: 'material',
+      label: 'Material',
     },
     {
-      id: "thickness",
-      label: "Espesor",
+      id: 'thickness',
+      label: 'Espesor',
     },
     {
-      id: "programNumber",
-      label: "Nº Programa",
+      id: 'programNumber',
+      label: 'Nº Programa',
     },
     {
-      id: "machine",
-      label: "Máquina",
+      id: 'machine',
+      label: 'Máquina',
     },
     {
-      id: "duration",
-      label: "Tiempo",
+      id: 'duration',
+      label: 'Tiempo',
     },
     {
-      id: "date",
-      label: "Fecha",
+      id: 'date',
+      label: 'Fecha',
     },
   ];
 

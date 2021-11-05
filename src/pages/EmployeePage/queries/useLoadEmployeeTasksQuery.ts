@@ -1,17 +1,27 @@
-// mocks
-import { getTaskByUserId } from "../../../mocks/tasksRepository";
-import { getUserById } from "../../../mocks/userRepository";
-import { useQuery } from "react-query";
+import {
+  API_URL,
+  ENDPOINT_USERS_BY_ID,
+  ENDPOINT_USER_TASKS_BY_ID,
+} from '../../../constants/apiConstants';
+
+import axios from 'axios';
+import { useQuery } from 'react-query';
 
 export default function useLoadEmployeeTasksQuery(employeeId: string) {
+  console.log(`${API_URL}${ENDPOINT_USER_TASKS_BY_ID(employeeId)}`);
+  console.log(`${API_URL}${ENDPOINT_USERS_BY_ID(employeeId)}`);
   return useQuery(
-    ["loadEmployeeTasks", employeeId],
+    ['loadEmployeeTasks', employeeId],
     async () => {
-      // TODO const {data:employee} = await axios.get("/api/employee/${employeeId}")
-      // TODO const {data:employeeTasks} = await axios.get("/api/tasks/employee/${employeeId}")
+      const { data: employee } = await axios.get(
+        `${API_URL}${ENDPOINT_USERS_BY_ID(employeeId)}`
+      );
+
+      const { data: employeeTasks } = await axios.get(
+        `${API_URL}${ENDPOINT_USER_TASKS_BY_ID(employeeId)}`
+      );
       // TODO const {data:machines} = await axios.get("/api/machines")
-      const employee = getUserById(employeeId);
-      const employeeTasks = getTaskByUserId(employeeId);
+
       return { employeeTasks, employee };
     },
     {

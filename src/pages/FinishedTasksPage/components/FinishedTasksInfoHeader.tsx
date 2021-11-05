@@ -1,19 +1,18 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
-import styled from "styled-components";
-
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import IconButton from "@mui/material/IconButton";
-
-import { ROUTE_MACHINES } from "../../../routes/routes";
-import { TTaskResponse } from "../../../types/taskTypes";
-import { calculateMachineGeneralValues } from "../../../utils/calculateMachineGeneralValues";
 import {
   StyledTableHeaderInfoWrapper,
   StyledTableHeaderWrapper,
-} from "../../../StyledComponents/StyledTableHeader";
-import TableHeaderInfoCard from "../../../components/TableHeaderInfoCard/TableHeaderInfoCard";
-import { calculateTotalTime } from "../../../utils/calculateTotalTime";
+} from '../../../StyledComponents/StyledTableHeader';
+
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import IconButton from '@mui/material/IconButton';
+import { ROUTE_MACHINES } from '../../../routes/routes';
+import React from 'react';
+import { TTaskResponse } from '../../../types/taskTypes';
+import TableHeaderInfoCard from '../../../components/TableHeaderInfoCard/TableHeaderInfoCard';
+import { calculateMachineGeneralValues } from '../../../utils/calculateMachineGeneralValues';
+import { calculateTotalTime } from '../../../utils/calculateTotalTime';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 const StyledFlexGrow = styled.div`
   flex: 1;
@@ -36,11 +35,11 @@ function FinishedTasksInfoHeader(props: IFinishedTasksInfoHeaderProps) {
   const history = useHistory();
 
   return (
-    <StyledTableHeaderWrapper className="user-data-table-container">
-      <StyledTableHeaderInfoWrapper className="user-data-table">
+    <StyledTableHeaderWrapper className='user-data-table-container'>
+      <StyledTableHeaderInfoWrapper className='user-data-table'>
         <IconButton
           onClick={() => history.push(ROUTE_MACHINES)}
-          aria-label="goBack"
+          aria-label='goBack'
         >
           <ArrowBackIcon />
         </IconButton>
