@@ -66,8 +66,6 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
   }, [isOpen]);
 
   useEffect(() => {
-    console.log("running...", formikContext.values.selectedMachine);
-
     formikContext.values.correctionalFactor =
       formikContext.values.selectedMachine === "Maquina1"
         ? settings.correctionalFactorMachine1

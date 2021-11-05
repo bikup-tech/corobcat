@@ -6,13 +6,19 @@ import { loadSettings } from "../../redux/actions/mainActions";
 const AppInit: FC = () => {
   const dispatch = useDispatch();
 
-  const { settings } = useSelector((state: any) => state.mainReducer);
+  const { settings, forceRender } = useSelector(
+    (state: any) => state.mainReducer
+  );
 
   useEffect(() => {
     if (!settings || !settings.companyName) {
       dispatch(loadSettings());
     }
   }, [settings]);
+
+  useEffect(() => {
+    dispatch(loadSettings());
+  }, [forceRender]);
 
   return <></>;
 };
