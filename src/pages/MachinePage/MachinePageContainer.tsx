@@ -1,14 +1,18 @@
-import { useParams } from "react-router-dom";
-import MachinePage from "./MachinePage";
-import useLoadMachineTasksQuery from "./queries/useLoadMachineTasksQuery";
-import { useSelector } from "react-redux";
 import { MACHINE_1, MACHINE_2 } from "../../constants/machineNames";
+import { useDispatch, useSelector } from "react-redux";
+
+import MachinePage from "./MachinePage";
+import { deleteTask } from "../../redux/actions/mainActions";
+import useLoadMachineTasksQuery from "./queries/useLoadMachineTasksQuery";
+import { useParams } from "react-router-dom";
 
 interface IMachinePageContainerParams {
   machineName: typeof MACHINE_1 | typeof MACHINE_2;
 }
 
 function MachinePageContainer() {
+  const dispatch = useDispatch();
+
   const { forceRender } = useSelector((state: any) => state.mainReducer);
 
   const { machineName } = useParams<IMachinePageContainerParams>();
@@ -22,12 +26,17 @@ function MachinePageContainer() {
     console.log("hola");
   }
 
+  function handleDeleteTask(taskId: string) {
+    dispatch(deleteTask(taskId));
+  }
+
   return (
     <>
       <MachinePage
         machineName={machineName}
         tasks={data}
         handleTaskClick={handleTaskClick}
+        handleDeleteTask={handleDeleteTask}
         isLoading={isLoading}
         isError={isError}
       />

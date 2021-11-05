@@ -1,6 +1,7 @@
 import {
   API_URL,
   ENDPOINT_SETTINGS,
+  ENDPOINT_TASKS_BY_ID,
   ENDPOINT_USERS,
   ENDPOINT_USERS_BY_ID,
 } from "../../constants/apiConstants";
@@ -168,6 +169,22 @@ export function deleteEmployee(userId: string) {
       dispatch(forceRender());
     } catch (error: any) {
       toast.error(error.message);
+    }
+  };
+}
+
+export function deleteTask(taskId: string) {
+  return async (dispatch: any) => {
+    try {
+      const endpoint = `${API_URL}${ENDPOINT_TASKS_BY_ID(taskId)}`;
+      await axios.delete(endpoint);
+
+      toast.success("Tarea eliminada!");
+
+      dispatch(forceRender());
+    } catch (error: any) {
+      const message = error?.response?.data?.message || error.message;
+      toast.error(message);
     }
   };
 }
