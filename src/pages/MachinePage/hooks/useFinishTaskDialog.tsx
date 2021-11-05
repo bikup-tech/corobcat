@@ -9,14 +9,15 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useState } from "react";
+import { finishTask, forceRender } from "../../../redux/actions/mainActions";
 
-import { forceRender } from "../../../redux/actions/mainActions";
 import { saveFinishedTask } from "../../../mocks/tasksRepository";
 import { useDispatch } from "react-redux";
 
 const initialState = {
   taskId: "",
   isAcceptButtonActive: false,
+  employeeCode: "",
 };
 
 export default function useFinishTaskDialog() {
@@ -33,6 +34,7 @@ export default function useFinishTaskDialog() {
       ...finishTaskDialogState,
       taskId,
       isAcceptButtonActive: false,
+      employeeCode: "",
     });
   }
 
@@ -49,15 +51,18 @@ export default function useFinishTaskDialog() {
     setFinishTaskDialogState((prevState) => ({
       ...prevState,
       isAcceptButtonActive: hasValue,
+      employeeCode: target.value,
     }));
   }
 
   function handleAccept() {
-    // TODO: Dispatch de la action que comprova si existeix el employeeCode i l'asigna i finalitza.
-    // TODO: dispatch de la action que elimina la task al backend
-    saveFinishedTask(finishTaskDialogState.taskId);
+    dispatch(
+      finishTask(
+        finishTaskDialogState.employeeCode,
+        finishTaskDialogState.taskId
+      )
+    );
     setIsFinishTaskDialogOpen(false);
-    dispatch(forceRender());
   }
 
   const FinishTaskDialog = (
@@ -82,6 +87,7 @@ export default function useFinishTaskDialog() {
               placeholder="Código de empleado"
               fullWidth
               sx={{ marginTop: "1rem" }}
+              value={finishTaskDialogState.employeeCode}
               onChange={handleEmployeeCodeChange}
             />
           </Grid>

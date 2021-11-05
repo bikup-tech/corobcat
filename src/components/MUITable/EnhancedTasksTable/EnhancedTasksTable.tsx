@@ -1,6 +1,7 @@
 import {
   Box,
   CircularProgress,
+  IconButton,
   Paper,
   Table,
   TableBody,
@@ -16,23 +17,36 @@ import {
   StyledTableWrapper,
 } from "../SCMuiTable";
 
+import DeleteIcon from "@mui/icons-material/Delete";
 import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
 import FinishTaskButton from "../../../pages/MachinePage/components/FinishTaskButton/FinishTaskButton";
 import { THeadCell } from "../MUITableTypes";
 import { TTaskResponse } from "../../../types/taskTypes";
 import { maxTableHeight } from "../../../styles/styleConstants";
 import { setTableRowBackgroundColorByPriority } from "../setTableRowBackgroundColorByPriority";
+import styled from "styled-components";
 import useFinishTaskDialog from "../../../pages/MachinePage/hooks/useFinishTaskDialog";
+
+const StyledIconButton = styled(IconButton)`
+  .MuiSvgIcon-root {
+    color: #707070;
+
+    &:hover {
+      color: #1876d1;
+    }
+  }
+`;
 
 interface IEnhancedTableProps {
   tasks: TTaskResponse[] | undefined;
   isLoading: boolean;
   isError: boolean;
   headCells: THeadCell[];
+  handleDeleteTask: (taskId: string) => void;
 }
 
 export default function EnhancedTaksTable(props: IEnhancedTableProps) {
-  const { tasks, headCells, isLoading, isError } = props;
+  const { tasks, headCells, isLoading, isError, handleDeleteTask } = props;
 
   const { FinishTaskDialog, handleFinishTaskDialogOpen } =
     useFinishTaskDialog();
@@ -88,14 +102,6 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                           task.priority
                         )}
                       >
-                        <TableCell
-                          component="th"
-                          scope="row"
-                          align="center"
-                          width={100}
-                        >
-                          {task.taskNumber}
-                        </TableCell>
                         <TableCell align="center">{task.material}</TableCell>
                         <TableCell align="center">{task.thickness}</TableCell>
                         <TableCell align="center">
@@ -113,6 +119,16 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                             programNumber={task.programNumber}
                             openFinishedTaskDialog={handleFinishTaskDialogOpen}
                           />
+
+                          <StyledIconButton
+                            color="secondary"
+                            onClick={() => {
+                              handleDeleteTask(task._id);
+                            }}
+                            sx={{ marginLeft: "0.5rem" }}
+                          >
+                            <DeleteIcon color="primary" />
+                          </StyledIconButton>
                         </TableCell>
                       </TableRow>
                     );

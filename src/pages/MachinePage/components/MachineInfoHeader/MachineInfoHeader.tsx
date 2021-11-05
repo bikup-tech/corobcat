@@ -1,21 +1,21 @@
-import React from 'react';
-
-import { useHistory } from 'react-router-dom';
 import { Button, IconButton } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import styled from 'styled-components';
-import { ROUTE_MACHINES } from '../../../../routes/routes';
+import { MACHINE_1, MACHINE_2 } from '../../../../constants/machineNames';
 import {
   StyledFlexGrow,
   StyledTableHeaderInfoWrapper,
   StyledTableHeaderWrapper,
 } from '../../../../StyledComponents/StyledTableHeader';
-import { useDispatch } from 'react-redux';
 import {
   setCreateTaskModalSelectedMachine,
   setIsCreateTaskModalOpen,
 } from '../../../../redux/actions/mainActions';
-import { MACHINE_1, MACHINE_2 } from '../../../../constants/machineNames';
+
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { ROUTE_MACHINES } from '../../../../routes/routes';
+import React from 'react';
+import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const StyledTableHeaderName = styled.p`
   margin: 0 0.5rem;

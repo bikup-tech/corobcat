@@ -1,8 +1,10 @@
 import {
   API_URL,
   ENDPOINT_SETTINGS,
+  ENDPOINT_TASKS_BY_ID,
   ENDPOINT_USERS,
   ENDPOINT_USERS_BY_ID,
+  ENDPOINT_USER_BY_EMPLOYEE_CODE,
 } from "../../constants/apiConstants";
 import {
   FORCE_RENDER,
@@ -28,8 +30,6 @@ export function setIsCreateTaskModalOpen(isOpen: boolean) {
 }
 
 export function setCreateTaskModalSelectedMachine(machine: string) {
-  console.log("changing to machine", machine);
-
   return {
     type: SET_CREATE_TASK_MODAL_SELECTED_MACHINE,
     payload: machine,
@@ -168,6 +168,52 @@ export function deleteEmployee(userId: string) {
       dispatch(forceRender());
     } catch (error: any) {
       toast.error(error.message);
+    }
+  };
+}
+
+export function deleteTask(taskId: string) {
+  return async (dispatch: any) => {
+    try {
+      const endpoint = `${API_URL}${ENDPOINT_TASKS_BY_ID(taskId)}`;
+      await axios.delete(endpoint);
+
+      toast.success("Tarea eliminada!");
+
+      dispatch(forceRender());
+    } catch (error: any) {
+      const message = error?.response?.data?.message || error.message;
+      toast.error(message);
+    }
+  };
+}
+
+export function finishTask(employeeCode: string, taskId: string) {
+  return async (dispatch: any) => {
+    try {
+      const getEmployeeEndpoint = `${API_URL}${ENDPOINT_USER_BY_EMPLOYEE_CODE(
+        employeeCode
+      )}`;
+      const employee = await axios.get(getEmployeeEndpoint);
+
+      if (employee) {
+        const updateTaskEndpoint = `${API_URL}${ENDPOINT_TASKS_BY_ID(taskId)}`;
+
+        const query = {
+          status: 1,
+        };
+
+        await axios.patch(updateTaskEndpoint, query);
+
+        toast.success("Tarea finalizada!");
+
+        dispatch(forceRender());
+      } else {
+        toast.error("Código de empleado inválido");
+      }
+    } catch (error: any) {
+      const message = error?.response?.data?.message || error.message;
+      toast.error(message);
     }
   };
 }
