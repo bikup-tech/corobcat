@@ -8,8 +8,6 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 
 export default function useLoadEmployeeTasksQuery(employeeId: string) {
-  console.log(`${API_URL}${ENDPOINT_USER_TASKS_BY_ID(employeeId)}`);
-  console.log(`${API_URL}${ENDPOINT_USERS_BY_ID(employeeId)}`);
   return useQuery(
     ['loadEmployeeTasks', employeeId],
     async () => {
@@ -20,7 +18,6 @@ export default function useLoadEmployeeTasksQuery(employeeId: string) {
       const { data: employeeTasks } = await axios.get(
         `${API_URL}${ENDPOINT_USER_TASKS_BY_ID(employeeId)}`
       );
-      // TODO const {data:machines} = await axios.get("/api/machines")
 
       return { employeeTasks, employee };
     },
