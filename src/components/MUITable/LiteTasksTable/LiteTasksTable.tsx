@@ -7,17 +7,19 @@ import {
   TableContainer,
   TablePagination,
   TableRow,
-} from "@mui/material";
-import React, { useState } from "react";
-import { StyledTablePageContainer, StyledTableWrapper } from "../SCMuiTable";
+} from '@mui/material';
+import React, { useState } from 'react';
+import { StyledTablePageContainer, StyledTableWrapper } from '../SCMuiTable';
 
-import EnhancedTableHead from "../EnhancedTableHead/EnhancedTableHead";
-import FinishTaskButton from "../../../pages/MachinePage/components/FinishTaskButton/FinishTaskButton";
-import { THeadCell } from "../MUITableTypes";
-import { TTaskResponse } from "../../../types/taskTypes";
-import { maxTableHeight } from "../../../styles/styleConstants";
-import { setTableRowBackgroundColorByPriority } from "../setTableRowBackgroundColorByPriority";
-import useFinishTaskDialog from "../../../pages/MachinePage/hooks/useFinishTaskDialog";
+import EnhancedTableHead from '../EnhancedTableHead/EnhancedTableHead';
+import FinishTaskButton from '../../../pages/MachinePage/components/FinishTaskButton/FinishTaskButton';
+import { THeadCell } from '../MUITableTypes';
+import { TInitialState } from '../../../redux/store/initialState';
+import { TTaskResponse } from '../../../types/taskTypes';
+import { maxTableHeight } from '../../../styles/styleConstants';
+import { setTableRowBackgroundColorByPriority } from '../setTableRowBackgroundColorByPriority';
+import useFinishTaskDialog from '../../../pages/MachinePage/hooks/useFinishTaskDialog';
+import { useSelector } from 'react-redux';
 
 interface IEnhancedTableProps {
   tasks: TTaskResponse[] | undefined;
@@ -26,6 +28,7 @@ interface IEnhancedTableProps {
 }
 
 export default function EnhancedTaksTable(props: IEnhancedTableProps) {
+  const { user } = useSelector((state: TInitialState) => state.authReducer);
   const { tasks, headCells } = props;
 
   const { FinishTaskDialog, handleFinishTaskDialogOpen } =
@@ -46,11 +49,11 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
   };
 
   return (
-    <StyledTablePageContainer className="EnhancedTaskTable">
-      <StyledTableWrapper className="EnhancedTaskTable__container">
-        <Box sx={{ width: "100%" }}>
+    <StyledTablePageContainer className='EnhancedTaskTable'>
+      <StyledTableWrapper className='EnhancedTaskTable__container'>
+        <Box sx={{ width: '100%' }}>
           <TableContainer component={Paper} sx={{ maxHeight: maxTableHeight }}>
-            <Table aria-labelledby="tableTitle" size="medium" stickyHeader>
+            <Table aria-labelledby='tableTitle' size='medium' stickyHeader>
               <EnhancedTableHead headCells={headCells} />
               <TableBody>
                 {tasks &&
@@ -59,24 +62,28 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                       <TableRow
                         key={task._id}
                         sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
+                          '&:last-child td, &:last-child th': { border: 0 },
                         }}
                         style={setTableRowBackgroundColorByPriority(
                           task.priority
                         )}
                       >
-                        <TableCell align="center">
+                        <TableCell align='center'>
                           {task.programNumber}
                         </TableCell>
-                        <TableCell align="center">
+                        <TableCell align='center'>
                           {task.duration} min
                         </TableCell>
-                        <TableCell align="center">
-                          <FinishTaskButton
-                            taskId={task._id}
-                            programNumber={task.programNumber}
-                            openFinishedTaskDialog={handleFinishTaskDialogOpen}
-                          />
+                        <TableCell align='center'>
+                          {task.user.employerCode === user?.employerCode && (
+                            <FinishTaskButton
+                              taskId={task._id}
+                              programNumber={task.programNumber}
+                              openFinishedTaskDialog={
+                                handleFinishTaskDialogOpen
+                              }
+                            />
+                          )}
                         </TableCell>
                       </TableRow>
                     );
@@ -87,7 +94,7 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
           {tasks && (
             <TablePagination
               rowsPerPageOptions={[25, 50, 75, 100]}
-              component="div"
+              component='div'
               count={tasks.length}
               rowsPerPage={rowsPerPage}
               page={page}
