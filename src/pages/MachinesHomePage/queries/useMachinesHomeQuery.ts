@@ -1,24 +1,34 @@
-import { MACHINE_1, MACHINE_2 } from "../../../constants/machineNames";
+import axios from 'axios';
+import { MACHINE_1, MACHINE_2 } from '../../../constants/machineNames';
+
+// types
+import { TTaskResponse } from '../../../types/taskTypes';
 
 // Mocks
-import { getActiveTasks } from "../../../mocks/tasksRepository";
-import { useQuery } from "react-query";
+import { getActiveTasks } from '../../../mocks/tasksRepository';
+import { useQuery } from 'react-query';
+
+// constants
+import {
+  API_URL,
+  ROUTE_TASKS_ACTIVE,
+  TASKS_ENDPOINTS,
+} from '../../../constants/apiConstants';
 
 export default function useLoadMachineTasksQuery(forceRender: number) {
   // el useQuery reb un array amb el nom de la "action" i les variables que si canvien torna a executar
   return useQuery(
-    ["loadMachinesHomeTasks", forceRender],
+    ['loadMachinesHomeTasks', forceRender],
     async () => {
-      // TODO: const {data: activeTasks} = await axios.get(/api/tasks/active)
-
-      const activeTasks = getActiveTasks();
+      const endpoint = `${API_URL}${TASKS_ENDPOINTS}${ROUTE_TASKS_ACTIVE}`;
+      const { data: activeTasks } = await axios.get(endpoint);
 
       const machine1Tasks = activeTasks.filter(
-        (task) => task.machine.name === MACHINE_1
+        (task: TTaskResponse) => task.machine.name === MACHINE_1
       );
 
       const machine2Tasks = activeTasks.filter(
-        (task) => task.machine.name === MACHINE_2
+        (task: TTaskResponse) => task.machine.name === MACHINE_2
       );
 
       return {

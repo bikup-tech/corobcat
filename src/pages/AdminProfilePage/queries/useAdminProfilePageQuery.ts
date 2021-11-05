@@ -2,13 +2,13 @@ import {
   API_URL,
   ENDPOINT_SETTINGS,
   ENDPOINT_USERS_ROLE,
-} from "../../../constants/apiConstants";
+} from '../../../constants/apiConstants';
 
-import axios from "axios";
-import { useQuery } from "react-query";
+import axios from 'axios';
+import { useQuery } from 'react-query';
 
 export default function useAdminProfilePageQuery(forceRender: number) {
-  return useQuery(["loadAdminProfile", forceRender], async () => {
+  return useQuery(['loadAdminProfile', forceRender], async () => {
     const { data: settings } = await axios.get(
       `${API_URL}${ENDPOINT_SETTINGS}`
     );

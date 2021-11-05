@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react';
 
-import { useHistory } from "react-router-dom";
-import { Button, IconButton } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import styled from "styled-components";
-import { ROUTE_MACHINES } from "../../../../routes/routes";
+import { useHistory } from 'react-router-dom';
+import { Button, IconButton } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import styled from 'styled-components';
+import { ROUTE_MACHINES } from '../../../../routes/routes';
 import {
   StyledFlexGrow,
   StyledTableHeaderInfoWrapper,
   StyledTableHeaderWrapper,
-} from "../../../../StyledComponents/StyledTableHeader";
-import { useDispatch } from "react-redux";
+} from '../../../../StyledComponents/StyledTableHeader';
+import { useDispatch } from 'react-redux';
 import {
   setCreateTaskModalSelectedMachine,
   setIsCreateTaskModalOpen,
-} from "../../../../redux/actions/mainActions";
-import { MACHINE_1, MACHINE_2 } from "../../../../constants/machineNames";
+} from '../../../../redux/actions/mainActions';
+import { MACHINE_1, MACHINE_2 } from '../../../../constants/machineNames';
 
 const StyledTableHeaderName = styled.p`
   margin: 0 0.5rem;
@@ -47,28 +47,28 @@ function MachineInfoHeader(props: IMachineInfoHeaderProps) {
   }
 
   return (
-    <StyledTableHeaderWrapper className="user-data-table-container">
+    <StyledTableHeaderWrapper className='user-data-table-container'>
       <IconButton
         onClick={() => history.push(ROUTE_MACHINES)}
-        aria-label="goBack"
+        aria-label='goBack'
       >
         <ArrowBackIcon />
       </IconButton>
       <StyledTableHeaderInfoWrapper>
-        <StyledTableHeaderName className="user-data-table__info--name">
-          {machineName === "máquina1" ? "Máquina 1" : "Máquina 2"}
+        <StyledTableHeaderName className='user-data-table__info--name'>
+          {machineName === 'maquina1' ? 'Máquina 1' : 'Máquina 2'}
         </StyledTableHeaderName>
-        <StyledTableHeaderInfo className="user-data-table__info">
+        <StyledTableHeaderInfo className='user-data-table__info'>
           Programas activos: {activeOrders}
         </StyledTableHeaderInfo>
-        <StyledTableHeaderInfo className="user-data-table__info">
+        <StyledTableHeaderInfo className='user-data-table__info'>
           Tiempo restante: {timeToFinish} min
         </StyledTableHeaderInfo>
       </StyledTableHeaderInfoWrapper>
       <StyledFlexGrow />
       <Button
-        variant="contained"
-        color="secondary"
+        variant='contained'
+        color='secondary'
         onClick={() => {
           handleNewTaskClick(machineName);
         }}
