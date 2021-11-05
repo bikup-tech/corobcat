@@ -1,8 +1,14 @@
-import { useQuery } from "react-query";
+import {
+  API_URL,
+  ENDPOINT_MACHINES_BY_NAME,
+  ENDPOINT_TASK_ACTIVE_BY_MACHINE_ID,
+} from "../../../constants/apiConstants";
 
+import axios from "axios";
+import { getMachineByName } from "../../../mocks/machineRepository";
 // Mocks
 import { getTaskByMachineId } from "../../../mocks/tasksRepository";
-import { getMachineByName } from "../../../mocks/machineRepository";
+import { useQuery } from "react-query";
 
 export default function useLoadMachineTasksQuery(
   machineName: string,
@@ -12,16 +18,16 @@ export default function useLoadMachineTasksQuery(
   return useQuery(
     ["loadMachineTasks", machineName, forceRender],
     async () => {
-      // TODO: const machine = await axios.get('/api/machine/name/${machineName}')
+      const endpoint = `${API_URL}${ENDPOINT_MACHINES_BY_NAME(machineName)}`;
+      const { data: machine } = await axios.get(endpoint);
 
-      const machine = getMachineByName(machineName);
+      const endpoint2 = `${API_URL}${ENDPOINT_TASK_ACTIVE_BY_MACHINE_ID(
+        machine._id
+      )}`;
 
-      // TODO: const {data} = await axios.get('/api/tasks/${machineName}')
-      if (machine) {
-        const data = getTaskByMachineId(machine._id);
+      const { data } = await axios.get(endpoint2);
 
-        return data;
-      }
+      return data;
     },
     {
       refetchInterval: 60000,

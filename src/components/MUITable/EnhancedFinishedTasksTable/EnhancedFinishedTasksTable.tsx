@@ -47,8 +47,6 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
     setPage(0);
   };
 
-  console.log(tasks);
-
   return (
     <StyledTablePageContainer className="EnhancedTaskTable">
       <StyledTableWrapper className="EnhancedTaskTable__container">

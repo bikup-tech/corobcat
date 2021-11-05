@@ -7,9 +7,7 @@ function MachinesHomePageContainer() {
 
   const { isLoading, isError, data } = useMachinesHomeQuery(forceRender);
 
-  function handleTaskClick(taskId: string) {
-    console.log("hola");
-  }
+  function handleTaskClick(taskId: string) {}
 
   return (
     <>
