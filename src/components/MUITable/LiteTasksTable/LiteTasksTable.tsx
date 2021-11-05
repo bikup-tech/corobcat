@@ -14,10 +14,12 @@ import { StyledTablePageContainer, StyledTableWrapper } from '../SCMuiTable';
 import EnhancedTableHead from '../EnhancedTableHead/EnhancedTableHead';
 import FinishTaskButton from '../../../pages/MachinePage/components/FinishTaskButton/FinishTaskButton';
 import { THeadCell } from '../MUITableTypes';
+import { TInitialState } from '../../../redux/store/initialState';
 import { TTaskResponse } from '../../../types/taskTypes';
 import { maxTableHeight } from '../../../styles/styleConstants';
 import { setTableRowBackgroundColorByPriority } from '../setTableRowBackgroundColorByPriority';
 import useFinishTaskDialog from '../../../pages/MachinePage/hooks/useFinishTaskDialog';
+import { useSelector } from 'react-redux';
 
 interface IEnhancedTableProps {
   tasks: TTaskResponse[] | undefined;
@@ -26,6 +28,7 @@ interface IEnhancedTableProps {
 }
 
 export default function EnhancedTaksTable(props: IEnhancedTableProps) {
+  const { user } = useSelector((state: TInitialState) => state.authReducer);
   const { tasks, headCells } = props;
 
   const { FinishTaskDialog, handleFinishTaskDialogOpen } =
@@ -72,11 +75,15 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                           {task.duration} min
                         </TableCell>
                         <TableCell align='center'>
-                          <FinishTaskButton
-                            taskId={task._id}
-                            programNumber={task.programNumber}
-                            openFinishedTaskDialog={handleFinishTaskDialogOpen}
-                          />
+                          {task.user.employerCode === user?.employerCode && (
+                            <FinishTaskButton
+                              taskId={task._id}
+                              programNumber={task.programNumber}
+                              openFinishedTaskDialog={
+                                handleFinishTaskDialogOpen
+                              }
+                            />
+                          )}
                         </TableCell>
                       </TableRow>
                     );
