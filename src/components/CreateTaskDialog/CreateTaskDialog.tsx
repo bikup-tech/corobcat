@@ -10,6 +10,7 @@ import {
 import { Form } from "formik";
 import FormikSelect from "../FormikComponents/FormikSelect";
 import FormikTextField from "../FormikComponents/FormikTextField";
+import { MACHINE_1 } from "../../constants/machineNames";
 import PriorityBadge from "./components/PriorityBadge/PriorityBadge";
 import { TInitialState } from "../../redux/store/initialState";
 import styled from "styled-components";
@@ -34,13 +35,13 @@ const StyledFlexCenteredWrapper = styled.div`
 interface ICreateTaskDialogProps {
   isOpen: boolean;
   handleClose: () => void;
+  settings: any;
 }
 
-const materialsMock = ["Madera", "Hierro", "Acero", "Aluminio"];
-const machinesMock = ["Máquina1", "Máquina2"];
+const machinesMock = ["Maquina1", "Maquina2"];
 
 function CreateTaskDialog(props: ICreateTaskDialogProps) {
-  const { isOpen, handleClose } = props;
+  const { isOpen, handleClose, settings } = props;
 
   const formikContext = useFormikContext<any>();
 
@@ -49,7 +50,13 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
   );
 
   useEffect(() => {
-    formikContext.values.selectedMachine = selectedMachine;
+    formikContext.values.selectedMachine =
+      selectedMachine === MACHINE_1 ? "Maquina1" : "Maquina2";
+
+    formikContext.values.correctionalFactor =
+      selectedMachine === MACHINE_1
+        ? settings.correctionalFactorMachine1
+        : settings.correctionalFactorMachine2;
   }, [selectedMachine]);
 
   useEffect(() => {
@@ -57,6 +64,16 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
       formikContext.resetForm();
     }
   }, [isOpen]);
+
+  useEffect(() => {
+    formikContext.values.correctionalFactor =
+      formikContext.values.selectedMachine === "Maquina1"
+        ? settings.correctionalFactorMachine1
+        : settings.correctionalFactorMachine2;
+  }, [
+    formikContext.values.selectedMachine,
+    formikContext.values.correctionalFactor,
+  ]);
 
   return (
     <StyledCreateTaskDialogWrapper open={isOpen} onClose={handleClose}>
@@ -83,17 +100,14 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
               <FormikSelect
                 name="material"
                 label="Material"
-                values={materialsMock}
+                values={settings.materials}
               />
             </Grid>
             <Grid item xs={6}>
-              <FormikTextField
-                min={0}
+              <FormikSelect
                 name="thickness"
-                label="Espesor (mm)"
-                type="number"
-                adornment="mm"
-                fullWidth
+                label="Espesor"
+                values={settings.thicknesses}
               />
             </Grid>
             <Grid item xs={6}>

@@ -1,20 +1,24 @@
 import {
   API_URL,
+  ENDPOINT_MACHINES_BY_NAME,
   ENDPOINT_SETTINGS,
+  ENDPOINT_TASKS,
   ENDPOINT_TASKS_BY_ID,
   ENDPOINT_USERS,
   ENDPOINT_USERS_BY_ID,
   ENDPOINT_USER_BY_EMPLOYEE_CODE,
-} from "../../constants/apiConstants";
+} from '../../constants/apiConstants';
 import {
   FORCE_RENDER,
+  LOAD_SETTINGS,
   SET_CREATE_TASK_MODAL_ISOPEN,
   SET_CREATE_TASK_MODAL_SELECTED_MACHINE,
-} from "./actionTypes";
+} from './actionTypes';
 
-import { MACHINE_1 } from "../../constants/machineNames";
-import axios from "axios";
-import toast from "react-hot-toast";
+import { MACHINE_1 } from '../../constants/machineNames';
+import axios from 'axios';
+import createCreateTaskEndpointBodyObject from '../../utils/createCreateTaskEndpointBodyObject';
+import toast from 'react-hot-toast';
 
 export function forceRender() {
   return {
@@ -41,8 +45,8 @@ export function updateCorrectionalFactor(machineName: string, value: number) {
     try {
       const toUpdateMachine =
         machineName === MACHINE_1
-          ? "correctionalFactorMachine1"
-          : "correctionalFactorMachine2";
+          ? 'correctionalFactorMachine1'
+          : 'correctionalFactorMachine2';
 
       const query = {
         [toUpdateMachine]: value,
@@ -51,7 +55,7 @@ export function updateCorrectionalFactor(machineName: string, value: number) {
       const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
       await axios.patch(endpoint, query);
 
-      toast.success("Actualizado!");
+      toast.success('Actualizado!');
 
       dispatch(forceRender());
     } catch (error: any) {
@@ -70,7 +74,7 @@ export function createNewMaterial(value: string) {
       const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
       await axios.patch(endpoint, query);
 
-      toast.success("Material añadido!");
+      toast.success('Material añadido!');
 
       dispatch(forceRender());
     } catch (error: any) {
@@ -89,7 +93,7 @@ export function createNewThickness(value: number) {
       const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
       await axios.patch(endpoint, query);
 
-      toast.success("Espesor añadido!");
+      toast.success('Espesor añadido!');
 
       dispatch(forceRender());
     } catch (error: any) {
@@ -108,7 +112,7 @@ export function deleteMaterial(value: string) {
       const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
       await axios.patch(endpoint, query);
 
-      toast.success("Material eliminado!");
+      toast.success('Material eliminado!');
 
       dispatch(forceRender());
     } catch (error: any) {
@@ -127,7 +131,7 @@ export function deleteThickness(value: number) {
       const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
       await axios.patch(endpoint, query);
 
-      toast.success("Espesor eliminado!");
+      toast.success('Espesor eliminado!');
 
       dispatch(forceRender());
     } catch (error: any) {
@@ -148,7 +152,7 @@ export function createEmployee(values: any) {
       const endpoint = `${API_URL}${ENDPOINT_USERS}`;
       await axios.post(endpoint, body);
 
-      toast.success("Empleado creado!");
+      toast.success('Empleado creado!');
 
       dispatch(forceRender());
     } catch (error: any) {
@@ -163,7 +167,7 @@ export function deleteEmployee(userId: string) {
       const endpoint = `${API_URL}${ENDPOINT_USERS_BY_ID(userId)}`;
       await axios.delete(endpoint);
 
-      toast.success("Empleado eliminado!");
+      toast.success('Empleado eliminado!');
 
       dispatch(forceRender());
     } catch (error: any) {
@@ -178,7 +182,7 @@ export function deleteTask(taskId: string) {
       const endpoint = `${API_URL}${ENDPOINT_TASKS_BY_ID(taskId)}`;
       await axios.delete(endpoint);
 
-      toast.success("Tarea eliminada!");
+      toast.success('Tarea eliminada!');
 
       dispatch(forceRender());
     } catch (error: any) {
@@ -206,12 +210,68 @@ export function finishTask(employeeCode: string, taskId: string) {
 
         await axios.patch(updateTaskEndpoint, query);
 
-        toast.success("Tarea finalizada!");
+        toast.success('Tarea finalizada!');
 
         dispatch(forceRender());
       } else {
-        toast.error("Código de empleado inválido");
+        toast.error('Código de empleado inválido');
       }
+    } catch (error: any) {
+      const message = error?.response?.data?.message || error.message;
+      toast.error(message);
+    }
+  };
+}
+
+export function createTask(taskData: any) {
+  return async (dispatch: any) => {
+    try {
+      const getEmployeeEndpoint = `${API_URL}${ENDPOINT_USER_BY_EMPLOYEE_CODE(
+        taskData.employee
+      )}`;
+      const { data: employee }: any = await axios.get(getEmployeeEndpoint);
+
+      if (employee) {
+        const getMachineIdEndpoint = `${API_URL}${ENDPOINT_MACHINES_BY_NAME(
+          taskData.selectedMachine.toLowerCase()
+        )}`;
+        const { data: machine }: any = await axios.get(getMachineIdEndpoint);
+        if (machine) {
+          const createTaskEndpoint = `${API_URL}${ENDPOINT_TASKS}`;
+          const body = createCreateTaskEndpointBodyObject(
+            employee._id,
+            machine._id,
+            taskData
+          );
+
+          await axios.post(createTaskEndpoint, body);
+
+          toast.success('Tarea creada!');
+          dispatch(forceRender());
+          dispatch(setIsCreateTaskModalOpen(false));
+        } else {
+          toast.error('La máquina seleccionada no existe');
+        }
+      } else {
+        toast.error('Código de empleado inválido');
+      }
+    } catch (error: any) {
+      const message = error?.response?.data?.message || error.message;
+      toast.error(message);
+    }
+  };
+}
+
+export function loadSettings() {
+  return async (dispatch: any) => {
+    try {
+      const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
+      const { data } = await axios.get(endpoint);
+
+      dispatch({
+        type: LOAD_SETTINGS,
+        payload: data,
+      });
     } catch (error: any) {
       const message = error?.response?.data?.message || error.message;
       toast.error(message);

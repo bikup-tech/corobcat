@@ -1,5 +1,6 @@
 import {
   FORCE_RENDER,
+  LOAD_SETTINGS,
   SET_CREATE_TASK_MODAL_ISOPEN,
   SET_CREATE_TASK_MODAL_SELECTED_MACHINE,
 } from "../actions/actionTypes";
@@ -21,6 +22,7 @@ export default function mainReducer(state: any = {}, action: TAction) {
       };
       break;
     }
+
     case SET_CREATE_TASK_MODAL_SELECTED_MACHINE: {
       newState = {
         ...state,
@@ -28,6 +30,14 @@ export default function mainReducer(state: any = {}, action: TAction) {
           ...state.createTaskModal,
           selectedMachine: action.payload,
         },
+      };
+      break;
+    }
+
+    case LOAD_SETTINGS: {
+      newState = {
+        ...state,
+        settings: action.payload,
       };
       break;
     }

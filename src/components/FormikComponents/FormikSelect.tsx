@@ -1,11 +1,14 @@
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+
 import { FC } from "react";
-import { useFormikContext } from "formik";
-import styled from "styled-components";
+import FormControl from "@mui/material/FormControl";
+import { FormHelperText } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { FormHelperText } from "@mui/material";
+import { debug } from "console";
+import styled from "styled-components";
+import { useFormikContext } from "formik";
+import { valueScaleCorrection } from "framer-motion/types/render/dom/projection/scale-correction";
 
 const StyledFormikSelectWrapper = styled.div`
   margin-top: 0.5rem;
@@ -13,6 +16,14 @@ const StyledFormikSelectWrapper = styled.div`
     padding: 0.75rem 0.5rem;
   }
 `;
+
+function formatLabel(value: any) {
+  if (typeof value === "string") {
+    return value;
+  } else {
+    return `${value} cm`;
+  }
+}
 
 interface IFormikSelectProps {
   name: string;
@@ -38,8 +49,8 @@ const FormikSelect: FC<IFormikSelectProps> = ({
   }
 
   const selectValues = values.map((item) => ({
-    label: item,
-    value: item.toLowerCase(),
+    label: formatLabel(item),
+    value: item,
   }));
 
   return (

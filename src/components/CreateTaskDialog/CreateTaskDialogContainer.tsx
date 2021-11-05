@@ -1,11 +1,14 @@
 import * as Yup from "yup";
 
+import {
+  createTask,
+  setIsCreateTaskModalOpen,
+} from "../../redux/actions/mainActions";
 import { useDispatch, useSelector } from "react-redux";
 
 import CreateTaskDialog from "./CreateTaskDialog";
 import { Formik } from "formik";
 import { TInitialState } from "../../redux/store/initialState";
-import { setIsCreateTaskModalOpen } from "../../redux/actions/mainActions";
 
 function CreateTaksDialogContainer() {
   const dispatch = useDispatch();
@@ -13,6 +16,7 @@ function CreateTaksDialogContainer() {
   const { isOpen, selectedMachine } = useSelector(
     (state: TInitialState) => state.mainReducer.createTaskModal
   );
+  const { settings } = useSelector((state: any) => state.mainReducer);
 
   function handleClose() {
     dispatch(setIsCreateTaskModalOpen(false));
@@ -21,7 +25,7 @@ function CreateTaksDialogContainer() {
   const initialValues = {
     employee: "",
     material: "",
-    thickness: 0,
+    thickness: "",
     programNumber: "",
     priority: 1,
     duration: 0,
@@ -36,11 +40,9 @@ function CreateTaksDialogContainer() {
       "El número de programa es obligatorio."
     ),
     thickness: Yup.number()
-      .integer("No puede contener decimales.")
       .min(0, "No puede ser negativo.")
       .required("El espesor es obligatorio."),
     priority: Yup.number()
-      .integer("No puede contener decimales.")
       .min(1, "El valor mínimo es 1.")
       .max(10, "El valor máximo es 10.")
       .required("La prioridad es obligatoria."),
@@ -51,7 +53,7 @@ function CreateTaksDialogContainer() {
   });
 
   function handleCreateTaskFormSubmit(values: TCreateTaskDialogFormValues) {
-    handleClose();
+    dispatch(createTask(values));
   }
 
   type TCreateTaskDialogFormValues = typeof initialValues;
@@ -62,7 +64,13 @@ function CreateTaksDialogContainer() {
       onSubmit={handleCreateTaskFormSubmit}
       validationSchema={validationSchema}
     >
-      <CreateTaskDialog isOpen={isOpen} handleClose={handleClose} />
+      {settings && (
+        <CreateTaskDialog
+          isOpen={isOpen}
+          handleClose={handleClose}
+          settings={settings}
+        />
+      )}
     </Formik>
   );
 }

@@ -194,7 +194,7 @@ const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
           <TextField
             type="text"
             name="thickness"
-            label="Espesor"
+            label="Espesor (en cm)"
             placeholder="Nuevo espesor"
             size="small"
             sx={{ marginRight: "1rem" }}
@@ -215,7 +215,7 @@ const GeneralSettingsTab: FC<IGeneralSettingsTabProps> = ({ settings }) => {
         <StyledListWrapper className="itemsList">
           {settings.thicknesses.map((value) => (
             <DeletableItemCard
-              itemName={`${value} mm`}
+              itemName={`${value} cm`}
               handleDelete={() => {
                 handleDeleteThickness(value);
               }}
