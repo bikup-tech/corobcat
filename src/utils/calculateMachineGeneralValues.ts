@@ -1,7 +1,7 @@
-import { MACHINE_1, MACHINE_2 } from '../constants/machineNames';
+import { MACHINE_1, MACHINE_2 } from "../constants/machineNames";
 
-import { TTaskResponse } from '../types/taskTypes';
-import { calculateTotalTime } from './calculateTotalTime';
+import { TTaskResponse } from "../types/taskTypes";
+import { calculateTotalTime } from "./calculateTotalTime";
 
 type TTasksData = {
   machine1: {
@@ -18,8 +18,6 @@ type TTasksData = {
 export function calculateMachineGeneralValues(
   tasks: TTaskResponse[] | undefined
 ): TTasksData {
-  console.log(tasks);
-
   const machine1Tasks = tasks?.filter(
     (task) => task.machine.name === MACHINE_1
   );
