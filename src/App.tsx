@@ -11,6 +11,7 @@ import {
 } from "./routes/routes";
 
 import AdminProfilePageContainer from "./pages/AdminProfilePage/AdminProfilePageContainer";
+import AppInit from "./components/AppInit/AppInit";
 import CreateTaskDialog from "./components/CreateTaskDialog/CreateTaskDialogContainer";
 import EmployeePageContainer from "./pages/EmployeePage/EmployeePageContainer";
 // pages
@@ -35,6 +36,7 @@ function App() {
     <>
       <Provider store={configureStore(initialState)}>
         <QueryClientProvider client={queryClient}>
+          <AppInit />
           <BrowserRouter basename="/corobcat">
             <Switch>
               <Route path={ROUTE_LOGIN} exact>

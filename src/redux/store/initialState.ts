@@ -1,3 +1,4 @@
+import { TSettingsResponse } from "../../types/settingsTypes";
 import { TUserResponse } from "../../types/employeeTypes";
 
 export type TMainReducer = {
@@ -6,6 +7,7 @@ export type TMainReducer = {
     isOpen: boolean;
     selectedMachine: string;
   };
+  settings: TSettingsResponse | null;
 };
 
 export type TAuthReducer = {
@@ -26,6 +28,7 @@ export const initialState: TInitialState = {
       isOpen: false,
       selectedMachine: "máquina1",
     },
+    settings: null,
   },
   authReducer: {
     user: JSON.parse(localStorage.getItem("user") as string) || null,

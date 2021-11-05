@@ -1,6 +1,8 @@
 import {
   API_URL,
+  ENDPOINT_MACHINES_BY_NAME,
   ENDPOINT_SETTINGS,
+  ENDPOINT_TASKS,
   ENDPOINT_TASKS_BY_ID,
   ENDPOINT_USERS,
   ENDPOINT_USERS_BY_ID,
@@ -8,12 +10,14 @@ import {
 } from "../../constants/apiConstants";
 import {
   FORCE_RENDER,
+  LOAD_SETTINGS,
   SET_CREATE_TASK_MODAL_ISOPEN,
   SET_CREATE_TASK_MODAL_SELECTED_MACHINE,
 } from "./actionTypes";
 
 import { MACHINE_1 } from "../../constants/machineNames";
 import axios from "axios";
+import createCreateTaskEndpointBodyObject from "../../utils/createCreateTaskEndpointBodyObject";
 import toast from "react-hot-toast";
 
 export function forceRender() {
@@ -212,6 +216,65 @@ export function finishTask(employeeCode: string, taskId: string) {
       } else {
         toast.error("Código de empleado inválido");
       }
+    } catch (error: any) {
+      const message = error?.response?.data?.message || error.message;
+      toast.error(message);
+    }
+  };
+}
+
+export function createTask(taskData: any) {
+  return async (dispatch: any) => {
+    console.log(taskData);
+
+    try {
+      const getEmployeeEndpoint = `${API_URL}${ENDPOINT_USER_BY_EMPLOYEE_CODE(
+        taskData.employee
+      )}`;
+      const { data: employee }: any = await axios.get(getEmployeeEndpoint);
+
+      if (employee) {
+        const getMachineIdEndpoint = `${API_URL}${ENDPOINT_MACHINES_BY_NAME(
+          taskData.selectedMachine
+        )}`;
+        const { data: machine }: any = await axios.get(getMachineIdEndpoint);
+        if (machine) {
+          const createTaskEndpoint = `${API_URL}${ENDPOINT_TASKS}`;
+          const body = createCreateTaskEndpointBodyObject(
+            employee._id,
+            machine._id,
+            taskData
+          );
+
+          await axios.post(createTaskEndpoint, body);
+
+          toast.success("Tarea creada!");
+          dispatch(forceRender());
+          dispatch(setIsCreateTaskModalOpen(false));
+        } else {
+          toast.error("La máquina seleccionada no existe");
+        }
+      } else {
+        toast.error("Código de empleado inválido");
+      }
+      // const createdTask = await axios.post(endpoint, taskData);
+    } catch (error: any) {
+      const message = error?.response?.data?.message || error.message;
+      toast.error(message);
+    }
+  };
+}
+
+export function loadSettings() {
+  return async (dispatch: any) => {
+    try {
+      const endpoint = `${API_URL}${ENDPOINT_SETTINGS}`;
+      const { data } = await axios.get(endpoint);
+
+      dispatch({
+        type: LOAD_SETTINGS,
+        payload: data,
+      });
     } catch (error: any) {
       const message = error?.response?.data?.message || error.message;
       toast.error(message);
