@@ -33,8 +33,7 @@ function LeftMenu() {
   return (
     <div className='left-menu'>
       <div className='left-menu__header'>
-        <Avatar>CRC</Avatar>
-        {/* TODO: Display del username */}
+        <Avatar>{user?.name.charAt(0) || 'CRC'}</Avatar>
       </div>
       <nav className='left-menu__nav'>
         <List>

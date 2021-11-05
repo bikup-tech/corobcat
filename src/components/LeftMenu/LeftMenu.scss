@@ -1,4 +1,4 @@
-@import "../../styles/styleConstants.scss";
+@import '../../styles/styleConstants.scss';
 
 .left-menu {
   width: 100%;
@@ -12,6 +12,8 @@
   display: flex;
   flex-direction: row;
   padding: 1rem;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .left-menu__nav {

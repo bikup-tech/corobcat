@@ -4,6 +4,7 @@ export default function createCreateTaskEndpointBodyObject(
   values: any
 ) {
   return {
+    selectedMachine: values.selectedMachine.toLowerCase(),
     duration: Number(values.duration),
     user: employee,
     machine: machine,
