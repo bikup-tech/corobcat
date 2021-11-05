@@ -22,12 +22,12 @@ function MachinePageContainer() {
     forceRender
   );
 
-  function handleTaskClick(taskId: string) {
-    console.log("hola");
-  }
+  function handleTaskClick(taskId: string) {}
 
   function handleDeleteTask(taskId: string) {
-    dispatch(deleteTask(taskId));
+    if (window.confirm("Seguro que deseas eliminar la tarea?")) {
+      dispatch(deleteTask(taskId));
+    }
   }
 
   return (

@@ -1,11 +1,11 @@
-import { useSelector, useDispatch } from "react-redux";
-
-import { Formik } from "formik";
 import * as Yup from "yup";
 
+import { useDispatch, useSelector } from "react-redux";
+
+import CreateTaskDialog from "./CreateTaskDialog";
+import { Formik } from "formik";
 import { TInitialState } from "../../redux/store/initialState";
 import { setIsCreateTaskModalOpen } from "../../redux/actions/mainActions";
-import CreateTaskDialog from "./CreateTaskDialog";
 
 function CreateTaksDialogContainer() {
   const dispatch = useDispatch();
@@ -51,7 +51,6 @@ function CreateTaksDialogContainer() {
   });
 
   function handleCreateTaskFormSubmit(values: TCreateTaskDialogFormValues) {
-    console.log("submitting");
     handleClose();
   }
 
