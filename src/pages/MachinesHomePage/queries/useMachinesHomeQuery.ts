@@ -4,6 +4,7 @@ import {
 } from '../../../constants/apiConstants';
 import { MACHINE_1, MACHINE_2 } from '../../../constants/machineNames';
 
+import { ACTIVE_TASK } from '../../../constants/taskStatus';
 import { TTaskResponse } from '../../../types/taskTypes';
 import axios from 'axios';
 import { useQuery } from 'react-query';
@@ -13,7 +14,7 @@ export default function useLoadMachineTasksQuery(forceRender: number) {
   return useQuery(
     ['loadMachinesHomeTasks', forceRender],
     async () => {
-      const endpoint = `${API_URL}${ENDPOINT_TASKS_BY_STATUS(0)}`;
+      const endpoint = `${API_URL}${ENDPOINT_TASKS_BY_STATUS(ACTIVE_TASK)}`;
       const { data: activeTasks } = await axios.get(endpoint);
 
       const machine1Tasks = activeTasks.filter(
