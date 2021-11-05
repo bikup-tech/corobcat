@@ -13,9 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import LoginIcon from '@mui/icons-material/Login';
 import { TInitialState } from '../../redux/store/initialState';
-// actions
 import { login } from '../../redux/actions/authActions';
-// styles
 import styled from 'styled-components';
 import { useHistory } from 'react-router';
 

@@ -10,6 +10,7 @@ import { Dispatch } from 'redux';
 import { ERROR_MESSAGE_INVALID_CREDENTIALS } from '../../constants/errorMessages';
 import { TUserResponse } from '../../types/employeeTypes';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 type TLoginLoadingAction = {
   type: typeof LOGIN_LOADING;
@@ -17,6 +18,10 @@ type TLoginLoadingAction = {
 
 type TLogoutAction = {
   type: typeof LOGOUT;
+};
+
+type TLoginRequest = {
+  employeeCode: string;
 };
 
 export type TAuthActions =
@@ -57,20 +62,23 @@ export function login(userCode: string) {
       dispatch(loginLoading());
       const endpoint = `${API_URL}${ENDPOINT_AUTH}`;
 
-      const body: any = { employeeCode: userCode };
+      const body: TLoginRequest = { employeeCode: userCode };
       const { data } = await axios.post(endpoint, body);
 
       if (data) {
         localStorage.setItem('user', JSON.stringify(data));
         dispatch(loginSuccess(data));
+        toast.success('Login hecho correctamente!');
       } else {
         dispatch(loginError(ERROR_MESSAGE_INVALID_CREDENTIALS(userCode)));
       }
     } catch (error: any) {
       if (error.response) {
         dispatch(loginError(error.response.message));
+        toast.error('Código de empleado inválido.');
       } else {
         dispatch(loginError(error.message));
+        toast.error('Error al iniciar sesión. Por favor, inténtelo de nuevo');
       }
     }
   };
