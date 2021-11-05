@@ -25,8 +25,6 @@ function MachinePageContainer() {
   function handleTaskClick(taskId: string) {}
 
   function handleDeleteTask(taskId: string) {
-    console.log(taskId);
-
     if (window.confirm("Seguro que deseas eliminar la tarea?")) {
       dispatch(deleteTask(taskId));
     }

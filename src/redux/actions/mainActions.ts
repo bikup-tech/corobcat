@@ -196,8 +196,6 @@ export function finishTask(employeeCode: string, taskId: string) {
       )}`;
       const employee = await axios.get(getEmployeeEndpoint);
 
-      console.log(employee);
-
       if (employee) {
         const updateTaskEndpoint = `${API_URL}${ENDPOINT_TASKS_BY_ID(taskId)}`;
 
