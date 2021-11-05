@@ -21,7 +21,7 @@ function formatLabel(value: any) {
   if (typeof value === "string") {
     return value;
   } else {
-    return `${value} mm `;
+    return `${value} cm`;
   }
 }
 

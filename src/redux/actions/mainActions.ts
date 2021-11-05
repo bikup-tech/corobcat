@@ -235,7 +235,7 @@ export function createTask(taskData: any) {
 
       if (employee) {
         const getMachineIdEndpoint = `${API_URL}${ENDPOINT_MACHINES_BY_NAME(
-          taskData.selectedMachine
+          taskData.selectedMachine.toLowerCase()
         )}`;
         const { data: machine }: any = await axios.get(getMachineIdEndpoint);
         if (machine) {
