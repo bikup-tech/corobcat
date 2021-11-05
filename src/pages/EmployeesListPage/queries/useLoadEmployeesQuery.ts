@@ -1,10 +1,12 @@
-import { useQuery } from "react-query";
-import users from "../../../mocks/users.json";
+import { API_URL, ENDPOINT_USERS_ROLE } from '../../../constants/apiConstants';
+
+import axios from 'axios';
+import { useQuery } from 'react-query';
 
 export default function useLoadEmployeesQuery() {
-  return useQuery(["loadEmployers"], async () => {
-    // TODO const {data} = await axios.get('/api/users')
-    const data = users;
+  return useQuery(['loadEmployers'], async () => {
+    const endpoint = `${API_URL}${ENDPOINT_USERS_ROLE(0)}`;
+    const { data } = await axios.get(endpoint);
 
     return data;
   });
