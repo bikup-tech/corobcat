@@ -4,6 +4,7 @@ import {
 } from "../../../StyledComponents/StyledTableHeader";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import FinishedTasksTableHeaderInfoCard from "../../../components/MUITable/FinishedTasksTableHeaderInfoCard/FinishedTasksTableHeaderInfoCard";
 import IconButton from "@mui/material/IconButton";
 import { ROUTE_MACHINES } from "../../../routes/routes";
 import { TTaskResponse } from "../../../types/taskTypes";
@@ -44,13 +45,13 @@ function FinishedTasksInfoHeader(props: IFinishedTasksInfoHeaderProps) {
         </IconButton>
         <StyledTableHeaderName>Programas finalizados</StyledTableHeaderName>
         <StyledFlexGrow />
-        <TableHeaderInfoCard
+        <FinishedTasksTableHeaderInfoCard
           machine1Tasks={tasksData.machine1.tasks as number}
-          machine1TimeToFinish={tasksData.machine1.time as number}
+          machine1Time={tasksData.machine1.time as number}
           machine2Tasks={tasksData.machine2.tasks as number}
-          machine2TimeToFinish={tasksData.machine2.time as number}
+          machine2Time={tasksData.machine2.time as number}
           totalTasks={tasks?.length as number}
-          totalTimeToFinish={calculateTotalTime(tasks)}
+          totalTime={calculateTotalTime(tasks)}
         />
       </StyledTableHeaderInfoWrapper>
     </StyledTableHeaderWrapper>
