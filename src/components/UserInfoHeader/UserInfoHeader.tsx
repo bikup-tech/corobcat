@@ -1,19 +1,19 @@
-import "./UserInfoHeader.scss";
+import './UserInfoHeader.scss';
 
 import {
   StyledTableHeaderInfoWrapper,
   StyledTableHeaderWrapper,
-} from "../../StyledComponents/StyledTableHeader";
+} from '../../StyledComponents/StyledTableHeader';
 
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import IconButton from "@mui/material/IconButton";
-import { TTaskResponse } from "../../types/taskTypes";
-import { TUserResponse } from "../../types/employeeTypes";
-import TableHeaderInfoCard from "../TableHeaderInfoCard/TableHeaderInfoCard";
-import { calculateMachineGeneralValues } from "../../utils/calculateMachineGeneralValues";
-import { calculateTotalTime } from "../../utils/calculateTotalTime";
-import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import IconButton from '@mui/material/IconButton';
+import { TTaskResponse } from '../../types/taskTypes';
+import { TUserResponse } from '../../types/employeeTypes';
+import TableHeaderInfoCard from '../TableHeaderInfoCard/TableHeaderInfoCard';
+import { calculateMachineGeneralValues } from '../../utils/calculateMachineGeneralValues';
+import { calculateTotalTime } from '../../utils/calculateTotalTime';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 const StyledFlexGrow = styled.div`
   flex: 1;
@@ -39,14 +39,14 @@ function UserInfoHeader(props: IUserInfoHeaderProps) {
   const history = useHistory();
 
   return (
-    <StyledTableHeaderWrapper className="user-data-table-container">
-      <StyledTableHeaderInfoWrapper className="user-data-table">
-        <IconButton onClick={() => history.goBack()} aria-label="goBack">
+    <StyledTableHeaderWrapper className='user-data-table-container'>
+      <StyledTableHeaderInfoWrapper className='user-data-table'>
+        <IconButton onClick={() => history.goBack()} aria-label='goBack'>
           <ArrowBackIcon />
         </IconButton>
         <StyledInfoWrapper>
-          <span className="user-data-table__info--name">{employee?.name}</span>
-          <span className="user-data-table__info">
+          <span className='user-data-table__info--name'>{employee?.name}</span>
+          <span className='user-data-table__info'>
             Cód. Emp: {employee?.employerCode}
           </span>
         </StyledInfoWrapper>

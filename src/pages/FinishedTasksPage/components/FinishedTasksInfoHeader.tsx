@@ -1,18 +1,18 @@
 import {
   StyledTableHeaderInfoWrapper,
   StyledTableHeaderWrapper,
-} from "../../../StyledComponents/StyledTableHeader";
+} from '../../../StyledComponents/StyledTableHeader';
 
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import FinishedTasksTableHeaderInfoCard from "../../../components/MUITable/FinishedTasksTableHeaderInfoCard/FinishedTasksTableHeaderInfoCard";
-import IconButton from "@mui/material/IconButton";
-import { ROUTE_MACHINES } from "../../../routes/routes";
-import { TTaskResponse } from "../../../types/taskTypes";
-import TableHeaderInfoCard from "../../../components/TableHeaderInfoCard/TableHeaderInfoCard";
-import { calculateFinishedTasksGeneralValues } from "../../../utils/calculateFinishedTasksGeneralValues";
-import { calculateTotalTime } from "../../../utils/calculateTotalTime";
-import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import FinishedTasksTableHeaderInfoCard from '../../../components/MUITable/FinishedTasksTableHeaderInfoCard/FinishedTasksTableHeaderInfoCard';
+import IconButton from '@mui/material/IconButton';
+import { ROUTE_MACHINES } from '../../../routes/routes';
+import { TTaskResponse } from '../../../types/taskTypes';
+import TableHeaderInfoCard from '../../../components/TableHeaderInfoCard/TableHeaderInfoCard';
+import { calculateFinishedTasksGeneralValues } from '../../../utils/calculateFinishedTasksGeneralValues';
+import { calculateTotalTime } from '../../../utils/calculateTotalTime';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
 
 const StyledFlexGrow = styled.div`
   flex: 1;
@@ -35,11 +35,11 @@ function FinishedTasksInfoHeader(props: IFinishedTasksInfoHeaderProps) {
   const history = useHistory();
 
   return (
-    <StyledTableHeaderWrapper className="user-data-table-container">
-      <StyledTableHeaderInfoWrapper className="user-data-table">
+    <StyledTableHeaderWrapper className='user-data-table-container'>
+      <StyledTableHeaderInfoWrapper className='user-data-table'>
         <IconButton
           onClick={() => history.push(ROUTE_MACHINES)}
-          aria-label="goBack"
+          aria-label='goBack'
         >
           <ArrowBackIcon />
         </IconButton>
