@@ -18,8 +18,6 @@ type TTasksData = {
 export function calculateMachineGeneralValues(
   tasks: TTaskResponse[] | undefined
 ): TTasksData {
-  console.log(tasks);
-
   const machine1Tasks = tasks?.filter(
     (task) => task.machine.name === MACHINE_1
   );
