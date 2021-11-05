@@ -9,7 +9,15 @@ export default function useFinisedTasksQuery() {
       // TODO: const {data: tasks} = await axios.get('/api/tasks/finished}')
       const tasks = getFinishedTasks();
 
-      return tasks;
+      // Sort from newer to older
+      const sortedTasks = tasks.sort((a, b) => {
+        const aDate: any = new Date(a.end);
+        const bDate: any = new Date(b.end);
+
+        return bDate - aDate;
+      });
+
+      return sortedTasks;
     },
     {
       refetchInterval: 60000,
