@@ -68,7 +68,6 @@ export function login(userCode: string) {
       if (data) {
         localStorage.setItem('user', JSON.stringify(data));
         dispatch(loginSuccess(data));
-        toast.success('Login hecho correctamente!');
       } else {
         dispatch(loginError(ERROR_MESSAGE_INVALID_CREDENTIALS(userCode)));
       }
