@@ -201,6 +201,7 @@ export function finishTask(employeeCode: string, taskId: string) {
 
         const query = {
           status: 1,
+          end: new Date(),
         };
 
         await axios.patch(updateTaskEndpoint, query);

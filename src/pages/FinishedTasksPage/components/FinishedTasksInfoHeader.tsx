@@ -4,12 +4,12 @@ import {
 } from '../../../StyledComponents/StyledTableHeader';
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import FinishedTasksTableHeaderInfoCard from '../../../components/MUITable/FinishedTasksTableHeaderInfoCard/FinishedTasksTableHeaderInfoCard';
 import IconButton from '@mui/material/IconButton';
 import { ROUTE_MACHINES } from '../../../routes/routes';
-import React from 'react';
 import { TTaskResponse } from '../../../types/taskTypes';
 import TableHeaderInfoCard from '../../../components/TableHeaderInfoCard/TableHeaderInfoCard';
-import { calculateMachineGeneralValues } from '../../../utils/calculateMachineGeneralValues';
+import { calculateFinishedTasksGeneralValues } from '../../../utils/calculateFinishedTasksGeneralValues';
 import { calculateTotalTime } from '../../../utils/calculateTotalTime';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
@@ -31,7 +31,7 @@ interface IFinishedTasksInfoHeaderProps {
 function FinishedTasksInfoHeader(props: IFinishedTasksInfoHeaderProps) {
   const { tasks } = props;
 
-  const tasksData = calculateMachineGeneralValues(tasks);
+  const tasksData = calculateFinishedTasksGeneralValues(tasks);
   const history = useHistory();
 
   return (
@@ -45,13 +45,13 @@ function FinishedTasksInfoHeader(props: IFinishedTasksInfoHeaderProps) {
         </IconButton>
         <StyledTableHeaderName>Programas finalizados</StyledTableHeaderName>
         <StyledFlexGrow />
-        <TableHeaderInfoCard
-          machine1Tasks={tasksData.machine1.activeTasks as number}
-          machine1TimeToFinish={tasksData.machine1.timeToFinish as number}
-          machine2Tasks={tasksData.machine2.activeTasks as number}
-          machine2TimeToFinish={tasksData.machine2.timeToFinish as number}
+        <FinishedTasksTableHeaderInfoCard
+          machine1Tasks={tasksData.machine1.tasks as number}
+          machine1Time={tasksData.machine1.time as number}
+          machine2Tasks={tasksData.machine2.tasks as number}
+          machine2Time={tasksData.machine2.time as number}
           totalTasks={tasks?.length as number}
-          totalTimeToFinish={calculateTotalTime(tasks)}
+          totalTime={calculateTotalTime(tasks)}
         />
       </StyledTableHeaderInfoWrapper>
     </StyledTableHeaderWrapper>

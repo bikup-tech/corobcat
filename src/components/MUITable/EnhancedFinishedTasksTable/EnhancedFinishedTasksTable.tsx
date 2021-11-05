@@ -84,14 +84,6 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
                           task.priority
                         )}
                       >
-                        <TableCell
-                          component="th"
-                          scope="row"
-                          align="center"
-                          width={100}
-                        >
-                          {task.taskNumber}
-                        </TableCell>
                         <TableCell align="center">
                           {task.machine.name}
                         </TableCell>
