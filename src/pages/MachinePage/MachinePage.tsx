@@ -21,10 +21,6 @@ function MachinePage(props: IMachinePageProps) {
 
   const headCells: THeadCell[] = [
     {
-      id: "taskNumber",
-      label: "Nº Tarea",
-    },
-    {
       id: "material",
       label: "Material",
     },

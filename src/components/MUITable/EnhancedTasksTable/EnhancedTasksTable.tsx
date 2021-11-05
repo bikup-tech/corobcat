@@ -102,14 +102,6 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                           task.priority
                         )}
                       >
-                        <TableCell
-                          component="th"
-                          scope="row"
-                          align="center"
-                          width={100}
-                        >
-                          {task.taskNumber}
-                        </TableCell>
                         <TableCell align="center">{task.material}</TableCell>
                         <TableCell align="center">{task.thickness}</TableCell>
                         <TableCell align="center">
