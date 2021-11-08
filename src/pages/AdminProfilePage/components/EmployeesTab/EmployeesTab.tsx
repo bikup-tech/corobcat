@@ -1,19 +1,19 @@
-import * as Yup from "yup";
+import * as Yup from 'yup';
 
-import { Form, Formik } from "formik";
+import { Form, Formik } from 'formik';
 import {
   createEmployee,
   deleteEmployee,
-} from "../../../../redux/actions/mainActions";
+} from '../../../../redux/actions/mainActions';
 
-import CreateEmployeeForm from "./CreateEmployeeForm";
-import DeletableItemCard from "../DeletableItemCard";
-import { FC } from "react";
-import { TUserResponse } from "../../../../types/employeeTypes";
-import { Typography } from "@mui/material";
-import { motion } from "framer-motion";
-import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import CreateEmployeeForm from './CreateEmployeeForm';
+import DeletableItemCard from '../DeletableItemCard';
+import { FC } from 'react';
+import { TUserResponse } from '../../../../types/employeeTypes';
+import { Typography } from '@mui/material';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
 
 const StyledTabContainer = styled(motion.div).attrs(() => ({
   initial: { opacity: 0 },
@@ -47,15 +47,15 @@ const StyledEmployeeCardContainer = styled.div`
 `;
 
 const initialFormValues = {
-  name: "",
-  surname: "",
-  employerCode: "",
+  name: '',
+  surname: '',
+  employerCode: '',
 };
 
 const validationSchema = Yup.object({
-  name: Yup.string().required("Nombre obligatorio"),
+  name: Yup.string().required('Nombre obligatorio'),
   surname: Yup.string(),
-  employerCode: Yup.string().required("Cod. Emp. obligatorio"),
+  employerCode: Yup.string().required('Cod. Emp. obligatorio'),
 });
 
 interface IEmployeesTabprops {
@@ -74,7 +74,7 @@ const EmployeesTab: FC<IEmployeesTabprops> = ({ employees }) => {
   }
 
   return (
-    <StyledTabContainer className="tabContainer">
+    <StyledTabContainer className='tabContainer'>
       <StyledTabTitle>Gestión de empleados</StyledTabTitle>
 
       <Formik
@@ -88,17 +88,23 @@ const EmployeesTab: FC<IEmployeesTabprops> = ({ employees }) => {
       </Formik>
 
       <StyledEmployeesContainer>
-        {employees.map((employee) => (
-          <StyledEmployeeCardContainer className="employeesList">
-            <DeletableItemCard
-              itemName={`(${employee.employerCode}): ${employee.name} `}
-              handleDelete={() => {
-                handleDeleteEmployee(employee._id);
-              }}
-              key={employee._id}
-            />
-          </StyledEmployeeCardContainer>
-        ))}
+        {employees.length ? (
+          employees.map((employee) => (
+            <StyledEmployeeCardContainer className='employeesList'>
+              <DeletableItemCard
+                itemName={`(${employee.employerCode}): ${employee.name} `}
+                handleDelete={() => {
+                  handleDeleteEmployee(employee._id);
+                }}
+                key={employee._id}
+              />
+            </StyledEmployeeCardContainer>
+          ))
+        ) : (
+          <Typography color='red'>
+            Todavía no se ha creado ningún empleado.
+          </Typography>
+        )}
       </StyledEmployeesContainer>
     </StyledTabContainer>
   );

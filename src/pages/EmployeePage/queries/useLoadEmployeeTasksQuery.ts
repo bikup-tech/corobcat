@@ -2,15 +2,15 @@ import {
   API_URL,
   ENDPOINT_USERS_BY_ID,
   ENDPOINT_USER_TASKS_BY_ID,
-} from "../../../constants/apiConstants";
+} from '../../../constants/apiConstants';
 
-import { TTaskResponse } from "../../../types/taskTypes";
-import axios from "axios";
-import { useQuery } from "react-query";
+import { TTaskResponse } from '../../../types/taskTypes';
+import axios from 'axios';
+import { useQuery } from 'react-query';
 
 export default function useLoadEmployeeTasksQuery(employeeId: string) {
   return useQuery(
-    ["loadEmployeeTasks", employeeId],
+    ['loadEmployeeTasks', employeeId],
     async () => {
       const { data: employee } = await axios.get(
         `${API_URL}${ENDPOINT_USERS_BY_ID(employeeId)}`
@@ -19,6 +19,8 @@ export default function useLoadEmployeeTasksQuery(employeeId: string) {
       const { data: employeeTasks } = await axios.get(
         `${API_URL}${ENDPOINT_USER_TASKS_BY_ID(employeeId)}`
       );
+
+      console.log(employeeTasks);
 
       const sortedActiveTasks = employeeTasks
         .filter((task: TTaskResponse) => task.status === 0)

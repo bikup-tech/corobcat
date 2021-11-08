@@ -1,11 +1,11 @@
-import React from "react";
-import { useParams } from "react-router-dom";
-
-// queries
-import useLoadEmployeeTasksQuery from "./queries/useLoadEmployeeTasksQuery";
-
+import { CircularProgress } from '@mui/material';
 // components
-import EmployeePage from "./EmployeePage";
+import EmployeePage from './EmployeePage';
+import React from 'react';
+import { StyledMachinesHomePageLoadingWrapper } from '../MachinesHomePage/SCMachinesHomePage';
+// queries
+import useLoadEmployeeTasksQuery from './queries/useLoadEmployeeTasksQuery';
+import { useParams } from 'react-router-dom';
 
 interface IEmployeePageContainerParams {
   employeeId: string;
@@ -18,12 +18,19 @@ function EmployeePageContainer() {
 
   return (
     <>
-      <EmployeePage
-        tasks={data?.employeeTasks}
-        employee={data?.employee}
-        isLoading={isLoading}
-        isError={isError}
-      />
+      {isLoading ? (
+        <StyledMachinesHomePageLoadingWrapper>
+          <CircularProgress />
+          Cargando Datos...
+        </StyledMachinesHomePageLoadingWrapper>
+      ) : (
+        <EmployeePage
+          tasks={data?.employeeTasks}
+          employee={data?.employee}
+          isLoading={isLoading}
+          isError={isError}
+        />
+      )}
     </>
   );
 }

@@ -1,13 +1,13 @@
-import { AppBar, Box, Tab, Tabs } from "@mui/material";
-import { FC, useEffect } from "react";
+import { AppBar, Box, Tab, Tabs } from '@mui/material';
+import { FC, useEffect } from 'react';
 
-import EmployeesTab from "./components/EmployeesTab/EmployeesTab";
-import GeneralSettingsTab from "./components/GeneralSettingsTab/GeneralSettingsTab";
-import { TSettingsResponse } from "../../types/settingsTypes";
-import TabPanel from "./components/TabPanel";
-import styled from "styled-components";
-import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import EmployeesTab from './components/EmployeesTab/EmployeesTab';
+import GeneralSettingsTab from './components/GeneralSettingsTab/GeneralSettingsTab';
+import { TSettingsResponse } from '../../types/settingsTypes';
+import TabPanel from './components/TabPanel';
+import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
 
 const StyledAdminProfileHeader = styled.div`
   width: 100%;
@@ -30,14 +30,14 @@ const AdminProfilePage: FC<IAdminProfilePageProps> = ({ settings }) => {
   function a11yProps(index: number) {
     return {
       id: `simple-tab-${index}`,
-      "aria-controls": `simple-tabpanel-${index}`,
+      'aria-controls': `simple-tabpanel-${index}`,
     };
   }
 
   const params: any = new URLSearchParams(window.location.search);
 
   useEffect(() => {
-    const tab = params.get("tab") || 0;
+    const tab = params.get('tab') || 0;
 
     setValue(Number(tab));
   }, [params]);
@@ -45,6 +45,8 @@ const AdminProfilePage: FC<IAdminProfilePageProps> = ({ settings }) => {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     history.push(`/admin?tab=${newValue}`);
   };
+
+  console.log(settings);
 
   return (
     <>
@@ -54,34 +56,34 @@ const AdminProfilePage: FC<IAdminProfilePageProps> = ({ settings }) => {
 
       <Box
         sx={{
-          bgcolor: "background.paper",
-          width: "100%",
-          height: "calc(100% - 4rem)",
+          bgcolor: 'background.paper',
+          width: '100%',
+          height: 'calc(100% - 4rem)',
           flex: 1,
-          boxSizing: "border-box",
+          boxSizing: 'border-box',
         }}
       >
-        <AppBar position="static">
+        <AppBar position='static'>
           <Tabs
             value={value}
             onChange={handleChange}
-            aria-label="admin tabs"
-            indicatorColor="secondary"
-            textColor="inherit"
+            aria-label='admin tabs'
+            indicatorColor='secondary'
+            textColor='inherit'
           >
             <Tab
-              label="Ajustes generales"
+              label='Ajustes generales'
               {...a11yProps(0)}
-              sx={{ color: "white" }}
+              sx={{ color: 'white' }}
             />
-            <Tab label="Empleados" {...a11yProps(1)} sx={{ color: "white" }} />
+            <Tab label='Empleados' {...a11yProps(1)} sx={{ color: 'white' }} />
           </Tabs>
         </AppBar>
-        <TabPanel value={value} index={0} key="generalSettingsTab">
+        <TabPanel value={value} index={0} key='generalSettingsTab'>
           <GeneralSettingsTab settings={settings} />
         </TabPanel>
-        <TabPanel value={value} index={1} key="employeesTab">
-          <EmployeesTab employees={settings.employees} />
+        <TabPanel value={value} index={1} key='employeesTab'>
+          <EmployeesTab employees={settings.employees || []} />
         </TabPanel>
       </Box>
     </>
