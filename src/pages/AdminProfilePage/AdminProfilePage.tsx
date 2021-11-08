@@ -46,8 +46,6 @@ const AdminProfilePage: FC<IAdminProfilePageProps> = ({ settings }) => {
     history.push(`/admin?tab=${newValue}`);
   };
 
-  console.log(settings);
-
   return (
     <>
       <StyledAdminProfileHeader>

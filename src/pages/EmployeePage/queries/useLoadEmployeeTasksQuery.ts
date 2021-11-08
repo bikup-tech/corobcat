@@ -20,8 +20,6 @@ export default function useLoadEmployeeTasksQuery(employeeId: string) {
         `${API_URL}${ENDPOINT_USER_TASKS_BY_ID(employeeId)}`
       );
 
-      console.log(employeeTasks);
-
       const sortedActiveTasks = employeeTasks
         .filter((task: TTaskResponse) => task.status === 0)
         .sort(
