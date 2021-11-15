@@ -2,6 +2,8 @@ import styled from "styled-components";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { TTaskResponse } from "../../../types/taskTypes";
+import { calculateFinishedTasksGeneralValues } from "../../../utils/calculateFinishedTasksGeneralValues";
+import { calculateTotalTime } from "../../../utils/calculateTotalTime";
 
 interface PDFDownloadButtonProps {
   filteredTasks: TTaskResponse[] | undefined;
@@ -17,6 +19,14 @@ const StyledPdfDownloadButton = styled.button`
 function PdfDownloadButton(props: PDFDownloadButtonProps) {
   const { filteredTasks } = props;
 
+  const tasksData = calculateFinishedTasksGeneralValues(filteredTasks);
+  const machine1Tasks = tasksData.machine1.tasks as number;
+  const machine1Time = tasksData.machine1.time as number;
+  const machine2Tasks = tasksData.machine2.tasks as number;
+  const machine2Time = tasksData.machine2.time as number;
+  const totalTasks = filteredTasks?.length as number;
+  const totalTime = calculateTotalTime(filteredTasks);
+
   function downloadPDF() {
     if (filteredTasks) {
       const doc: jsPDF = new jsPDF();
@@ -24,7 +34,19 @@ function PdfDownloadButton(props: PDFDownloadButtonProps) {
       const body = buildTableBody(filteredTasks);
 
       if (body.length === 0) return;
+
       let cellColor: string = "white";
+      /** Header Data */
+      autoTable(doc, {
+        head: [["Máquina", "Programas Terminados", "Tiempo"]],
+        body: [
+          ["Máquina 1", `${machine1Tasks}`, `${machine1Time} min`],
+          ["Máquina 2", `${machine2Tasks}`, `${machine2Time} min`],
+          ["Total", `${totalTasks}`, `${totalTime} min`],
+        ],
+        theme: "grid",
+      });
+      /** Tasks Data */
       autoTable(doc, {
         head: [
           [
