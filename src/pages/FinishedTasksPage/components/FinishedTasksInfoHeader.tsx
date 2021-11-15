@@ -18,7 +18,7 @@ const StyledFlexGrow = styled.div`
   flex: 1;
 `;
 
-const StyledTableHeaderName = styled.p`
+export const StyledTableHeaderName = styled.p`
   margin-left: 0.5rem;
   font-size: 1.5rem;
   justify-self: flex-start;
