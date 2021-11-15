@@ -24,8 +24,8 @@ function FinishedTasksPage(props: IFinishedTasksPageProps) {
 
   /** date state for tasks filtering */
   const [dates, setDates] = useState<DateState>({
-    startDate: moment().day(-7),
-    endDate: moment(),
+    startDate: null,
+    endDate: null,
   });
   /** tasks filtered by date */
   const [filteredTasks, setFilteredTasks] = useState(tasks);
@@ -37,7 +37,7 @@ function FinishedTasksPage(props: IFinishedTasksPageProps) {
     } else {
       setFilteredTasks(tasks);
     }
-  }, [dates]);
+  }, [dates, tasks]);
 
   /**
    *
