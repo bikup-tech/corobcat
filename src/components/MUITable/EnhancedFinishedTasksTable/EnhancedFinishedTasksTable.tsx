@@ -56,7 +56,6 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
               sx={{ minWidth: 750 }}
               aria-labelledby="tableTitle"
               size="medium"
-              stickyHeader
             >
               <EnhancedTableHead headCells={headCells} />
               <TableBody>
