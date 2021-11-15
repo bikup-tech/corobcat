@@ -91,7 +91,7 @@ function FinishedTasksPage(props: IFinishedTasksPageProps) {
 
   return (
     <>
-      <FinishedTasksInfoHeader tasks={tasks} />
+      <FinishedTasksInfoHeader tasks={filteredTasks} />
       <FinishedTasksFilterHeader
         filteredTasks={filteredTasks}
         dates={dates}
