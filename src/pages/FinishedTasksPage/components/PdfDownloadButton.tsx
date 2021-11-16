@@ -4,15 +4,13 @@ import autoTable from "jspdf-autotable";
 import { TTaskResponse } from "../../../types/taskTypes";
 import { calculateFinishedTasksGeneralValues } from "../../../utils/calculateFinishedTasksGeneralValues";
 import { calculateTotalTime } from "../../../utils/calculateTotalTime";
+import { Button } from "@mui/material";
 
 interface PDFDownloadButtonProps {
   filteredTasks: TTaskResponse[] | undefined;
 }
 
-const StyledPdfDownloadButton = styled.button`
-  width: 200px;
-  height: 70px;
-  border-radius: 0.25rem;
+const StyledPdfDownloadButton = styled(Button)`
   font-weight: 700;
 `;
 
@@ -123,7 +121,7 @@ function PdfDownloadButton(props: PDFDownloadButtonProps) {
   }
 
   return (
-    <StyledPdfDownloadButton onClick={downloadPDF}>
+    <StyledPdfDownloadButton variant="contained" onClick={downloadPDF}>
       Descargar PDF
     </StyledPdfDownloadButton>
   );

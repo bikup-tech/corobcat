@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { StyledTableHeaderName } from "./FinishedTasksInfoHeader";
 import { Moment } from "moment";
 import { TTaskResponse } from "../../../types/taskTypes";
+import { Button } from "@mui/material";
 
 interface FinishedTasksFilterHeaderProps {
   dates: {
@@ -19,6 +20,10 @@ const StyledFlexGrow = styled.div`
   flex: 1;
 `;
 
+const StyledMargin = styled.div`
+  margin-right: 5rem;
+`;
+
 function FinishedTasksFilterHeader(props: FinishedTasksFilterHeaderProps) {
   const { filteredTasks, dates, setDates } = props;
 
@@ -27,7 +32,8 @@ function FinishedTasksFilterHeader(props: FinishedTasksFilterHeaderProps) {
       <StyledTableHeaderName>Filtro por fechas</StyledTableHeaderName>
       <StyledFlexGrow />
       <DateTimeFilter dates={dates} setDates={setDates} />
-      <StyledFlexGrow />
+      <Button variant="text">Reiniciar filtro</Button>
+      <StyledMargin />
       <PdfDownloadButton filteredTasks={filteredTasks} />
     </StyledTableHeaderWrapper>
   );
