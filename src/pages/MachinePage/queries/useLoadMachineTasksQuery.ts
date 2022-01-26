@@ -16,20 +16,18 @@ export default function useLoadMachineTasksQuery(
 ) {
   // el useQuery reb un array amb el nom de la "action" i les variables que si canvien torna a executar
   return useQuery(
-    ["loadMachineTasks", machineName, forceRender, userId],
+    ["loadMachineTasks", machineName, forceRender],
     async () => {
-      if (userId) {
-        const endpoint = `${API_URL}${ENDPOINT_MACHINES_BY_NAME(machineName)}`;
-        const { data: machine } = await axios.get(endpoint);
+      const endpoint = `${API_URL}${ENDPOINT_MACHINES_BY_NAME(machineName)}`;
+      const { data: machine } = await axios.get(endpoint);
 
-        const endpoint2 = `${API_URL}${ENDPOINT_TASK_ACTIVE_BY_MACHINE_ID(
-          machine._id
-        )}`;
+      const endpoint2 = `${API_URL}${ENDPOINT_TASK_ACTIVE_BY_MACHINE_ID(
+        machine._id
+      )}`;
 
-        const { data } = await axios.get(endpoint2);
+      const { data } = await axios.get(endpoint2);
 
-        return data;
-      }
+      return data;
     },
     {
       refetchInterval: 60000,
