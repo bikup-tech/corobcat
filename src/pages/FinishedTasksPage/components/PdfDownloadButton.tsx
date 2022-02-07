@@ -112,7 +112,7 @@ function PdfDownloadButton(props: PDFDownloadButtonProps) {
       taskRow.push(task.material);
       taskRow.push(`${task.thickness.toString()} mm`);
       taskRow.push(task.programNumber);
-      taskRow.push(task.user.employerCode);
+      taskRow.push(task.user?.employerCode ?? "-");
       taskRow.push(task.duration.toLocaleString());
       taskRow.push(task.end?.toString() || "");
       expectedBody.push(taskRow);
