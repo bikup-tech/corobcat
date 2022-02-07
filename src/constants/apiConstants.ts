@@ -1,5 +1,5 @@
-// export const API_URL = "http://192.168.80.22:8000/api";
-export const API_URL = "http://localhost:8000/api";
+export const API_URL = "http://192.168.1.60:8000/api";
+// export const API_URL = "http://localhost:8000/api";
 
 // SETTINGS
 export const ENDPOINT_SETTINGS = "/settings";
