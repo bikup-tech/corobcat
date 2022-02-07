@@ -92,7 +92,7 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
                           {task.programNumber}
                         </TableCell>
                         <TableCell align="center">
-                          {task.user.employerCode}
+                          {task.user?.employerCode || "-"}
                         </TableCell>
                         <TableCell align="center">
                           {task.duration} min
