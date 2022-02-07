@@ -43,10 +43,6 @@ function MachinesHomePage(props: IMachinePageProps) {
       label: "Espesor",
     },
     {
-      id: "t",
-      label: "Material",
-    },
-    {
       id: "duration",
       label: "Tiempo",
     },

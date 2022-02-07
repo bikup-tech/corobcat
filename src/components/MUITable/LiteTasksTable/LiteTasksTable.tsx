@@ -72,33 +72,19 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                         <TableCell align="center">
                           {task.programNumber}
                         </TableCell>
+                        <TableCell align="center">{task.material}</TableCell>
                         <TableCell align="center">
                           {task.duration} min
                         </TableCell>
-                        <TableCell align="center">{task.material}</TableCell>
                         <TableCell align="center">
                           {task.thickness} mm
                         </TableCell>
                         <TableCell align="center">
-                          {user?.role === ADMIN_NUMBER ? (
-                            <FinishTaskButton
-                              taskId={task._id}
-                              programNumber={task.programNumber}
-                              openFinishedTaskDialog={
-                                handleFinishTaskDialogOpen
-                              }
-                            />
-                          ) : (
-                            task.user.employerCode === user?.employerCode && (
-                              <FinishTaskButton
-                                taskId={task._id}
-                                programNumber={task.programNumber}
-                                openFinishedTaskDialog={
-                                  handleFinishTaskDialogOpen
-                                }
-                              />
-                            )
-                          )}
+                          <FinishTaskButton
+                            taskId={task._id}
+                            programNumber={task.programNumber}
+                            openFinishedTaskDialog={handleFinishTaskDialogOpen}
+                          />
                         </TableCell>
                       </TableRow>
                     );

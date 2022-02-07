@@ -120,37 +120,21 @@ export default function EnhancedTaksTable(props: IEnhancedTableProps) {
                           {task.duration} min
                         </TableCell>
                         <TableCell align="right">
-                          {user?.role === ADMIN_NUMBER ? (
-                            <FinishTaskButton
-                              taskId={task._id}
-                              programNumber={task.programNumber}
-                              openFinishedTaskDialog={
-                                handleFinishTaskDialogOpen
-                              }
-                            />
-                          ) : (
-                            task.user.employerCode === user?.employerCode && (
-                              <FinishTaskButton
-                                taskId={task._id}
-                                programNumber={task.programNumber}
-                                openFinishedTaskDialog={
-                                  handleFinishTaskDialogOpen
-                                }
-                              />
-                            )
-                          )}
+                          <FinishTaskButton
+                            taskId={task._id}
+                            programNumber={task.programNumber}
+                            openFinishedTaskDialog={handleFinishTaskDialogOpen}
+                          />
 
-                          {user?.role === ADMIN_NUMBER && (
-                            <StyledIconButton
-                              color="secondary"
-                              onClick={() => {
-                                handleDeleteTask(task._id);
-                              }}
-                              sx={{ marginLeft: "0.5rem" }}
-                            >
-                              <DeleteIcon color="primary" />
-                            </StyledIconButton>
-                          )}
+                          <StyledIconButton
+                            color="secondary"
+                            onClick={() => {
+                              handleDeleteTask(task._id);
+                            }}
+                            sx={{ marginLeft: "0.5rem" }}
+                          >
+                            <DeleteIcon color="primary" />
+                          </StyledIconButton>
                         </TableCell>
                       </TableRow>
                     );
