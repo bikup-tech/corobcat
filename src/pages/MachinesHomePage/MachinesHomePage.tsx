@@ -35,6 +35,14 @@ function MachinesHomePage(props: IMachinePageProps) {
       label: "Nº Programa",
     },
     {
+      id: "material",
+      label: "Material",
+    },
+    {
+      id: "thickness",
+      label: "Espesor",
+    },
+    {
       id: "duration",
       label: "Tiempo",
     },

@@ -94,7 +94,9 @@ export default function EnhnacedEmployeeTasksTable(
                           <TaskStatus status={task.status} />
                         </TableCell>
                         <TableCell align="center">{task.material}</TableCell>
-                        <TableCell align="center">{task.thickness}</TableCell>
+                        <TableCell align="center">
+                          {task.thickness} mm
+                        </TableCell>
                         <TableCell align="center">
                           {task.programNumber}
                         </TableCell>

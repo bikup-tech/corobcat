@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import jsPDF from "jspdf";
-import autoTable from "jspdf-autotable";
+import { Button } from "@mui/material";
 import { TTaskResponse } from "../../../types/taskTypes";
+import autoTable from "jspdf-autotable";
 import { calculateFinishedTasksGeneralValues } from "../../../utils/calculateFinishedTasksGeneralValues";
 import { calculateTotalTime } from "../../../utils/calculateTotalTime";
-import { Button } from "@mui/material";
+import jsPDF from "jspdf";
+import styled from "styled-components";
 
 interface PDFDownloadButtonProps {
   filteredTasks: TTaskResponse[] | undefined;
@@ -110,9 +110,9 @@ function PdfDownloadButton(props: PDFDownloadButtonProps) {
       taskRow.push(task.priority.toString());
       taskRow.push(task.machine.name);
       taskRow.push(task.material);
-      taskRow.push(task.thickness.toString());
+      taskRow.push(`${task.thickness.toString()} mm`);
       taskRow.push(task.programNumber);
-      taskRow.push(task.user.employerCode);
+      taskRow.push(task.user?.employerCode ?? "-");
       taskRow.push(task.duration.toLocaleString());
       taskRow.push(task.end?.toString() || "");
       expectedBody.push(taskRow);
