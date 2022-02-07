@@ -87,7 +87,9 @@ export default function EnhancedFinishedTasksTable(props: IEnhancedTableProps) {
                           {task.machine.name}
                         </TableCell>
                         <TableCell align="center">{task.material}</TableCell>
-                        <TableCell align="center">{task.thickness}</TableCell>
+                        <TableCell align="center">
+                          {task.thickness} mm
+                        </TableCell>
                         <TableCell align="center">
                           {task.programNumber}
                         </TableCell>

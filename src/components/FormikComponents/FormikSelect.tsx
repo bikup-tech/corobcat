@@ -21,14 +21,14 @@ function formatLabel(value: any) {
   if (typeof value === "string") {
     return value;
   } else {
-    return `${value} cm`;
+    return `${value}`;
   }
 }
 
 interface IFormikSelectProps {
   name: string;
   label: string;
-  values: string[];
+  values: string[] | number[];
   variant?: "outlined" | "filled" | "standard";
   size?: "medium" | "small";
   margin?: "none" | "dense";

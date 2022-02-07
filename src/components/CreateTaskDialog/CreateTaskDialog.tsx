@@ -13,6 +13,7 @@ import FormikTextField from "../FormikComponents/FormikTextField";
 import { MACHINE_1 } from "../../constants/machineNames";
 import PriorityBadge from "./components/PriorityBadge/PriorityBadge";
 import { TInitialState } from "../../redux/store/initialState";
+import { prioritiesOptions } from "../../constants/priorities";
 import styled from "styled-components";
 import { useEffect } from "react";
 import { useFormikContext } from "formik";
@@ -111,13 +112,18 @@ function CreateTaskDialog(props: ICreateTaskDialogProps) {
               />
             </Grid>
             <Grid item xs={6}>
-              <FormikTextField
+              {/* <FormikTextField
                 name="priority"
                 label="Prioridad"
                 type="number"
                 min={1}
                 max={10}
                 fullWidth
+              /> */}
+              <FormikSelect
+                name="priority"
+                label="Prioridad"
+                values={prioritiesOptions}
               />
             </Grid>
             <Grid item xs={6}>
